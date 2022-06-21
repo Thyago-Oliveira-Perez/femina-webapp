@@ -1,11 +1,12 @@
 import * as S from './styles';
-import Button from '@mui/material/Button';
 import {Header} from '../../components/Global/Header';
+import {ButtonComponent} from '../../components/Generic/Button'
 
 export function HomePage() {
     return (
         <>
             <Header/>
+            <ButtonComponent title="teste"/>
         </>
     )
 }

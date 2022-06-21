@@ -1,15 +1,19 @@
 import * as S from './styles';
+import TextField from '@mui/material/TextField';
+import { InputAdornment } from '@mui/material';
+
 
 export const Header = () => {
     return (
         <header>
-            <div>
+            <S.HeaderContainer>
                 <div>
-                    <img src="" alt="" />
+                    <img src="../../../public/logoProvisoria.png" alt="logo" />
                 </div>
 
                 <div>
-                    <input type="text" placeholder="O que deseja?" />
+                <TextField placeholder="O que deseja?"/>
+                
                 </div>
 
                 <div>
@@ -20,9 +24,8 @@ export const Header = () => {
                     <button>
                         <a href="#">Inscreva-se</a>
                     </button>
-                   
                 </div>
-            </div>
+            </S.HeaderContainer>
         </header>
     )
 }
