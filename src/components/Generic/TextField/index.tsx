@@ -3,7 +3,9 @@ import { ChangeEvent, useState } from "react";
 import { IconsProps } from "../../../types/Icons";
 import IoEyeSharp from "react-icons/io";
 import BsEyeSlashFill from "react-icons/bs"
-
+import AddIcon from '@mui/icons-material/Add';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import * as S from "./styles";
 
 interface TextFieldProps {
@@ -72,7 +74,23 @@ export const TextFieldComponent = ({
         onChange={onChange}
         disabled={disabled}
         onFocus={onFocus}
-        
+        InputProps={{
+          endAdornment: (
+            <>
+              {type?.includes('password') && (
+                <InputAdornment
+                  position="end"
+                  onClick={() => setVisiblePassword(!visiblePassword)}
+                  sx={{
+                    cursor: 'pointer'
+                  }}
+                >
+                  {visiblePassword ? <RemoveRedEyeIcon/>  : <VisibilityOffIcon/>}
+                </InputAdornment>
+              )}
+            </>
+          )
+        }}
       />
     </>
   );

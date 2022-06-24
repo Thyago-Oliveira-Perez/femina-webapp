@@ -14,7 +14,7 @@ export const StyledTextField = styled(TextField)({
       borderColor: '#C2C2C2',
     },
     '&:hover fieldset': {
-      borderColor: 'red',
+      borderColor: '#7A0000',
     },
     '&.Mui-focused fieldset': {
       borderColor: '#9B4A46',
