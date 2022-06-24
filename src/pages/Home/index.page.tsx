@@ -1,12 +1,49 @@
-import * as S from './styles';
-import {Header} from '../../components/Global/Header';
-import {ButtonComponent} from '../../components/Generic/Button'
+import * as S from "./styles";
+import { Header } from "../../components/Global/Header";
+import { api } from "../../service/index";
+import { useEffect, useState } from "react";
+
+export interface ICliente {
+    id: number;
+    cadastrado: string;
+    atualizado: string;
+    nome: string;
+    login: string;
+    cpf: string;
+    sexo: string;
+    dataNascimento: string;
+    email: string;
+    telefone: string;
+    pais: string;
+    estado: string;
+    cidade: string;
+    logradouro: string;
+    numero: string;
+    cep: string;
+  }
+  
 
 export function HomePage() {
-    return (
-        <>
-            <Header/>
-            <ButtonComponent title="teste"/>
-        </>
-    )
+  const [clientes, setClientes] = useState<ICliente[]>([]);
+  console.log(clientes);
+
+  const getCategorias = async () => {
+    try {
+      api.get("clientes").then((response) => {
+        setClientes(response.data);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getCategorias();
+  }, []);
+
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
