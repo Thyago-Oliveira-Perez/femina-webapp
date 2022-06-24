@@ -1,26 +1,28 @@
 import * as S from "./styles";
 import { Header } from "../../components/Global/Header";
-import { api } from "../../service/index";
+import {TextFieldComponent} from '../../components/Generic/TextField'
+import { api } from "../../service/api";
 import { useEffect, useState } from "react";
 
 export interface ICliente {
-    id: number;
-    cadastrado: string;
-    atualizado: string;
-    nome: string;
-    login: string;
-    cpf: string;
-    sexo: string;
-    dataNascimento: string;
-    email: string;
-    telefone: string;
-    pais: string;
-    estado: string;
-    cidade: string;
-    logradouro: string;
-    numero: string;
-    cep: string;
-  }
+  id: number;
+  cadastrado: string;
+  atualizado: string;
+  nome: string;
+  login: string;
+  cpf: string;
+  sexo: string;
+  dataNascimento: string;
+  email: string;
+  telefone: string;
+  pais: string;
+  estado: string;
+  cidade: string;
+  logradouro: string;
+  numero: string;
+  cep: string;
+}
+
   
 
 export function HomePage() {
@@ -44,6 +46,7 @@ export function HomePage() {
   return (
     <>
       <Header />
+      <TextFieldComponent label="Categorias"/>
     </>
   );
 }

@@ -1,29 +1,23 @@
 import { TextField } from '@mui/material';
-import { setThemeColor } from '../../../utils/components/Generic';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-interface StyledTextFieldProps {
-
-  requiredType?: string | boolean;
-}
-
-export const StyledTextField = styled(TextField)<StyledTextFieldProps>`
-  &&& {
-    ${({ disabled }) => css`
-      
-
-   
-
-      
-
-      
-
-      
-
-     
-
-      
-    `}
-  }
-`;
+export const StyledTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: '#9B4A46',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: '#9B4A46',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#C2C2C2',
+    },
+    '&:hover fieldset': {
+      borderColor: 'red',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#9B4A46',
+    },
+  },
+});
