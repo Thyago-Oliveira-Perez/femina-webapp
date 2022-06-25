@@ -1,8 +1,8 @@
 import * as S from "./styles";
 import { Header } from "../../components/Global/Header";
 import { CardProduct } from "../../components/Generic/CardProduct";
-import {Modal} from '../../components/Generic/Modal'
-import {ButtonComponent} from '../../components/Generic/Button'
+import { ButtonComponent } from "../../components/Generic/Button";
+import { Alert } from "../../components/Generic/Alert";
 import { useState } from "react";
 
 export function HomePage() {
@@ -16,9 +16,15 @@ export function HomePage() {
         productPhotoDescription="Star Wars"
       />
 
-      <ButtonComponent onClick={() => setOpenModal(true)}/>
+      <ButtonComponent onClick={() => setOpenModal(true)} />
 
-      <Modal open={openModal} onClose={() => setOpenModal(false)}></Modal>
+      <Alert
+        alertStatus={openModal}
+        setAlertStatus={() => setOpenModal(false)}
+        type='warning'
+        message='mensagem de erro'
+      />
+      
     </>
   );
 }
