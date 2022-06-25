@@ -3,6 +3,8 @@ import { Header } from "../../components/Global/Header";
 import { CardProduct } from "../../components/Generic/CardProduct";
 import { ButtonComponent } from "../../components/Generic/Button";
 import { Alert } from "../../components/Generic/Alert";
+import {Checkbox} from "../../components/Generic/Checkbox";
+import {RadioButton} from "../../components/Generic/RadioButton";
 import { useState } from "react";
 
 export function HomePage() {
@@ -24,6 +26,9 @@ export function HomePage() {
         type='warning'
         message='mensagem de erro'
       />
+
+      <Checkbox label='teste checkbox ' />
+      <RadioButton label='teste radioButton'/>
       
     </>
   );
