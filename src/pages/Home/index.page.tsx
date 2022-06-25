@@ -5,6 +5,7 @@ import { ButtonComponent } from "../../components/Generic/Button";
 import { Alert } from "../../components/Generic/Alert";
 import {Checkbox} from "../../components/Generic/Checkbox";
 import {RadioButton} from "../../components/Generic/RadioButton";
+import {Select} from "../../components/Generic/Select";
 import { useState } from "react";
 
 export function HomePage() {
@@ -27,8 +28,11 @@ export function HomePage() {
         message='mensagem de erro'
       />
 
+
       <Checkbox label='teste checkbox ' />
       <RadioButton label='teste radioButton'/>
+
+      <Select label='teste select'/>
       
     </>
   );
