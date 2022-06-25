@@ -1,3 +1,4 @@
+import { MouseEventHandler } from "react";
 import * as S from "./styles";
 
 interface ProdutoProps {
