@@ -1,15 +1,18 @@
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import FormLogin from "./components/FormLogin/FormLogin";
 
 export default function App() {
   return (
-    <div className="App">
-      <header>
-        icone
-      </header>
-      <FormLogin/>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <header>icone</header>
+        <Routes>
+          <Route path="/login" element={<FormLogin />}></Route>
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }

@@ -1,16 +1,22 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
+import UserApi from "../../api/Users.api";
 import { Form, Messages, InputFields, Actions } from "./styles";
 
 export default function FormLogin() {
-  const loginApi = "";
+  const loginApi = new UserApi();
 
   const [login, setLogin] = useState({
     email: "",
     password: "",
   });
 
-  const handleForm = () => {};
+  function handleForm(){
+    loginApi._login()
+      .then((response: any) => {
+      console.log(response.data)
+    })
+  };
 
   return (
     <Form>
@@ -42,7 +48,7 @@ export default function FormLogin() {
       </InputFields>
       <Actions>
         <a href="#">Esqueceu sua senha?</a>
-        <Button style={{ backgroundColor: "#9B4A46" }} variant="contained">
+        <Button style={{ backgroundColor: "#9B4A46" }} variant="contained" onClick={() => handleForm()}>
           Entrar
         </Button>
         <p>Ou</p>
