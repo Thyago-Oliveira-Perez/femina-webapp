@@ -1,18 +1,19 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import UserApi from "../../api/Users.api";
+import { UserLogin } from "./FormLogin.types";
 import { Form, Messages, InputFields, Actions } from "./styles";
 
 export default function FormLogin() {
   const loginApi = new UserApi();
 
-  const [login, setLogin] = useState({
-    email: "",
+  const [login, setLogin] = useState<UserLogin>({
+    login: "",
     password: "",
   });
 
   function handleForm(){
-    loginApi._login()
+    loginApi._login(login)
       .then((response: any) => {
       console.log(response.data)
     })
@@ -26,12 +27,12 @@ export default function FormLogin() {
       </Messages>
       <InputFields>
         <TextField
-          label="Email"
-          value={login.email}
+          label="Login"
+          value={login.login}
           onChange={(e) =>
             setLogin({
               ...login,
-              email: e.target.value,
+              login: e.target.value,
             })
           }
         />

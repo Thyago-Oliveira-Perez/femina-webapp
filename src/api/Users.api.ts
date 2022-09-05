@@ -1,3 +1,4 @@
+import { UserLogin } from "../components/FormLogin/FormLogin.types";
 import { Api } from "./Api";
 
 export default class UserApi extends Api {
@@ -10,9 +11,9 @@ export default class UserApi extends Api {
     return Promise.reject(error.response)
   }
 
-  public async _login<T>(): Promise<T> {
+  public async _login<T>(user: UserLogin): Promise<T> {
     try {
-      return (await this.axiosClient.post(`${this.url}/login`)).data;
+      return (await this.axiosClient.post(`${this.url}/auth/login`, user)).data;
     } catch (error: any) {
       return this.handleError(error);
     }
