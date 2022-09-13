@@ -1,4 +1,4 @@
-import { UserLogin } from "../components/FormLogin/FormLogin.types";
+import { UserLogin } from "../pages/Login/FormLogin.types";
 import { Api } from "./Api";
 
 export default class UserApi extends Api {
