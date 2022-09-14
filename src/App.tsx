@@ -4,12 +4,14 @@ import Footer from "./components/Footer/Footer";
 import FormLogin from "./pages/Login";
 import { Produtos } from "./pages/Produtos";
 import {Header} from './components/Header';
+import { Navbar } from "./components/NavBar";
 
 export default function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <Header/>
+        <Navbar/>
         <Routes>
           <Route path="/login" element={<FormLogin />}></Route>
           <Route path="/produtos" element={<Produtos/>}></Route>
