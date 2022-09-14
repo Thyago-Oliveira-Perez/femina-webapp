@@ -1,21 +1,24 @@
-import "./Footer.css";
-
+import { useState } from 'react';
+import * as S from "./style";
 export default function Footer() {
   return (
-    <footer className="Footer">
-      <div className="footer-section">
-        <h2>Endereço</h2>
-        <p>Rua Rui Barbosa, n 2050</p>
-        <p>Centro, Itaipulândia - PR</p>
-        <p>CEP: 85880-00</p>
-      </div>
-      <img src="logo.svg" alt="" />
-      <div className="footer-section">
-        <h2>Entre em contato conosco</h2>
-        <p><a href="https://www.instagram.com/femina_modaintima/">@femina_modaintima</a></p>
-        <p>{"(45) 9 9984-5175"}</p>
-        <p>facebook/femina_modaintima</p>
-      </div>
-    </footer>
+    <S.FooterContainer>
+      <S.footerSections>
+        <S.h2>Endereço</S.h2>
+        <S.p>Rua Rui Barbosa, n 2050</S.p>
+        <S.p>Centro, Itaipulândia - PR</S.p>
+        <S.p>CEP: 85880-00</S.p>
+      </S.footerSections>
+      <S.footerSections> 
+            <img src="logo.svg" alt="logo" /> 
+       </S.footerSections>
+      <S.footerSections>
+        <S.h2>Entre em contato conosco</S.h2>
+        <S.p><a href="https://www.instagram.com/femina_modaintima/">@femina_modaintima</a></S.p>
+        <S.p>{"(45) 9 9984-5175"}</S.p>
+        <S.p>facebook/femina_modaintima</S.p>
+      </S.footerSections>
+    </S.FooterContainer>
   );
-}
+
+  }
