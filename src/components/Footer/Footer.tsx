@@ -9,7 +9,7 @@ export default function Footer() {
         <p>Centro, Itaipulândia - PR</p>
         <p>CEP: 85880-00</p>
       </div>
-      <div className="footer-section"> Icone </div>
+      <img src="logo.svg" alt="" />
       <div className="footer-section">
         <h2>Entre em contato conosco</h2>
         <p><a href="https://www.instagram.com/femina_modaintima/">@femina_modaintima</a></p>
