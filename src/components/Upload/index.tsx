@@ -3,10 +3,10 @@ import * as S from './styles';
 
 import { useDropzone } from 'react-dropzone';
 import { formatBytes } from '../../utils/formatBytes';
-import { ButtonComponent } from '../Button';
+import { ButtonComponent } from '../ButtonComponent';
 import { Alert } from '../Alert';
 import { Box, IconButton, CardMedia } from '@mui/material';
-import { UploadProps, FileBlob } from '../../../types/Upload';
+import { UploadProps, FileBlob } from './Upload.types';
 
 export function Upload({
   title,
