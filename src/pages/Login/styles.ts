@@ -34,7 +34,7 @@ export const InputFields = styled.div`
   justify-content: center;
 
   TextField{
-    width: 1800px;
+    width: 18000px;
   }
 `;
 
