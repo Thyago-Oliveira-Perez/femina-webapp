@@ -6,7 +6,7 @@ export const FooterContainer = styled.footer`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  position: absolute;
+  position: relative;
   bottom: 0;
 `;
 

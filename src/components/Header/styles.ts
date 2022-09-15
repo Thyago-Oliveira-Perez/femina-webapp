@@ -8,7 +8,7 @@ import { Link } from "@mui/material";
 export const HeaderContainer = styled.div`
   background-color: #9b4a46;
   width: 100%;
-  height: 6rem;
+  height: 4rem;
   display: flex;
   justify-content: center;
 `;
