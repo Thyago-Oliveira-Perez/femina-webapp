@@ -12,6 +12,7 @@ export const Container = styled.ul`
     display:flex;
     justify-content: space-evenly;
     height: 3rem;
+    
 `;
 
 export const StyledLink = styled(Link)`

@@ -97,8 +97,6 @@ export function Produtos() {
         },
     ];
 
-    const [openAlert, setOpenAlert] = useState(true);
-
     return (
         <div>
 

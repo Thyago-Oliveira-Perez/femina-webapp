@@ -13,8 +13,8 @@ export const StyledCheckbox = styled(Checkbox)<StyledCheckboxProps>`
   &&& {
     color: #7a0000;
     & .MuiSvgIcon-root {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 1.1rem;
+      height: 1.1rem;
     }
   }
 `;
@@ -23,9 +23,9 @@ export const Container = styled(FormControlLabel)<ContainerProps>`
   &&& {
     ${({ required }) => css`
       & .MuiTypography-root {
-        font-size: 1.2rem;
+        font-size: 1rem;
         color:  rgba(0, 0, 0, 0.6);
-        min-width: max-content;
+        width: 100%;
         flex-wrap: wrap;
         font-weight: 500;
         word-wrap: break-word;
