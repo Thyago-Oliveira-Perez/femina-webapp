@@ -2,7 +2,7 @@ import * as S from './styles';
 
 import { TextFieldComponent } from '../../components/TextFieldComponent';
 import { RadioButton } from '../../components/RadioButton';
-import { FormControl, FormLabel } from '@mui/material';
+import { FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import { ButtonComponent } from '../../components/ButtonComponent';
 import { Checkbox } from '../../components/Checkbox';
 import { ICliente } from './Cliente.types';
@@ -47,7 +47,7 @@ export function Cliente() {
     return (
         <S.Container>
             <S.TitleContainer>
-                <h3>Seja bem vindo!</h3>
+                <h3>Seja bem-vindo(a)!</h3>
                 <p>Crie uma conta e tenha mais comodidade na sua compra</p>
             </S.TitleContainer>
 
@@ -63,8 +63,8 @@ export function Cliente() {
                 </FormControl>
 
                 <TextFieldComponent label='Email' style={{ width: "100%" }} onChange={(e) => setClientForm({ ...clientForm, email: e.target.value })} />
-                <TextFieldComponent label='Senha' style={{ width: "100%" }} onChange={(e) => setClientForm({ ...clientForm, password: e.target.value })} />
-                <TextFieldComponent label='Confirme sua senha' style={{ width: "100%" }} onChange={(e) => setClientForm({ ...clientForm, password: e.target.value })} />
+                <TextFieldComponent type='password' label='Senha' style={{ width: "100%" }} onChange={(e) => setClientForm({ ...clientForm, password: e.target.value })} />
+                <TextFieldComponent type='password' label='Confirme sua senha' style={{ width: "100%" }} onChange={(e) => setClientForm({ ...clientForm, password: e.target.value })} />
 
                 <Checkbox checked={read} onChange={(e) => setRead(e.target.checked)} label='Declaro que li os Termos de política e privacidade' />
 

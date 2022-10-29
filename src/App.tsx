@@ -15,7 +15,7 @@ export default function App() {
         <Header/>
         <Navbar/>
         <Routes>
-          <Route path="/login" element={<FormLogin />}></Route>
+          <Route path="/" element={<FormLogin />}></Route>
           <Route path="/produtos" element={<Produtos/>}></Route>
           <Route path="/cliente" element={<Cliente/>}></Route>
         </Routes>
