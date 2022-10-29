@@ -1,11 +1,12 @@
 import * as S from './styles';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { ProductCard } from '../../components/ProductCard';
 import { CarouselComponent } from '../../components/Carousel';
+import { AuthContext } from '../../context/AuthContext';
 
 export function Produtos() {
 
-    
+    const {userInfo} = useContext(AuthContext);
 
     const produtos = [
         {
@@ -98,7 +99,7 @@ export function Produtos() {
         },
     ];
 
-    console.log(produtos)
+    console.log(userInfo)
 
     return (
         <div>

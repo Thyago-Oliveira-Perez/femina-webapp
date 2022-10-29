@@ -1,8 +1,12 @@
 import { createContext, useContext, useState, useEffect  } from "react";
 import AuthService from "../services/auth.service";
+import {IUser} from "../types/user.types";
+import UserApi from "../api/Users.api";
 
 interface AuthContextData {
     userToken: string;
+    userInfo: IUser | undefined;
+
 }
 
 export const AuthContext = createContext<AuthContextData>(
@@ -16,7 +20,10 @@ export const AuthContextProvider = ({
   }: {
     children?: React.ReactNode;
   }) => {
+    const api = new UserApi();
+
     const [userToken, setUserToken] = useState('');
+    const [userInfo, setUserInfo] = useState<IUser>();
 
     const authService = new AuthService();
 
@@ -24,10 +31,18 @@ export const AuthContextProvider = ({
       useEffect(() => {
         setUserToken(authService.getUser().user);
       }, [userToken])
+    } else {
+      useEffect(() => {
+        api.getUserInfo().then((response: any) => {
+          setUserInfo(response)
+        }).catch((error) => {
+          console.log(error);
+        })
+      }, [userInfo])
     }
     
     return (
-        <AuthContext.Provider value={{userToken}}>
+        <AuthContext.Provider value={{ userToken, userInfo }}>
           {children}
         </AuthContext.Provider>
     );
