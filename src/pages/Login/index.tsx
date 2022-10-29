@@ -7,7 +7,8 @@ import { Alert } from "../../components/Alert";
 import { ButtonComponent } from "../../components/ButtonComponent";
 import IconButton from '@mui/material/IconButton';
 import {AiOutlineLeft} from 'react-icons/ai';
-import {useNavigate, useLocation} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import AuthService from '../../services/auth.service';
 
 export default function FormLogin() {
   const dataAtual = new Date();
@@ -15,7 +16,10 @@ export default function FormLogin() {
   const loginApi = new UserApi();
   const navigate = useNavigate();
 
+  const authInfo = new AuthService();
+
   const [openAlert, setOpenAlert] = useState(false);
+  
 
   const [login, setLogin] = useState<UserLogin>({
     login: "",
@@ -26,7 +30,7 @@ export default function FormLogin() {
     loginApi._login(login)
       .then((response: any) => {
         console.log(response)
-        navigate('/produtos');
+        authInfo.setLoggedUser(response);
       }).catch((error) => {
         setOpenAlert(true)
         console.log(error)

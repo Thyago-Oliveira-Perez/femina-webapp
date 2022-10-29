@@ -31,6 +31,7 @@ export default function App() {
             <Navbar />
           </>
         }
+        
         <Routes>
           <Route path="/" element={<FormLogin />}></Route>
           <Route
