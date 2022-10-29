@@ -1,5 +1,5 @@
 import { TextFieldComponent } from "../../components/TextFieldComponent";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import UserApi from "../../api/Users.api";
 import { UserLogin } from "./FormLogin.types";
 import { Form, InitOfPage, Messages, InputFields, Actions, Container, Footer } from "./styles";
@@ -9,18 +9,16 @@ import IconButton from '@mui/material/IconButton';
 import {AiOutlineLeft} from 'react-icons/ai';
 import {useNavigate} from 'react-router-dom';
 import AuthService from '../../services/auth.service';
+import { AuthContext } from "../../context/AuthContext";
 
 export default function FormLogin() {
-  const dataAtual = new Date();
-  const anoAtual = dataAtual.getFullYear();
+  const actualYear = new Date().getFullYear();
   const loginApi = new UserApi();
-  const navigate = useNavigate();
-
   const authInfo = new AuthService();
-
+  const navigate = useNavigate();
+  
   const [openAlert, setOpenAlert] = useState(false);
   
-
   const [login, setLogin] = useState<UserLogin>({
     login: "",
     password: "",
@@ -31,6 +29,7 @@ export default function FormLogin() {
       .then((response: any) => {
         console.log(response)
         authInfo.setLoggedUser(response);
+        navigate('produtos')
       }).catch((error) => {
         setOpenAlert(true)
         console.log(error)
@@ -52,7 +51,6 @@ export default function FormLogin() {
 
       </InitOfPage>
       <Form>
-
         <InputFields>
           <TextFieldComponent
             style={{ width: '100%' }}
@@ -99,10 +97,14 @@ export default function FormLogin() {
         </Actions>
       </Form>
 
-      <Alert alertStatus={openAlert} setAlertStatus={setOpenAlert} message="Erro de autenticação" type="error" />
+      <Alert 
+        alertStatus={openAlert} 
+        setAlertStatus={setOpenAlert} 
+        message="Erro de autenticação" 
+        type="error" />
 
       <Footer>
-        <p>@{anoAtual}, Femina.inc</p>
+        <p>@{actualYear}, Femina.inc</p>
       </Footer>
     </Container>
 
