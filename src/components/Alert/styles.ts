@@ -18,6 +18,7 @@ export const AlertContainer = styled(Snackbar)`
   &&& {
     background-color: transparent;
     margin-top: 1rem;
+    color: white;
   }
 `;
 

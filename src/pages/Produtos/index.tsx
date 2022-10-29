@@ -5,6 +5,7 @@ import { CarouselComponent } from '../../components/Carousel';
 
 export function Produtos() {
 
+    
 
     const produtos = [
         {
@@ -96,6 +97,8 @@ export function Produtos() {
             url: "",
         },
     ];
+
+    console.log(produtos)
 
     return (
         <div>
