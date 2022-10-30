@@ -2,11 +2,12 @@ import { createContext, useContext, useState, useEffect  } from "react";
 import AuthService from "../services/auth.service";
 import {IUser} from "../types/user.types";
 import UserApi from "../api/Users.api";
+import {Api} from "../api/Api";
+import axios from "axios";
 
 interface AuthContextData {
-    userToken: string;
+    userToken: string | null;
     userInfo: IUser | undefined;
-
 }
 
 export const AuthContext = createContext<AuthContextData>(
@@ -20,31 +21,29 @@ export const AuthContextProvider = ({
   }: {
     children?: React.ReactNode;
   }) => {
-    const api = new UserApi();
-
-    const [userToken, setUserToken] = useState('');
-    const [userInfo, setUserInfo] = useState<IUser>();
-
+    const [userToken, setUserToken] = useState<string | null>(null);
+    const [userInfo, setUserInfo] = useState<IUser | undefined>();
+    
     const authService = new AuthService();
+    const userApi = new UserApi();
 
-    if (userToken == null) {
-      useEffect(() => {
-        setUserToken(authService.getUser().user);
-      }, [userToken])
-    } else {
-      useEffect(() => {
-        api.getUserInfo().then((response: any) => {
-          setUserInfo(response)
-        }).catch((error) => {
-          console.log(error);
-        })
-      }, [userInfo])
-    }
+    useEffect(() => {
+      userApi.getUserInfo().then((response: any) => {
+        setUserInfo(response);
+      }).catch((error) => {
+        console.log(error);
+      })
+    }, [])
+
+    useEffect(() => {
+      setUserToken(authService.getUser())
+    }, [])
+
+    console.log('desgraça -> ', userToken)
     
     return (
         <AuthContext.Provider value={{ userToken, userInfo }}>
           {children}
         </AuthContext.Provider>
     );
-
 };

@@ -22,7 +22,7 @@ export default class UserApi extends Api {
 
   public async getUserInfo<T>(): Promise<T> {
     try {
-      return(await this.axiosClient.get(`${this.url}/api/usuarios/meus-dados`))
+      return(await this.axiosClient.get(`${this.url}/api/usuarios/my-infos`)).data
     } catch (error: any) {
       return this.handleError(error);
     }

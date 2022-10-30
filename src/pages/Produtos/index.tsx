@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/AuthContext';
 
 export function Produtos() {
 
-    const {userInfo} = useContext(AuthContext);
+    const {userToken} = useContext(AuthContext);
 
     const produtos = [
         {
@@ -99,7 +99,7 @@ export function Produtos() {
         },
     ];
 
-    console.log(userInfo)
+   
 
     return (
         <div>
