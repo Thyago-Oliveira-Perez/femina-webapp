@@ -1,5 +1,5 @@
 import { UserLogin } from "../pages/Login/FormLogin.types";
-import { IUser, LoginResponse } from "../types/user.types";
+import { IUserReponse, LoginResponse } from "../types/user.types";
 import CommonApi from "./Common.api";
 
 export default class UserApi extends CommonApi {
@@ -15,6 +15,6 @@ export default class UserApi extends CommonApi {
   }
 
   public async getUserInfo() {
-    return await this._getDatas<IUser>("/api/usuarios/my-infos");
+    return await this._getDatas<IUserReponse>("/api/usuarios/my-infos");
   }
 }

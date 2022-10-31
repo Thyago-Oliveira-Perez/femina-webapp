@@ -11,7 +11,7 @@ export default class CommonApi extends Api {
 
   authorization = `Bearer ${
     this.authService.getUser() !== null
-      ? this.authService.getUser().token
+      ? this.authService.getUser()
       : ""
   }`;
 

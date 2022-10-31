@@ -31,3 +31,14 @@ export interface LoginResponse {
     authenticationType: string;
     token: string;
 }
+
+
+// TODO: fazer enum de sexo
+export interface IUserReponse {
+    nome: string;
+    login: string;
+    sexo: string;
+    telefone: string;
+    email: string;
+    isActive: boolean;
+}

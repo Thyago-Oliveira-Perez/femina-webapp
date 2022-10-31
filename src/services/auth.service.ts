@@ -1,7 +1,7 @@
 export default class AuthService {
   setLoggedUser(userLogged: any) {
     if (userLogged != null) {
-      let parsedData = JSON.stringify(userLogged);
+      let parsedData = JSON.stringify(userLogged.data);
       localStorage.setItem("user", parsedData);
     }
   }
@@ -9,7 +9,7 @@ export default class AuthService {
   getUser() {
     let user = localStorage.getItem("user");
     if (user != null) {
-      return JSON.parse(user).data; 
+      return JSON.parse(user).token; 
     }
     return user;
   }

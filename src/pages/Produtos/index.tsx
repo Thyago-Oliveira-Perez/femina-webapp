@@ -6,8 +6,6 @@ import { AuthContext } from '../../context/AuthContext';
 
 export function Produtos() {
 
-    const {userToken} = useContext(AuthContext);
-
     const produtos = [
         {
             id: 0o1,
