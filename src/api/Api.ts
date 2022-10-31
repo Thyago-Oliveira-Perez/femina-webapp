@@ -1,6 +1,4 @@
 import axios, { AxiosInstance } from "axios";
-import {AuthContext} from "../context/AuthContext";
-import { useContext } from "react";
 
 export class Api{
   url = "http://localhost:8080/api";

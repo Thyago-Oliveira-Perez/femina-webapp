@@ -1,20 +1,19 @@
 import { TextFieldComponent } from "../../components/TextFieldComponent";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import UserApi from "../../api/Users.api";
 import { UserLogin } from "./FormLogin.types";
 import { Form, InitOfPage, Messages, InputFields, Actions, Container, Footer } from "./styles";
 import { Alert } from "../../components/Alert";
 import { ButtonComponent } from "../../components/ButtonComponent";
 import IconButton from '@mui/material/IconButton';
-import { AiOutlineLeft } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
-import AuthService from '../../services/auth.service';
-import { AuthContext } from "../../context/AuthContext";
+import {AiOutlineLeft} from 'react-icons/ai';
+import {useNavigate} from 'react-router-dom';
+import AuthService from "../../services/auth.service";
 
 export default function FormLogin() {
   const actualYear = new Date().getFullYear();
   const loginApi = new UserApi();
-  const authInfo = new AuthService();
+  const authService = new AuthService();
   const navigate = useNavigate();
 
   const [openAlert, setOpenAlert] = useState(false);
@@ -25,10 +24,9 @@ export default function FormLogin() {
   });
 
   function handleForm() {
-    loginApi._login(login)
+    loginApi.login(login)
       .then((response: any) => {
-        console.log(response)
-        authInfo.setLoggedUser(response);
+        authService.setLoggedUser(response);
         navigate('produtos')
       }).catch((error) => {
         setOpenAlert(true)
