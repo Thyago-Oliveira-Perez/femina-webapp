@@ -27,3 +27,7 @@ export interface PerfisEntity {
     perfilName: string;
     authority: string;
 }
+export interface LoginResponse {
+    authenticationType: string;
+    token: string;
+}

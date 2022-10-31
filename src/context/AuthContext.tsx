@@ -1,13 +1,11 @@
 import { createContext, useContext, useState, useEffect  } from "react";
-import AuthService from "../services/auth.service";
 import {IUser} from "../types/user.types";
 import UserApi from "../api/Users.api";
-import {Api} from "../api/Api";
 import axios from "axios";
 
 interface AuthContextData {
-    userToken: string | null;
     userInfo: IUser | undefined;
+    signed: boolean;
 }
 
 export const AuthContext = createContext<AuthContextData>(
@@ -21,28 +19,33 @@ export const AuthContextProvider = ({
   }: {
     children?: React.ReactNode;
   }) => {
-    const [userToken, setUserToken] = useState<string | null>(null);
+    const [userToken, setUserToken] = useState<string | null>(localStorage.getItem("user"));
     const [userInfo, setUserInfo] = useState<IUser | undefined>();
-    
-    const authService = new AuthService();
+
     const userApi = new UserApi();
 
     useEffect(() => {
+      const loadingStoreData = () => {
+        const storageToken = localStorage.getItem("user");
+        if (storageToken) {
+          getUserInfo()
+          setUserToken(storageToken);
+        }
+      };
+      loadingStoreData();
+    }, []);
+
+    const getUserInfo = () => {
       userApi.getUserInfo().then((response: any) => {
+        console.log(response);
         setUserInfo(response);
       }).catch((error) => {
         console.log(error);
       })
-    }, [])
-
-    useEffect(() => {
-      setUserToken(authService.getUser())
-    }, [])
-
-    console.log('desgraça -> ', userToken)
+    }
     
     return (
-        <AuthContext.Provider value={{ userToken, userInfo }}>
+        <AuthContext.Provider value={{ userInfo, signed: !!userToken }}>
           {children}
         </AuthContext.Provider>
     );
