@@ -6,8 +6,8 @@ import { Form, InitOfPage, Messages, InputFields, Actions, Container, Footer } f
 import { Alert } from "../../components/Alert";
 import { ButtonComponent } from "../../components/ButtonComponent";
 import IconButton from '@mui/material/IconButton';
-import {AiOutlineLeft} from 'react-icons/ai';
-import {useNavigate} from 'react-router-dom';
+import { AiOutlineLeft } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 import AuthService from '../../services/auth.service';
 import { AuthContext } from "../../context/AuthContext";
 
@@ -16,9 +16,9 @@ export default function FormLogin() {
   const loginApi = new UserApi();
   const authInfo = new AuthService();
   const navigate = useNavigate();
-  
+
   const [openAlert, setOpenAlert] = useState(false);
-  
+
   const [login, setLogin] = useState<UserLogin>({
     login: "",
     password: "",
@@ -38,18 +38,10 @@ export default function FormLogin() {
 
   return (
     <Container>
-      <InitOfPage>
-
-        <IconButton >
-          <AiOutlineLeft color="#7A0000" />
-        </IconButton>
-
-        <Messages>
-          <h2>Que bom termos você por aqui!</h2>
-          <p>A equipe Femina agradece sua preferência.</p>
-        </Messages>
-
-      </InitOfPage>
+      <Messages>
+        <h2>Que bom termos você por aqui!</h2>
+        <p>A equipe Femina agradece sua preferência.</p>
+      </Messages>
       <Form>
         <InputFields>
           <TextFieldComponent
@@ -78,17 +70,17 @@ export default function FormLogin() {
         </InputFields>
         <Actions>
           <a href="#">Esqueceu sua senha?</a>
-          <ButtonComponent 
-            themeColor="#9B4A46" 
-            title="Entrar" 
-            onClick={() => handleForm()} 
+          <ButtonComponent
+            themeColor="#9B4A46"
+            title="Entrar"
+            onClick={() => handleForm()}
           />
 
           <p>Ou</p>
 
-          <ButtonComponent 
-            themeColor="#7A0000" 
-            title="Entrar com o facebook" 
+          <ButtonComponent
+            themeColor="#7A0000"
+            title="Entrar com o facebook"
           />
 
           <p>
@@ -97,10 +89,10 @@ export default function FormLogin() {
         </Actions>
       </Form>
 
-      <Alert 
-        alertStatus={openAlert} 
-        setAlertStatus={setOpenAlert} 
-        message="Erro de autenticação" 
+      <Alert
+        alertStatus={openAlert}
+        setAlertStatus={setOpenAlert}
+        message="Erro de autenticação"
         type="error" />
 
       <Footer>

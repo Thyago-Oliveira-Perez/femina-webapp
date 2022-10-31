@@ -10,7 +10,7 @@ import FormLogin from "./pages/Login";
 import { Produtos } from "./pages/Produtos";
 import { Header } from "./components/Header";
 import { Navbar } from "./components/NavBar";
-import { Cliente } from "./pages/Cliente";
+import { Usuario } from "./pages/Usuario";
 import AuthService from "./services/auth.service";
 import { AuthContextProvider } from "./context/AuthContext";
 
@@ -25,13 +25,16 @@ export default function App() {
       <BrowserRouter>
         <div className="App">
 
-          {
-            window.location.pathname != '/' &&
-            <>
-              <Header />
-              <Navbar />
-            </>
+
+          <Header type={window.location.pathname != '/' && window.location.pathname != '/usuario' ? "global" : "generic"} />
+
+          {window.location.pathname != '/' && window.location.pathname != '/usuario' && (
+            <Navbar />
+          )
+
           }
+
+
 
           <Routes>
             <Route path="/" element={<FormLogin />}></Route>
@@ -40,8 +43,8 @@ export default function App() {
               element={isAuthenticated ? <Produtos /> : <Navigate to="/" />}
             ></Route>
             <Route
-              path="/cliente"
-              element={<Cliente />}
+              path="/usuario"
+              element={<Usuario />}
             ></Route>
           </Routes>
 

@@ -4,6 +4,9 @@ import { TextField } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
 import ListItemButton from "@mui/material/ListItemButton";
 import { Link } from "@mui/material";
+import {Link as LinkRouter} from 'react-router-dom'
+
+
 
 export const HeaderContainer = styled.div`
   background-color: #9b4a46;
@@ -11,6 +14,7 @@ export const HeaderContainer = styled.div`
   height: 4rem;
   display: flex;
   justify-content: center;
+  font-family: 'Poppins', sans-serif;
 `;
 
 export const ItemsContainer = styled.div`
@@ -108,6 +112,14 @@ export const ButtonIcon = styled.div`
 export const StyledLink = styled.a`
   text-decoration: none;
   color: white;
-  font-size: 1.1rem;
-  font-family: Roboto;
+  font-size: 1rem;
+  font-family: Poppins;
 `;
+
+export const GenericHeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+
+
