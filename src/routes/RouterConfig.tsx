@@ -22,14 +22,13 @@ const RouterConfig = () => {
       }
       <Routes>
         <Route path="/" element={<FormLogin />}></Route>
+        <Route path="/usuario" element={<Usuario />} />
 
         {/* Private Routes */}
         <Route element={<PrivateRoutes />}>
           <Route path="/produtos" element={<Produtos />} />
         </Route>
-        <Route element={<PrivateRoutes />}>
-          <Route path="/usuario" element={<Usuario />} />
-        </Route>
+        
       </Routes>
 
       {

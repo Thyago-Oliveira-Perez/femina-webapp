@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import * as S from './styles';
 import { AiOutlineUser, AiOutlineUserAdd, AiOutlineLeft } from "react-icons/ai";
 import { IconButton } from '@mui/material';
+import { AuthContext } from "../../context/AuthContext";
 
 interface HeaderProps {
   type: "generic" | "global";
@@ -36,10 +37,9 @@ export const NavObj = [
 ]
 
 export const Header = ({ type }: HeaderProps) => {
-  const [openSideBar, setOpenSideBar] = useState(false);
-
-
-
+  const { userInfo } = useContext(AuthContext);
+  const signed = localStorage.getItem("user");
+  console.log('header ->',userInfo)
   return (
     <header>
       <S.HeaderContainer>
@@ -63,18 +63,23 @@ export const Header = ({ type }: HeaderProps) => {
       }}
     />
   </div> */}
+              {signed ? <>
+                <p>Olá, {userInfo?.nome}</p>
+              </> :
 
-              <S.ButtonArea>
-                <S.ButtonIcon>
-                  <S.StyledLink href="#">Login</S.StyledLink>
-                  <AiOutlineUser size="16px" />
-                </S.ButtonIcon>
+                <S.ButtonArea>
+                  <S.ButtonIcon>
+                    <S.StyledLink href="#">Login</S.StyledLink>
+                    <AiOutlineUser size="16px" />
+                  </S.ButtonIcon>
 
-                <S.ButtonIcon>
-                  <S.StyledLink href="#">Cadastre-se</S.StyledLink>
-                  <AiOutlineUserAdd size="16px" />
-                </S.ButtonIcon>
-              </S.ButtonArea>
+                  <S.ButtonIcon>
+                    <S.StyledLink href="#">Cadastre-se</S.StyledLink>
+                    <AiOutlineUserAdd size="16px" />
+                  </S.ButtonIcon>
+                </S.ButtonArea>
+              }
+
             </S.ItemsContainer>
           )
         }

@@ -1,5 +1,6 @@
 import { UserLogin } from "../pages/Login/FormLogin.types";
-import { IUserReponse, LoginResponse } from "../types/user.types";
+import { ICliente } from "../pages/Usuario/Usuario.types";
+import { IUserReponse, LoginResponse, IUserRequest } from "../types/user.types";
 import CommonApi from "./Common.api";
 
 export default class UserApi extends CommonApi {
@@ -16,5 +17,9 @@ export default class UserApi extends CommonApi {
 
   public async getUserInfo() {
     return await this._getDatas<IUserReponse>("/api/usuarios/my-infos");
+  }
+
+  public async registerUserBySelf(user: IUserRequest) {
+    return await this._regiterUserBySelf<IUserRequest>(user, "/api/usuarios/register")
   }
 }

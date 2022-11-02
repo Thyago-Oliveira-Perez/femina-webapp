@@ -42,3 +42,13 @@ export interface IUserReponse {
     email: string;
     isActive: boolean;
 }
+
+export interface IUserRequest {
+    nome: string;
+    login: string;
+    sexo: string;
+    telefone: string;
+    email: string;
+    password: string;
+    cargo: string
+}

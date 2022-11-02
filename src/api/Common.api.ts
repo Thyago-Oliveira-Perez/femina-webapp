@@ -39,4 +39,12 @@ export default class CommonApi extends Api {
     }
   }
 
+  protected async _regiterUserBySelf<T>(model: T, url: string): Promise<T> {
+    try {
+      return await this.axiosClient.post(`${this.url}` + url, model);
+    } catch (error: any) {
+      return this.handleError(error);
+    }
+  }
+
 }

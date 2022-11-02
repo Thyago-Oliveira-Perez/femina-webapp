@@ -38,7 +38,7 @@ export const AuthContextProvider = ({
     const getUserInfo = () => {
       userApi.getUserInfo().then((response: any) => {
         console.log(response);
-        setUserInfo(response);
+        setUserInfo(response.data);
       }).catch((error) => {
         console.log(error);
       })

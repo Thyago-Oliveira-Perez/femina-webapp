@@ -8,35 +8,48 @@ import { Checkbox } from '../../components/Checkbox';
 import { ICliente } from './Usuario.types';
 import { useState } from 'react';
 import { FormatPhone } from '../../utils/formatPhone';
+import UserApi from "../../api/Users.api";
+import { Alert } from "../../components/Alert";
+import { IUserRequest } from '../../types/user.types';
 
 export function Usuario() {
 
+    const userApi = new UserApi();
+
     const clienteObjInitialState = {
-        id: 0,
-        cadastrado: "",
-        atualizado: "",
-        isActive: true,
         nome: "",
-        login: "",
-        senha: "",
-        sexo: "",
-        email: "",
-        telefone: "",
-        perfis: [],
-        enabled: true,
         password: "",
-        username: "",
-        credentialsNonExpired: true,
-        accountNonExpired: true,
-        accountNonLocked: true,
-        authorities: []
+        login: "",
+        sexo: "",
+        telefone: "",
+        email: "",
+        cargo: ""
     }
 
-    const [clientForm, setClientForm] = useState<ICliente>(clienteObjInitialState);
+    const [clientForm, setClientForm] = useState<IUserRequest>(clienteObjInitialState);
     const [read, setRead] = useState<boolean>(false);
     const [validatePassword, setValidatePassword] = useState('');
+    const [openAlert, setOpenAlert] = useState(false);
+    const [openAlertError, setOpenAlertError] = useState(false);
 
     console.log(clientForm);
+
+    const postUser = () => {
+        const client = {
+            ...clientForm,
+            cargo: "USUARIO"
+        }
+        userApi
+            .registerUserBySelf(client).then((response) => {
+            console.log(response);
+            setOpenAlert(true);
+
+        }).catch((error) => {
+            console.log(error);
+            console.log(error)
+            setOpenAlertError(true);
+        })
+    }
 
     const disabledButton = (): boolean => {
         if (!clientForm.nome || !clientForm.email || !clientForm.password || read != true) {
@@ -97,16 +110,16 @@ export function Usuario() {
                 <TextFieldComponent
                     type='password'
                     label='Senha'
-                    value={clientForm.senha}
+                    value={clientForm.password}
                     style={{ width: "100%" }}
-                    onChange={(e) => setClientForm({ ...clientForm, senha: e.target.value })} />
+                    onChange={(e) => setClientForm({ ...clientForm, password: e.target.value })} />
 
                 <TextFieldComponent
                     type='password'
                     label='Confirme sua senha'
                     value={validatePassword}
                     style={{ width: "100%" }}
-                    onChange={(e) => { setValidatePassword(e.target.value); validaSenha(clientForm.senha, validatePassword)}} />
+                    onChange={(e) => { setValidatePassword(e.target.value); validaSenha(clientForm.password, validatePassword) }} />
 
                 <Checkbox
                     checked={read}
@@ -116,11 +129,31 @@ export function Usuario() {
             </S.FormContainer>
 
             <S.ButtonArea>
-                <ButtonComponent themeColor='#9B4A46' title={'Criar cadastro'} disabled={disabledButton()} />
+                <ButtonComponent
+                    themeColor='#9B4A46'
+                    title={'Criar cadastro'}
+                    disabled={disabledButton()}
+                    onClick={() => postUser()} />
+
                 <p>Ou crie com o facebook</p>
-                <ButtonComponent title={'Continuar com o facebook'} />
+
+                <ButtonComponent
+                    title={'Continuar com o facebook'} />
+
                 <p>Já possui cadastro? <a href="/">Entrar</a> </p>
             </S.ButtonArea>
+
+            <Alert
+                alertStatus={openAlert}
+                setAlertStatus={setOpenAlert}
+                message="Sucesso ao cadastrar usuario"
+                type='success' />
+
+            <Alert
+                alertStatus={openAlertError}
+                setAlertStatus={setOpenAlertError}
+                message="Erro ao cadastrar usuario"
+                type='error' />
 
         </S.Container>
     );
