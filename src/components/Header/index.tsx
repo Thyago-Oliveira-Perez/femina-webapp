@@ -1,7 +1,8 @@
 import { useState, useContext } from 'react';
 import * as S from './styles';
 import { AiOutlineUser, AiOutlineUserAdd, AiOutlineLeft } from "react-icons/ai";
-import { IconButton } from '@mui/material';
+import { FiLogOut } from 'react-icons/fi'
+import { IconButton, Menu, MenuItem } from '@mui/material';
 import { AuthContext } from "../../context/AuthContext";
 
 interface HeaderProps {
@@ -37,9 +38,18 @@ export const NavObj = [
 ]
 
 export const Header = ({ type }: HeaderProps) => {
+
+  const [openMenu, setOpenMenu] = useState(false);
+
   const { userInfo } = useContext(AuthContext);
   const signed = localStorage.getItem("user");
-  console.log('header ->',userInfo)
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    window.location.reload();
+  }
+
+  console.log('header ->', userInfo)
   return (
     <header>
       <S.HeaderContainer>
@@ -64,7 +74,35 @@ export const Header = ({ type }: HeaderProps) => {
     />
   </div> */}
               {signed ? <>
-                <p>Olá, {userInfo?.nome}</p>
+                <S.MenuArea>
+                  <Menu
+                    id="basic-menu"
+                    open={openMenu}
+                    onClose={() => setOpenMenu(false)}
+                    MenuListProps={{
+                      'aria-labelledby': 'basic-button',
+                    }}
+                    anchorOrigin={{
+                      vertical: 110,
+                      horizontal: 1380,
+                    }}
+                    transformOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'right',
+                    }}
+                  >
+                    <S.StyledMenu onClick={() => logout()}>
+                      Sair
+                      <FiLogOut color={'#7a0000'} />
+                    </S.StyledMenu>
+                  </Menu>
+                  <S.ButtonIcon>
+                    <AiOutlineUser size="16px" />
+                    <S.StyledLink onClick={() => setOpenMenu(true)}>Olá, {userInfo?.nome}</S.StyledLink>
+                  </S.ButtonIcon>
+                </S.MenuArea>
+
+
               </> :
 
                 <S.ButtonArea>
@@ -79,6 +117,8 @@ export const Header = ({ type }: HeaderProps) => {
                   </S.ButtonIcon>
                 </S.ButtonArea>
               }
+
+
 
             </S.ItemsContainer>
           )

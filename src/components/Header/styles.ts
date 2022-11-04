@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import { TextField } from "@mui/material";
+import { MenuItem, TextField } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
 import ListItemButton from "@mui/material/ListItemButton";
 import { Link } from "@mui/material";
-import {Link as LinkRouter} from 'react-router-dom'
+import { Link as LinkRouter } from 'react-router-dom'
 
 
 
@@ -119,6 +119,20 @@ export const StyledLink = styled.a`
 export const GenericHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const StyledMenu = styled(MenuItem)`
+&&& {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+`;
+
+export const MenuArea = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 

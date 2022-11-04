@@ -39,8 +39,8 @@ export function Usuario() {
             ...clientForm,
             cargo: "USUARIO"
         }
-        userApi
-            .registerUserBySelf(client).then((response) => {
+        userApi.registerUserBySelf(client)
+            .then((response) => {
             console.log(response);
             setOpenAlert(true);
 
