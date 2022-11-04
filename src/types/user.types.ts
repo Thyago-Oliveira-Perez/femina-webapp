@@ -50,5 +50,4 @@ export interface IUserRequest {
     telefone: string;
     email: string;
     password: string;
-    cargo: string
 }

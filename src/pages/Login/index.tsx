@@ -82,7 +82,7 @@ export default function FormLogin() {
           />
 
           <p>
-            Novo por aqui? <a href="/cliente">Cadastre-se</a>
+            Novo por aqui? <a href="/usuario">Cadastre-se</a>
           </p>
         </Actions>
       </Form>

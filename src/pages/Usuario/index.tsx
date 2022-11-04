@@ -23,7 +23,7 @@ export function Usuario() {
         sexo: "",
         telefone: "",
         email: "",
-        cargo: ""
+        
     }
 
     const [clientForm, setClientForm] = useState<IUserRequest>(clienteObjInitialState);
@@ -35,11 +35,8 @@ export function Usuario() {
     console.log(clientForm);
 
     const postUser = () => {
-        const client = {
-            ...clientForm,
-            cargo: "USUARIO"
-        }
-        userApi.registerUserBySelf(client)
+        
+        userApi.registerUserBySelf(clientForm)
             .then((response) => {
             console.log(response);
             setOpenAlert(true);
@@ -91,7 +88,7 @@ export function Usuario() {
                     <RadioGroup onChange={(e) => setClientForm({ ...clientForm, sexo: e.target.value })}>
                         <S.StyledLabel value="FEMININO" control={<S.StyledRadio />} label="Feminino" />
                         <S.StyledLabel value="MASCULINO" control={<S.StyledRadio />} label="Maculino" />
-                        <S.StyledLabel value="OUTROS" control={<S.StyledRadio />} label="Prefiro não informar" />
+                        <S.StyledLabel value="OUTRO" control={<S.StyledRadio />} label="Prefiro não informar" />
                     </RadioGroup>
                 </FormControl>
 
