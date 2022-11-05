@@ -5,6 +5,9 @@ import FormLogin from "./pages/Login";
 import { Produtos } from "./pages/Produtos";
 import {Header} from './components/Header';
 import { Navbar } from "./components/NavBar";
+import { DetalhaProdutos } from "./pages/DetalhaProdutos";
+import { ProdutosFiltrados } from "./pages/ProdutosFiltrados";
+
 
 export default function App() {
   return (
@@ -15,6 +18,8 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<FormLogin />}></Route>
           <Route path="/produtos" element={<Produtos/>}></Route>
+          <Route path="/detalhaProdutos" element={<DetalhaProdutos/>}></Route>
+          <Route path="/produtosFiltrados" element={<ProdutosFiltrados/>}></Route>
         </Routes>
         <Footer />
       </div>

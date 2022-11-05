@@ -106,7 +106,7 @@ export function Produtos() {
 
             <S.ProductContainer>
                 {produtos.map((produto) => (
-                    produto.destaque == true && (
+                  
                         <ProductCard
                             name={produto.nome}
                             destaque={produto.destaque}
@@ -114,7 +114,7 @@ export function Produtos() {
                             price={produto.price}
                             key={produto.id}
                         />
-                    )
+                    
 
                 ))}
             </S.ProductContainer>
@@ -138,6 +138,7 @@ export function Produtos() {
                 </S.GridPorduct>
             </S.ContainerGrid>
 
+            
 
         </div>
     );

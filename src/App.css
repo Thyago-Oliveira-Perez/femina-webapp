@@ -1,1 +1,21 @@
-.App {}
+.App {
+  
+}
+
+.thumb {
+    height: 100%;
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px;
+  }
+  
+  .thumb img {
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  .ul thumbs animated{
+    padding-inline-start: 0px !important;
+  }
+
+
