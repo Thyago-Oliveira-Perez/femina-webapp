@@ -4,7 +4,7 @@ import { ProductCard } from '../../components/ProductCard';
 import { CarouselComponent } from '../../components/Carousel';
 import { AuthContext } from '../../context/AuthContext';
 
-export function Produtos() {
+export function PaginaInicial() {
 
     const produtos = [
         {

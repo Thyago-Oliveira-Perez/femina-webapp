@@ -4,7 +4,7 @@ import { Header } from "../components/Header";
 import { Navbar } from "../components/NavBar";
 import { Usuario } from "../pages/Usuario";
 import FormLogin from "../pages/Login";
-import { Produtos } from "../pages/Produtos";
+import { PaginaInicial } from "../pages/PaginaInicial";
 import PrivateRoutes from "./PrivateRoutes";
 
 const RouterConfig = () => {
@@ -26,7 +26,7 @@ const RouterConfig = () => {
 
         {/* Private Routes */}
         <Route element={<PrivateRoutes />}>
-          <Route path="/produtos" element={<Produtos />} />
+          <Route path="/produtos" element={<PaginaInicial />} />
         </Route>
         
       </Routes>
