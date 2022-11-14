@@ -1,4 +1,5 @@
 import AuthService from "../services/auth.service";
+import { IProduto } from "../types/product.types";
 import { Api } from "./Api";
 
 export default class CommonApi extends Api {
@@ -40,6 +41,14 @@ export default class CommonApi extends Api {
   }
 
   protected async _regiterUserBySelf<T>(model: T, url: string): Promise<T> {
+    try {
+      return await this.axiosClient.post(`${this.url}` + url, model);
+    } catch (error: any) {
+      return this.handleError(error);
+    }
+  }
+
+  protected async _getProducts<T>(model: IProduto, url: string): Promise<T> {
     try {
       return await this.axiosClient.post(`${this.url}` + url, model);
     } catch (error: any) {

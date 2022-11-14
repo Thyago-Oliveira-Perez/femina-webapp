@@ -1,83 +1,15 @@
 import * as S from './styles';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { ProductCard } from '../../components/ProductCard';
 import { CarouselComponent } from '../../components/Carousel';
-import { AuthContext } from '../../context/AuthContext';
+import { IProduto } from '../../types/product.types';
+import ProdutoApi from "../../api/Produto.api";
 
 export function PaginaInicial() {
 
-    const produtos = [
-        {
-            id: 0o1,
-            nome: "aaaaa",
-            imagem: "https://tm.ibxk.com.br/2021/09/02/02122234915186.jpg",
-            price: 100,
-            destaque: true
-        },
-        {
-            id: 0o2,
-            nome: "aaaaa",
-            imagem: "https://tm.ibxk.com.br/2021/09/02/02122234915186.jpg",
-            price: 100,
-            destaque: true
-        },
-        {
-            id: 0o3,
-            nome: "aaaaa",
-            imagem: "https://tm.ibxk.com.br/2021/09/02/02122234915186.jpg",
-            price: 100,
-            destaque: true
-        },
-        {
-            id: 0o4,
-            nome: "aaaaa",
-            imagem: "https://tm.ibxk.com.br/2021/09/02/02122234915186.jpg",
-            price: 100,
-            destaque: true
-        },
-        {
-            id: 0o5,
-            nome: "aaaaa",
-            imagem: "https://tm.ibxk.com.br/2021/09/02/02122234915186.jpg",
-            price: 100,
-            destaque: false
-        },
-        {
-            id: 0o5,
-            nome: "aaaaa",
-            imagem: "https://tm.ibxk.com.br/2021/09/02/02122234915186.jpg",
-            price: 100,
-            destaque: false
-        },
-        {
-            id: 0o5,
-            nome: "aaaaa",
-            imagem: "https://tm.ibxk.com.br/2021/09/02/02122234915186.jpg",
-            price: 100,
-            destaque: false
-        },
-        {
-            id: 0o5,
-            nome: "aaaaa",
-            imagem: "https://tm.ibxk.com.br/2021/09/02/02122234915186.jpg",
-            price: 100,
-            destaque: false
-        },
-        {
-            id: 0o5,
-            nome: "aaaaa",
-            imagem: "https://tm.ibxk.com.br/2021/09/02/02122234915186.jpg",
-            price: 100,
-            destaque: false
-        },
-        {
-            id: 0o5,
-            nome: "aaaaa",
-            imagem: "https://tm.ibxk.com.br/2021/09/02/02122234915186.jpg",
-            price: 100,
-            destaque: false
-        },
-    ]
+    const produtoApi = new ProdutoApi();
+
+    const [produtosList, setProdutosList] = useState<IProduto>();
 
     var items = [
         {
@@ -97,7 +29,25 @@ export function PaginaInicial() {
         },
     ];
 
-   
+    const getProdutos = () => {
+        const produtctToApi = {
+            ...produtosList,
+            categoriaIds: [],
+            marcaIds: [],
+            cor: "",
+            tamanho: "ALL"
+        }
+
+        produtoApi.getProdutos(produtctToApi as IProduto, '0').then((response) => {
+            setProdutosList(response.data)
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
+    useEffect(() => (
+        getProdutos()
+    ), [])
 
     return (
         <div>
@@ -105,13 +55,13 @@ export function PaginaInicial() {
             <CarouselComponent buttonEnabled={true} listItems={items} />
 
             <S.ProductContainer>
-                {produtos.map((produto) => (
+                {produtosList?.content?.map((produto) => (
                     produto.destaque == true && (
                         <ProductCard
                             name={produto.nome}
                             destaque={produto.destaque}
-                            image={produto.imagem}
-                            price={produto.price}
+                            image={produto.imagemUrl}
+                            price={produto.valor}
                             key={produto.id}
                         />
                     )
@@ -124,16 +74,17 @@ export function PaginaInicial() {
             <S.ContainerGrid>
                 <S.StyledH3>Nossos produtos</S.StyledH3>
                 <S.GridPorduct>
-                    {produtos.map((produto) => (
+                    {produtosList?.content?.map((produto) => (
                         produto.destaque == false && (
                             <ProductCard
                                 name={produto.nome}
                                 destaque={produto.destaque}
-                                image={produto.imagem}
-                                price={produto.price}
+                                image={produto.imagemUrl}
+                                price={produto.valor}
                                 key={produto.id}
                             />
                         )
+
                     ))}
                 </S.GridPorduct>
             </S.ContainerGrid>
