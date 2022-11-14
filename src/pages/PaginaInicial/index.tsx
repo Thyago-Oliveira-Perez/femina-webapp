@@ -4,12 +4,15 @@ import { ProductCard } from '../../components/ProductCard';
 import { CarouselComponent } from '../../components/Carousel';
 import { IProduto } from '../../types/product.types';
 import ProdutoApi from "../../api/Produto.api";
+import { PaginationComponent } from '../../components/Paginator';
+import { Pagination } from '@mui/material';
 
 export function PaginaInicial() {
 
     const produtoApi = new ProdutoApi();
 
     const [produtosList, setProdutosList] = useState<IProduto>();
+
 
     var items = [
         {
@@ -48,6 +51,10 @@ export function PaginaInicial() {
     useEffect(() => (
         getProdutos()
     ), [])
+
+    const handlePageChange = (event: any, value: any) => {
+        setPage(value);
+      };
 
     return (
         <div>

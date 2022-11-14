@@ -32,18 +32,16 @@ export function Usuario() {
     const [openAlert, setOpenAlert] = useState(false);
     const [openAlertError, setOpenAlertError] = useState(false);
 
-    console.log(clientForm);
-
     const postUser = () => {
         
         userApi.registerUserBySelf(clientForm)
             .then((response) => {
-            console.log(response);
+            
             setOpenAlert(true);
 
         }).catch((error) => {
             console.log(error);
-            console.log(error)
+            
             setOpenAlertError(true);
         })
     }
@@ -53,12 +51,6 @@ export function Usuario() {
             return true;
         } else {
             return false;
-        }
-    }
-
-    const validaSenha = (passwordForUser: string, password: string) => {
-        if (passwordForUser != password) {
-            console.log('aaaaa');
         }
     }
 
@@ -116,7 +108,7 @@ export function Usuario() {
                     label='Confirme sua senha'
                     value={validatePassword}
                     style={{ width: "100%" }}
-                    onChange={(e) => { setValidatePassword(e.target.value); validaSenha(clientForm.password, validatePassword) }} />
+                    onChange={(e) => { setValidatePassword(e.target.value) }} />
 
                 <Checkbox
                     checked={read}

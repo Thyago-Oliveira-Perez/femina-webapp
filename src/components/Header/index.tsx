@@ -49,7 +49,6 @@ export const Header = ({ type }: HeaderProps) => {
     window.location.reload();
   }
 
-  console.log('header ->', userInfo)
   return (
     <header>
       <S.HeaderContainer>
