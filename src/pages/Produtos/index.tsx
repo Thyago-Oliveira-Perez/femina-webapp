@@ -4,7 +4,7 @@ import { ProductCard } from '../../components/ProductCard';
 import { CarouselComponent } from '../../components/Carousel';
 
 export function Produtos() {
-
+ 
 
     const produtos = [
         {

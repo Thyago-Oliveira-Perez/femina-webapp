@@ -1,8 +1,8 @@
 import * as S from "./styles";
 import { useState } from "react";
 import { ProductCard } from "../../components/ProductCard";
-import { Carousel } from "react-responsive-carousel";
 import { ProductCardDetailed } from "../../components/ProductCardDetailed";
+import { DetailedCarousel} from "../../components/DetailedCarousel"
 
 export function DetalhaProdutos() {
   const produtos = [
@@ -114,23 +114,10 @@ export function DetalhaProdutos() {
               )
           )}
         </S.ProductContainer>
-
       <S.ContainerGrid>
         <S.StyledH3>Produtos Semelhantes</S.StyledH3>
-        <S.ProductContainer>
-          {ProdutosSemelhantes.map(
-            (ProdutosSemelhantes) =>
-              ProdutosSemelhantes.destaque == false && (
-                <ProductCard
-                  name={ProdutosSemelhantes.nome}
-                  destaque={ProdutosSemelhantes.destaque}
-                  image={ProdutosSemelhantes.imagem}
-                  price={ProdutosSemelhantes.price}
-                  key={ProdutosSemelhantes.id}
-                />
-              )
-          )}
-        </S.ProductContainer>
+        
+        <DetailedCarousel/>
 
         <S.StyledH3>Aproveite e veja tambem</S.StyledH3>
 
