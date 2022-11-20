@@ -38,12 +38,11 @@ const imageCarosel = function ( id: string, urlText: string | undefined) {
 export function CarouselSmaller() {
   return (
     <div>
-      
-       <Carousel >
+       <S.StyledCarousel >
         {produtos.map((produto) =>
           imageCarosel(produto.id, produto.imagem,)
         )}
-      </Carousel>
+      </S.StyledCarousel>
     </div>
   );
 }

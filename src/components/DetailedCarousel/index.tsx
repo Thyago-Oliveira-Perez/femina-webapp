@@ -1,6 +1,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { ProductCard } from "../ProductCard";
+import * as S from "./styles";
 
 const responsive = {
   superLargeDesktop: {
@@ -34,7 +35,7 @@ const produtos = [
     id: 0o5,
     nome: "aaaaa",
     imagem:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU",
+      "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
     price: 100,
     destaque: true,
   },
@@ -42,7 +43,7 @@ const produtos = [
     id: 0o5,
     nome: "aaaaa",
     imagem:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU",
+      "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
     price: 100,
     destaque: true,
   },
@@ -50,7 +51,7 @@ const produtos = [
     id: 0o1,
     nome: "aaaaa",
     imagem:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU",
+      "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
     price: 100,
     destaque: true,
   },
@@ -58,35 +59,77 @@ const produtos = [
     id: 0o5,
     nome: "aaaaa",
     imagem:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU",
+      "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
     price: 100,
     destaque: true,
   },
 ];
 
+
+const CarouselInternalState = [
+  {
+    itemWidth: 0,
+    containerWidth: 0,
+    slidesToShow: 4,
+    currentSlide: 1,
+    totalItems: 10,
+    domLoaded: true,
+    deviceType: "",
+    transform: 1,
+  }
+];
+
 export function DetailedCarousel() {
   return (
     <div>
-      <Carousel responsive={responsive}>
-        <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU" />
-        </div>
-        <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU" />
-        </div>
-        <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU" />
-        </div>
-        <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU" />
-        </div>
-        <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU" />
-        </div>
-        <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU" />
-        </div>
+      <Carousel  
+      
+      responsive={responsive}
+     >
+        <ProductCard
+          name="nome"
+          destaque={true}
+          image="https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg"
+          price={100}
+        />
+        <ProductCard
+          name="nome"
+          destaque={true}
+          image="https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg"
+          price={100}
+        />
+         <ProductCard
+        name="nome"
+        destaque={true}
+        image="https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg"
+        price={100}
+      />
+      <ProductCard
+        name="nome"
+        destaque={true}
+        image="https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg"
+        price={100}
+      />
+      <ProductCard
+        name="nome"
+        destaque={true}
+        image="https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg"
+        price={100}
+      />
+      <ProductCard
+        name="nome"
+        destaque={true}
+        image="https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg"
+        price={100}
+      />
+      <ProductCard
+        name="nome"
+        destaque={true}
+        image="https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg"
+        price={100}
+      />
       </Carousel>
+     
     </div>
   );
 }

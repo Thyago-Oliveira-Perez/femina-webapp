@@ -13,7 +13,7 @@ export const ProductCardDetailed = ({ image, price, name, destaque, descricao,  
     };
     return (
         <S.ContainerItem>
-            <div style = {{width : '40%'}}>
+            <div>
             <CarouselSmaller  />
             </div>
             <S.StyledInfo>

@@ -12,6 +12,10 @@ export const ContainerGrid = styled.div`
     margin: 2rem 15rem;
 `;
 
+export const ContainerCarousel = styled.div`
+    margin: 2rem 19rem ;
+`;
+
 export const StyledH3 = styled.h3`
     margin: 2rem 0;
 `;
@@ -19,7 +23,7 @@ export const StyledH3 = styled.h3`
 export const GridPorduct = styled.div`
     display: grid;
     grid-template-columns: 20rem 20rem 20rem;
-    justify-content: center;
+    justify-cont ent: center;
     align-items: center;
     gap: 1rem;
 `;

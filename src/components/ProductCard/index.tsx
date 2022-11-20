@@ -16,7 +16,7 @@ export const ProductCard = ({ image, price, name, destaque, onClickButton }: Pro
             <S.StyledImg src={image} alt="" />
             <S.StyledInfo destaque={destaque}>
                 <S.StyledName>{name}</S.StyledName>
-                <S.StyledPrice>{price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</S.StyledPrice>
+                <S.StyledPrice>{price}</S.StyledPrice>
             </S.StyledInfo>
         </S.ContainerItem>
     );

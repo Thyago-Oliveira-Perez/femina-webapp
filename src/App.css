@@ -6,7 +6,7 @@
     height: 100%;
     width: 100%;
     padding: 0px !important;
-    margin: 0px;
+  
   }
   
   .thumb img {
@@ -14,8 +14,6 @@
     width: 100% !important;
   }
 
-  .ul thumbs animated{
-    padding-inline-start: 0px !important;
-  }
+
 
 

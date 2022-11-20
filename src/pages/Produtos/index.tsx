@@ -2,6 +2,8 @@ import * as S from './styles';
 import { useState } from 'react';
 import { ProductCard } from '../../components/ProductCard';
 import { CarouselComponent } from '../../components/Carousel';
+import { DetailedCarousel} from "../../components/DetailedCarousel"
+
 
 export function Produtos() {
  
@@ -104,20 +106,9 @@ export function Produtos() {
 
             <CarouselComponent buttonEnabled={true} listItems={items} />
 
-            <S.ProductContainer>
-                {produtos.map((produto) => (
-                  
-                        <ProductCard
-                            name={produto.nome}
-                            destaque={produto.destaque}
-                            image={produto.imagem}
-                            price={produto.price}
-                            key={produto.id}
-                        />
-                    
-
-                ))}
-            </S.ProductContainer>
+            <S.ContainerCarousel>
+            <DetailedCarousel/>
+            </S.ContainerCarousel>
 
             <CarouselComponent buttonEnabled={true} listItems={items} />
 
