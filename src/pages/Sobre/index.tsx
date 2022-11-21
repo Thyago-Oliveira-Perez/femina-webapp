@@ -2,13 +2,11 @@ import * as S from './styles';
 import { Messages } from '../Login/styles';
 import  'react-accordion-ts/src/panel.css' ;
 import * as React from 'react';
-import { Accordion } from 'react-accordion-ts';
-import { Container } from '../Cliente/styles';
 import { BiColumns } from 'react-icons/bi';
 
 export function Sobre (){
       return(
-            <div className='S.Container'>
+            <S.Container>
                   <div className='S.Title'>
                               <S.Title>
                                     <h1>
@@ -49,7 +47,7 @@ export function Sobre (){
                                     </div>
                         </div>
             
-      </div>
+      </S.Container>
           
       );
  }
