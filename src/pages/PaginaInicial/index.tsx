@@ -6,6 +6,7 @@ import { IProduto } from '../../types/product.types';
 import ProdutoApi from "../../api/Produto.api";
 import { PaginationComponent } from '../../components/Paginator';
 import { Pagination } from '@mui/material';
+import { DetailedCarousel } from '../../components/DetailedCarousel';
 
 export function PaginaInicial() {
 
@@ -56,6 +57,11 @@ export function PaginaInicial() {
         <div>
 
             <CarouselComponent buttonEnabled={true} listItems={items} />
+
+            <S.ContainerCarousel>
+                <DetailedCarousel/>
+            </S.ContainerCarousel>
+            
 
             <S.ProductContainer>
                 {produtosList?.content?.map((produto) => (

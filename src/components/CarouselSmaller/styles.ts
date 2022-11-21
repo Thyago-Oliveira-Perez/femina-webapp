@@ -13,13 +13,13 @@ export const StyledPaper = styled(Paper)`
 export const StyledImagem = styled.img`
     width: 100%;
     height: 25rem;
+    padding-inline-start: 40px;
 `;
 
 export const SyledCarrosel = styled(Carousel)`
-
-&&&{
-    padding-inline-start: 0 !important; 
-}
+    ul {
+        padding-inline-start: 0px;
+    }
 `
 
 

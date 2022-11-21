@@ -23,3 +23,7 @@ export const GridPorduct = styled.div`
     align-items: center;
     gap: 1rem;
 `;
+
+export const ContainerCarousel = styled.div`
+    margin: 2rem 19rem ;
+`;

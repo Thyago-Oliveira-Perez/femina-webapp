@@ -39,11 +39,11 @@ export function CarouselSmaller() {
   return (
     <div>
       
-       <Carousel >
+       <S.SyledCarrosel >
         {produtos.map((produto) =>
           imageCarosel(produto.id, produto.imagem,)
         )}
-      </Carousel>
+      </S.SyledCarrosel>
     </div>
   );
 }
