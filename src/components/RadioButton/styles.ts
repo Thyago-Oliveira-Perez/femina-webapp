@@ -19,7 +19,7 @@ export const StyledRadio = styled(Radio)`
         color: '#c2c2c2';
       }
       & .MuiSvgIcon-root {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
       }
     `}
   }
@@ -29,7 +29,7 @@ export const Container = styled(FormControlLabel)<ContainerProps>`
   &&& {
     ${({ required, fontWeight = 'bold' }) => css`
       & .MuiFormControlLabel-label {
-        font-size: 1.3rem;
+        font-size: 1rem;
         min-width: max-content;
         color:  rgba(0, 0, 0, 0.6);
         flex-wrap: wrap;

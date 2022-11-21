@@ -1,21 +1,19 @@
-.App {
-  
+body::-webkit-scrollbar {
+    width: 10px;
+    /* width of the entire scrollbar */
 }
 
-.thumb {
-    height: 100%;
-    width: 100%;
-    padding: 0px !important;
-    margin: 0px;
-  }
-  
-  .thumb img {
-    height: 100% !important;
-    width: 100% !important;
-  }
+body::-webkit-scrollbar-track {
+    background: white;
+    /* color of the tracking area */
+}
 
-  .ul thumbs animated{
-    padding-inline-start: 0px !important;
-  }
-
+body::-webkit-scrollbar-thumb {
+    background-color: #D4A9A7;
+    /* color of the scroll thumb */
+    border-radius: 15px;
+    /* roundness of the scroll thumb */
+    border: 3px solid white;
+    /* creates padding around scroll thumb */
+}
 
