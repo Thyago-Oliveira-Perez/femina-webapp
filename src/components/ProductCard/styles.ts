@@ -7,7 +7,7 @@ interface InfoProps {
 }
 
 export const ContainerItem = styled.div`
-    width: 15rem;
+    width: 16rem;
 `
 
 export const StyledImg = styled.img`
@@ -33,7 +33,6 @@ export const StyledInfo = styled.div`
     align-items: center;
     padding: 1.5rem 0.6rem;
     margin-top: -0.5rem;
-
     p {
         color: white;
     }
@@ -54,4 +53,3 @@ export const StyledButton = styled(Button)`
     background: #a77371;
   }
 `;
-

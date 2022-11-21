@@ -19,11 +19,14 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
     color: white;
     padding: 1rem;
+    
 
     &:hover {
         color: #7A0000;
         background: #A77371;
         transition: all ease 0.5s;
     }
+
+    
 `;
 

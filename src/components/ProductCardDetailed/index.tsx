@@ -1,8 +1,9 @@
 import * as S from './styles';
 import { ProductCardProps } from './ProductCard.types';
 import { useState, MouseEventHandler } from 'react';
+import { CarouselSmaller } from "../CarouselSmaller";
 
-export const ProductCard = ({ image, price, name, destaque, onClickButton }: ProductCardProps) => {
+export const ProductCardDetailed = ({ image, price, name, destaque, descricao,  onClickButton }: ProductCardProps) => {
     const [show, setShow] = useState(false);
     const handleMouseOver = () => {
         setShow(true);
@@ -11,12 +12,14 @@ export const ProductCard = ({ image, price, name, destaque, onClickButton }: Pro
         setShow(false);
     };
     return (
-        <S.ContainerItem onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-            
-            <S.StyledImg src={image} alt="" />
-            <S.StyledInfo destaque={destaque}>
+        <S.ContainerItem>
+            <div style = {{width : '40%'}}>
+            <CarouselSmaller  />
+            </div>
+            <S.StyledInfo>
                 <S.StyledName>{name}</S.StyledName>
                 <S.StyledPrice>{price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</S.StyledPrice>
+                <S.StyledDescription>{descricao}</S.StyledDescription>
             </S.StyledInfo>
         </S.ContainerItem>
     );

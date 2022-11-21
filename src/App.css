@@ -16,3 +16,16 @@ body::-webkit-scrollbar-thumb {
     border: 3px solid white;
     /* creates padding around scroll thumb */
 }
+
+.thumb {
+  height: 100%;
+  width: 100%;
+  padding: 0px !important;
+
+}
+
+.thumb img {
+  height: 100% !important;
+  width: 100% !important;
+}
+

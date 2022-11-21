@@ -5,7 +5,7 @@ export class Api{
 
   axiosClient: AxiosInstance = axios.create({
     baseURL: this.url,
-    headers: {"Content-type": "application/json"}
+    headers: {"Content-type": "application/json"},
   })
-
+ 
 }

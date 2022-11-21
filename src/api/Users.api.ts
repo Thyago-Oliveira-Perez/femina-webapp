@@ -1,22 +1,25 @@
 import { UserLogin } from "../pages/Login/FormLogin.types";
-import { Api } from "./Api";
+import { ICliente } from "../pages/Usuario/Usuario.types";
+import { IUserReponse, LoginResponse, IUserRequest } from "../types/user.types";
+import CommonApi from "./Common.api";
 
-export default class UserApi extends Api {
+export default class UserApi extends CommonApi {
   constructor() {
     super();
-    this.url = "http://localhost:8080";
   }
 
-  private handleError(error: any){
-    return Promise.reject(error.response)
+  public async login(user: UserLogin) {
+    return await this._login<UserLogin, LoginResponse>(
+      user,
+      "/auth/login"
+    );
   }
 
-  public async _login<T>(user: UserLogin): Promise<T> {
-    try {
-      return (await this.axiosClient.post(`${this.url}/auth/login`, user)).data;
-    } catch (error: any) {
-      return this.handleError(error);
-    }
+  public async getUserInfo() {
+    return await this._getDatas<IUserReponse>("/api/usuarios/my-infos");
   }
 
+  public async registerUserBySelf(user: IUserRequest) {
+    return await this._regiterUserBySelf<IUserRequest>(user, "/api/usuarios/register")
+  }
 }
