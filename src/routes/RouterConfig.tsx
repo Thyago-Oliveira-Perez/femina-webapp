@@ -6,12 +6,13 @@ import { Usuario } from "../pages/Usuario";
 import FormLogin from "../pages/Login";
 import { PaginaInicial } from "../pages/PaginaInicial";
 import PrivateRoutes from "./PrivateRoutes";
+import { Produtos } from "../pages/Produtos";
 
 const RouterConfig = () => {
   return (
     <div className="App">
       {
-        window.location.pathname == '/' || window.location.pathname == '/usuario' ?
+        window.location.pathname == '/login' || window.location.pathname == '/usuario' ?
         <>
           <Header type="generic" />
         </> : 
@@ -21,13 +22,14 @@ const RouterConfig = () => {
       </>
       }
       <Routes>
-        <Route path="/" element={<FormLogin />}></Route>
+        <Route path="/login" element={<FormLogin />}></Route>
         <Route path="/usuario" element={<Usuario />} />
 
         {/* Private Routes */}
-        <Route element={<PrivateRoutes />}>
-          <Route path="/produtos" element={<PaginaInicial />} />
-        </Route>
+        
+          <Route path="/" element={<PaginaInicial />} />
+          <Route path="/produtos" element={<Produtos/>}/>
+        
         
       </Routes>
 

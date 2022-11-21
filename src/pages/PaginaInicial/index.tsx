@@ -41,7 +41,7 @@ export function PaginaInicial() {
             tamanho: "ALL"
         }
 
-        produtoApi.getProdutos(produtctToApi as IProduto, '0').then((response) => {
+        produtoApi.getProdutos(produtctToApi as IProduto, '0').then((response: any) => {
             setProdutosList(response.data)
         }).catch((error) => {
             console.log(error);
@@ -51,11 +51,7 @@ export function PaginaInicial() {
     useEffect(() => (
         getProdutos()
     ), [])
-
-    const handlePageChange = (event: any, value: any) => {
-        setPage(value);
-      };
-
+    
     return (
         <div>
 

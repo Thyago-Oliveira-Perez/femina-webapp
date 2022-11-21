@@ -7,7 +7,7 @@ interface InfoProps {
 }
 
 export const ContainerItem = styled.div`
-    width: 15rem;
+    width: 16rem;
 `
 
 export const StyledImg = styled.img`
