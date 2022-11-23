@@ -13,6 +13,7 @@ export const ProductCard = ({ image, price, name, destaque, onClickButton }: Pro
     return (
         <S.ContainerItem onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             
+            <button onClick={onClickButton}>Detalhar</button>
             <S.StyledImg src={image} alt="" />
             <S.StyledInfo destaque={destaque}>
                 <S.StyledName>{name}</S.StyledName>

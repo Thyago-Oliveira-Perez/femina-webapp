@@ -42,10 +42,10 @@ export const Produtos = () => {
                     {produtosList?.content?.map((produto) => (
                         produto.destaque == false && (
                             <ProductCard
-                                name={produto.nome}
+                                nome={produto.nome}
                                 destaque={produto.destaque}
-                                image={produto.imagemUrl}
-                                price={produto.valor}
+                                imagemUrl={produto.imagemUrl}
+                                valor={produto.valor}
                                 key={produto.id}
                             />
                         )

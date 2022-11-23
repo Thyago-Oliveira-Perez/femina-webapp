@@ -6,6 +6,7 @@ import axios from "axios";
 interface AuthContextData {
     userInfo: IUser | undefined;
     signed: boolean;
+   
 }
 
 export const AuthContext = createContext<AuthContextData>(

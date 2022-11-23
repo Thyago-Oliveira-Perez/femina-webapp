@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react';
 export interface IProduto {
     content?: (ProdutoEntity)[] | null;
     pageable: string;
@@ -12,18 +13,18 @@ export interface IProduto {
     empty: boolean;
 }
 export interface ProdutoEntity {
-    id: number;
-    nome: string;
-    codigo: string;
+    id?: number;
+    nome?: string;
+    codigo?: string;
     valor: number;
-    marca: ModeloEntityOrMarcaOrCategoria;
-    categoria: ModeloEntityOrMarcaOrCategoria;
+    marca?: ModeloEntityOrMarcaOrCategoria;
+    categoria?: ModeloEntityOrMarcaOrCategoria;
     modelo?: (ModeloEntityOrMarcaOrCategoria)[] | null;
-    fornecedor: Fornecedor;
-    tamanho: string;
-    cor: string;
-    descricao: string;
-    imagemUrl: string;
+    fornecedor?: Fornecedor;
+    tamanho?: string;
+    cor?: string;
+    descricao?: string;
+    imagemUrl?: string;
     destaque: boolean;
     imageNames?: null;
 }

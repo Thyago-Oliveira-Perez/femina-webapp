@@ -4,6 +4,7 @@ import { AiOutlineUser, AiOutlineUserAdd, AiOutlineLeft } from "react-icons/ai";
 import { FiLogOut } from 'react-icons/fi'
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import { AuthContext } from "../../context/AuthContext";
+import Logo from '../../../public/logo.svg';
 
 interface HeaderProps {
   type: "generic" | "global";
@@ -58,7 +59,7 @@ export const Header = ({ type }: HeaderProps) => {
             <S.ItemsContainer>
               <S.LogoArea>
 
-                <img src="logo.svg" alt="logo" />
+                <img src={Logo} alt="logo" />
               </S.LogoArea>
 
 

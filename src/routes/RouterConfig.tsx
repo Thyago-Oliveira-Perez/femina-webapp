@@ -8,6 +8,7 @@ import { PaginaInicial } from "../pages/PaginaInicial";
 import PrivateRoutes from "./PrivateRoutes";
 import { Produtos } from "../pages/Produtos";
 import { DetalhaProdutos } from "../pages/DetalhaProdutos";
+import { ProdutosFiltrados } from "../pages/ProdutosFiltrados";
 
 const RouterConfig = () => {
   return (
@@ -30,7 +31,7 @@ const RouterConfig = () => {
 
         <Route path="/" element={<PaginaInicial />} />
         <Route path="/produtos" element={<Produtos />} />
-        <Route path="/produtoDetalhado" element={<DetalhaProdutos />} />
+        <Route path="/produto/:id" element={<DetalhaProdutos />} />
       </Routes>
 
       {

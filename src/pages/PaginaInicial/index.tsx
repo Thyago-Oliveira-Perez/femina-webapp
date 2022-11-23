@@ -2,18 +2,20 @@ import * as S from './styles';
 import { useState, useContext, useEffect } from 'react';
 import { ProductCard } from '../../components/ProductCard';
 import { CarouselComponent } from '../../components/Carousel';
-import { IProduto } from '../../types/product.types';
+import { IProduto, ProdutoEntity } from '../../types/product.types';
 import ProdutoApi from "../../api/Produto.api";
 import { PaginationComponent } from '../../components/Paginator';
 import { Pagination } from '@mui/material';
 import { DetailedCarousel } from '../../components/DetailedCarousel';
+import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export function PaginaInicial() {
 
     const produtoApi = new ProdutoApi();
-
+    
+    const navigate = useNavigate();
     const [produtosList, setProdutosList] = useState<IProduto>();
-
 
     var items = [
         {
@@ -58,23 +60,23 @@ export function PaginaInicial() {
 
             <CarouselComponent buttonEnabled={true} listItems={items} />
 
-            <S.ContainerCarousel>
-                <DetailedCarousel/>
-            </S.ContainerCarousel>
+            {/* <S.ContainerCarousel>
+                <DetailedCarousel produtos={produtosList?.content}/>
+            </S.ContainerCarousel> */}
             
 
             <S.ProductContainer>
                 {produtosList?.content?.map((produto) => (
                     produto.destaque == true && (
                         <ProductCard
-                            name={produto.nome}
+                            name={produto.nome as string}
                             destaque={produto.destaque}
-                            image={produto.imagemUrl}
+                            image={produto.imagemUrl as string}
                             price={produto.valor}
                             key={produto.id}
+                            onClickButton={() => navigate(`/produto/${produto.id}`)}
                         />
                     )
-
                 ))}
             </S.ProductContainer>
 
@@ -86,14 +88,14 @@ export function PaginaInicial() {
                     {produtosList?.content?.map((produto) => (
                         produto.destaque == false && (
                             <ProductCard
-                                name={produto.nome}
+                                name={produto.nome as string}
                                 destaque={produto.destaque}
-                                image={produto.imagemUrl}
+                                image={produto.imagemUrl as string}
                                 price={produto.valor}
                                 key={produto.id}
+                                onClickButton={() => navigate(`/produto/${produto.id}`)}
                             />
                         )
-
                     ))}
                 </S.GridPorduct>
             </S.ContainerGrid>

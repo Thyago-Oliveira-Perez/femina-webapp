@@ -10,18 +10,18 @@ export default class CommonApi extends Api {
 
   authService = new AuthService();
 
-  authorization = `Bearer ${
-    this.authService.getUser() !== null
+  authorization = `Bearer ${this.authService.getUser() !== null
       ? this.authService.getUser()
       : ""
-  }`;
+    }`;
 
-  private handleError(error: any){
+  private handleError(error: any) {
     return Promise.reject(error.response)
   }
 
   protected async _login<T, U>(model: T, url: string): Promise<U> {
     try {
+      
       return await this.axiosClient.post(`${this.url}` + url, model);
     } catch (error: any) {
       return this.handleError(error);
@@ -51,6 +51,15 @@ export default class CommonApi extends Api {
   protected async _getProducts<T>(model: IProduto, url: string): Promise<T> {
     try {
       return await this.axiosClient.post(`${this.url}` + url, model);
+    } catch (error: any) {
+      return this.handleError(error);
+    }
+  }
+
+  protected async _getProductById<T>(id: number, url: string): Promise<T> {
+    try {
+      
+      return await this.axiosClient.get(`${this.url}/${url}/${id}`);
     } catch (error: any) {
       return this.handleError(error);
     }

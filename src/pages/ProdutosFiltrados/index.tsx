@@ -116,10 +116,10 @@ export function ProdutosFiltrados() {
             (produto) =>
               produto.destaque == false && (
                 <ProductCard
-                  name={produto.nome}
+                  nome={produto.nome}
                   destaque={produto.destaque}
-                  image={produto.imagem}
-                  price={produto.price}
+                  imagemUrl={produto.imagem}
+                  valor={produto.price}
                   key={produto.id}
                 />
               )

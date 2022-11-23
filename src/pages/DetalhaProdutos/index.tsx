@@ -1,8 +1,12 @@
 import * as S from "./styles";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductCard } from "../../components/ProductCard";
 import { ProductCardDetailed } from "../../components/ProductCardDetailed";
 import { DetailedCarousel} from "../../components/DetailedCarousel"
+import ProdutoApi from '../../api/Produto.api';
+import { AuthContext } from "../../context/AuthContext";
+import { ProdutoEntity } from "../../types/product.types";
+import { useParams } from "react-router-dom";
 
 export function DetalhaProdutos() {
   const produtos = [
@@ -82,42 +86,45 @@ export function DetalhaProdutos() {
     },
   ];
 
-  const ProdutoSelecionado = [
-    {
-      id: 0o5,
-      nome: "Conjunto Olinda",
-      imagem:
-        "https://img.elo7.com.br/product/zoom/309ADB7/conjunto-pijama-de-cetim-dia-da-noiva.jpg",
-      price: 99.99,
-      destaque: false,
-      descricao: "Lorem ipsum dolor sit amet. Non ullam magnam At adipisci expedita non saepe voluptatem. Et enim quis aut consequatur eligendi sit laudantium quia sed eveniet repellat."
-    },
-  ];
+  const produtoApi = new ProdutoApi();
+  let {idProduct} = useParams();
+  
 
   const [openAlert, setOpenAlert] = useState(true);
+  const [selectedProduct, setSelectedProduct] = useState<ProdutoEntity>();
+
+  const getProdutoById = () => {
+    produtoApi.getProdutoById(15).then((response: any) => {
+      setSelectedProduct(response.data)
+      console.log('aaa',selectedProduct)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
+  
+
+  useEffect(() => {
+    getProdutoById();
+  }, [])
 
   return (
     <div>
 
       <S.ProductContainer>
-          {ProdutoSelecionado.map(
-            (ProdutoSelecionado) =>
-            ProdutoSelecionado.destaque == false && (
-                <ProductCardDetailed
-                  name={ProdutoSelecionado.nome}
-                  destaque={ProdutoSelecionado.destaque}
-                  image={ProdutoSelecionado.imagem}
-                  price={ProdutoSelecionado.price}
-                  key={ProdutoSelecionado.id}
-                  descricao= {ProdutoSelecionado.descricao}
-                />
-              )
-          )}
-        </S.ProductContainer>
+        <ProductCardDetailed
+          nome={selectedProduct?.nome}
+          destaque={selectedProduct?.destaque as boolean}
+          imagemUrl={selectedProduct?.imagemUrl}
+          valor={selectedProduct?.valor as number}
+          key={selectedProduct?.id}
+          descricao= {selectedProduct?.descricao}
+        />
+      </S.ProductContainer>
       <S.ContainerGrid>
         <S.StyledH3>Produtos Semelhantes</S.StyledH3>
         
-        <DetailedCarousel/>
+        {/* <DetailedCarousel/> */}
 
         <S.StyledH3>Aproveite e veja tambem</S.StyledH3>
 

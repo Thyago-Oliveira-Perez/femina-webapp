@@ -1,5 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { IProduto, ProdutoEntity } from "../../types/product.types";
 import { ProductCard } from "../ProductCard";
 
 const responsive = {
@@ -21,71 +22,27 @@ const responsive = {
   },
 };
 
-const produtos = [
-  {
-    id: 0o1,
-    nome: "aaaaa",
-    imagem:
-      "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-    price: 100,
-    destaque: true,
-  },
-  {
-    id: 0o5,
-    nome: "aaaaa",
-    imagem:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU",
-    price: 100,
-    destaque: true,
-  },
-  {
-    id: 0o5,
-    nome: "aaaaa",
-    imagem:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU",
-    price: 100,
-    destaque: true,
-  },
-  {
-    id: 0o1,
-    nome: "aaaaa",
-    imagem:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU",
-    price: 100,
-    destaque: true,
-  },
-  {
-    id: 0o5,
-    nome: "aaaaa",
-    imagem:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU",
-    price: 100,
-    destaque: true,
-  },
-];
+interface ICarouselProps {
+  produtos: {
+    nome: string;
+    destaque: boolean;
+    imagemUrl: string;
+    valor: number;
+  }[];
+}
 
-export function DetailedCarousel() {
+export function DetailedCarousel({produtos}: ICarouselProps) {
   return (
     <div>
       <Carousel responsive={responsive}>
-        <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU" />
-        </div>
-        <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU" />
-        </div>
-        <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU" />
-        </div>
-        <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU" />
-        </div>
-        <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU" />
-        </div>
-        <div>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROmycHCBSM7FcnhY1_KwLWcSadGnkq_4k_1Yx_yOB1o_pbQ1y4eEHXliO9N8d7WXAlNGk&usqp=CAU" />
-        </div>
+        {produtos?.map((item) => (
+          <ProductCard
+            name={item.nome}
+            destaque={item.destaque}
+            image={item.imagemUrl}
+            price={item.valor}
+          />
+        ))}
       </Carousel>
     </div>
   );

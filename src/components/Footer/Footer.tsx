@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import * as S from "./style";
+import Logo from '../../../public/logo.svg';
+
 export default function Footer() {
   return (
     <S.FooterContainer>
@@ -10,7 +12,7 @@ export default function Footer() {
         <S.p>CEP: 85880-00</S.p>
       </S.footerSections>
       <S.footerSections> 
-            <img src="logo.svg" alt="logo" /> 
+            <img src={Logo} alt="logo" /> 
        </S.footerSections>
       <S.footerSections>
         <S.h2>Entre em contato conosco</S.h2>
