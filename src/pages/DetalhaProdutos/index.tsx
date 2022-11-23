@@ -59,50 +59,22 @@ export function DetalhaProdutos() {
       destaque: false,
     },
   ];
-  const ProdutosSemelhantes = [
-    {
-      id: 0o1,
-      nome: "aaaaa",
-      imagem:
-        "https://img.elo7.com.br/product/zoom/309ADB7/conjunto-pijama-de-cetim-dia-da-noiva.jpg",
-      price: 100,
-      destaque: false,
-    },
-    {
-      id: 0o5,
-      nome: "aaaaa",
-      imagem:
-        "https://img.elo7.com.br/product/zoom/309ADB7/conjunto-pijama-de-cetim-dia-da-noiva.jpg",
-      price: 100,
-      destaque: false,
-    },
-    {
-      id: 0o5,
-      nome: "aaaaa",
-      imagem:
-        "https://img.elo7.com.br/product/zoom/309ADB7/conjunto-pijama-de-cetim-dia-da-noiva.jpg",
-      price: 100,
-      destaque: false,
-    },
-  ];
 
   const produtoApi = new ProdutoApi();
-  let {idProduct} = useParams();
+  let { id } = useParams();
   
 
   const [openAlert, setOpenAlert] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState<ProdutoEntity>();
 
   const getProdutoById = () => {
-    produtoApi.getProdutoById(15).then((response: any) => {
+    produtoApi.getProdutoById(parseInt(id as string)).then((response: any) => {
       setSelectedProduct(response.data)
-      console.log('aaa',selectedProduct)
-    }).catch((err) => {
-      console.log(err)
+     
+    }).catch((error) => {
+      console.log(error)
     })
   }
-
-  
 
   useEffect(() => {
     getProdutoById();
