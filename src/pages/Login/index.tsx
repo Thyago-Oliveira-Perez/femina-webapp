@@ -27,7 +27,7 @@ export default function FormLogin() {
     loginApi.login(login)
       .then((response: any) => {
         authService.setLoggedUser(response);
-        navigate('produtos')
+        navigate('/')
       }).catch((error) => {
         setOpenAlert(true)
         console.log(error)

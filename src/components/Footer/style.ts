@@ -6,7 +6,7 @@ export const FooterContainer = styled.footer`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  position: fixed;
+ 
   bottom: 0;
 `;
 
@@ -28,5 +28,7 @@ export const p = styled.p`
   font-size: 10px;
   color: #FFFFFF;
 `;
+
+
 
 

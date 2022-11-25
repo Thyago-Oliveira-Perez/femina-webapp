@@ -5,6 +5,7 @@ import { FiLogOut } from 'react-icons/fi'
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import { AuthContext } from "../../context/AuthContext";
 import Logo from '../../../public/logo.svg';
+import {useNavigate} from 'react-router-dom';
 
 interface HeaderProps {
   type: "generic" | "global";
@@ -44,6 +45,8 @@ export const Header = ({ type }: HeaderProps) => {
 
   const { userInfo } = useContext(AuthContext);
   const signed = localStorage.getItem("user");
+
+  const navigate = useNavigate();
 
   const logout = () => {
     localStorage.removeItem("user");
@@ -107,12 +110,12 @@ export const Header = ({ type }: HeaderProps) => {
 
                 <S.ButtonArea>
                   <S.ButtonIcon>
-                    <S.StyledLink href="#">Login</S.StyledLink>
+                    <S.StyledLink onClick={() => navigate('/login')}>Login</S.StyledLink>
                     <AiOutlineUser size="16px" />
                   </S.ButtonIcon>
 
                   <S.ButtonIcon>
-                    <S.StyledLink href="#">Cadastre-se</S.StyledLink>
+                    <S.StyledLink onClick={() => navigate('/usuario')}>Cadastre-se</S.StyledLink>
                     <AiOutlineUserAdd size="16px" />
                   </S.ButtonIcon>
                 </S.ButtonArea>

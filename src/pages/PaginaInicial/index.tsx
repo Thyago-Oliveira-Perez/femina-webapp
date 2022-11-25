@@ -15,7 +15,7 @@ export function PaginaInicial() {
     const produtoApi = new ProdutoApi();
     
     const navigate = useNavigate();
-    const [produtosList, setProdutosList] = useState<IProduto>();
+    const [produtosList, setProdutosList] = useState<IProduto | null>();
 
     var items = [
         {
@@ -46,6 +46,7 @@ export function PaginaInicial() {
 
         produtoApi.getProdutos(produtctToApi as IProduto, '0').then((response: any) => {
             setProdutosList(response.data)
+            console.log('aa', produtosList)
         }).catch((error) => {
             console.log(error);
         })

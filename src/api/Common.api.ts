@@ -1,4 +1,5 @@
 import AuthService from "../services/auth.service";
+import { IFavoritos } from "../types/favoritos.types";
 import { IProduto } from "../types/product.types";
 import { Api } from "./Api";
 
@@ -19,6 +20,7 @@ export default class CommonApi extends Api {
     return Promise.reject(error.response)
   }
 
+  //#region User
   protected async _login<T, U>(model: T, url: string): Promise<U> {
     try {
       
@@ -47,7 +49,9 @@ export default class CommonApi extends Api {
       return this.handleError(error);
     }
   }
-
+  //#endregion
+ 
+  //#region Produtos
   protected async _getProducts<T>(model: IProduto, url: string): Promise<T> {
     try {
       return await this.axiosClient.post(`${this.url}` + url, model);
@@ -64,5 +68,17 @@ export default class CommonApi extends Api {
       return this.handleError(error);
     }
   }
+  //#endregion
+
+  //#region Favoritos
+  protected async _postFavoritos<T>(url: string, model: IFavoritos): Promise<T> {
+    try {
+      return await this.axiosClient.post(`${this.url}/${url}`, model);
+    } catch (error: any) {
+      return this.handleError(error);
+    }
+  }
+  //#endregion
+ 
 
 }

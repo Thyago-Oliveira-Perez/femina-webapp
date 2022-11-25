@@ -91,6 +91,7 @@ export function DetalhaProdutos() {
           valor={selectedProduct?.valor as number}
           key={selectedProduct?.id}
           descricao= {selectedProduct?.descricao}
+          id={selectedProduct?.id}
         />
       </S.ProductContainer>
       <S.ContainerGrid>

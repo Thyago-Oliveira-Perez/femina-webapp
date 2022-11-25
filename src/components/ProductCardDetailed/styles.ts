@@ -13,7 +13,7 @@ export const ContainerItem = styled.div`
   width: 100%;
   height: 40%;
   padding: 3% 15% 5%;
-  row-gap: 5px;
+  
 `;
 
 export const StyledImg = styled.img`
@@ -21,16 +21,21 @@ width: 55%;
 height: 15rem;
 `;
 
-export const StyledName = styled.h3`
+export const StyledName = styled.p`
   font-size: 1.5rem;
+  width: 100%;
+  line-height: 30px;
+  display: flex;
 `;
 
 export const StyledDescription = styled.p`
-  font-size: 1rem;
+  font-size: 16px;
+  line-height: 25px;
+  width: 100%;
 `;
 
 export const StyledPrice = styled.p`
-  font-size: 1rem;
+  font-size: 20px;
 `;
 
 export const StyledInfo = styled.div`
@@ -40,7 +45,7 @@ export const StyledInfo = styled.div`
   justify-content: start;
   align-items: start;
   padding: 1.5rem 0.6rem;
-  gap: 1rem;
+  gap: 2rem;
   
 `;
 
@@ -48,3 +53,18 @@ export const StyledButton = styled(Button)`
   position: absolute;
   }
 `;
+
+export const StyledHr = styled.hr`
+  background:white;
+  width: 100%;
+  border: none;
+  padding: 1px;
+`
+
+export const StyledHeadComponent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+`;
+
