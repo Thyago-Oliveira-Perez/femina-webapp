@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+    width: 100%
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`; 
+
 export const ProductContainer = styled.div`
     display:flex;
     gap: 1rem;
@@ -22,4 +30,31 @@ export const GridPorduct = styled.div`
     justify-content: center;
     align-items: center;
     gap: 1rem;
+`;
+
+export const ContainerTitle = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+`;
+
+export const ContainerSubTitle = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+   margin-top: 1.5rem;
+`;
+
+export const Teste = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+
+export const PaginationArea = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 2em 0;
 `;

@@ -129,11 +129,7 @@ export const Header = ({ type }: HeaderProps) => {
         {
           type == "generic" && (
             <S.GenericHeaderContainer>
-              <IconButton>
-                <AiOutlineLeft color="#fff" />
-              </IconButton>
               <S.LogoArea>
-
                 <img src="logo.svg" alt="logo" />
               </S.LogoArea>
 

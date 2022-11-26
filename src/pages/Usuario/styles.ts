@@ -105,3 +105,9 @@ export const StyledFormLabel = styled(FormLabel)<ContainerProps>`
 export const StyledLabel = styled(FormControlLabel)`
   color:rgba(0, 0, 0, 0.6);
 `
+
+export const StyledLinkContainer = styled.div`
+
+  padding-top: 20px;
+  padding-left: 20px;
+`;

@@ -46,7 +46,6 @@ export function PaginaInicial() {
 
         produtoApi.getProdutos(produtctToApi as IProduto, '0').then((response: any) => {
             setProdutosList(response.data)
-            console.log('aa', produtosList)
         }).catch((error) => {
             console.log(error);
         })

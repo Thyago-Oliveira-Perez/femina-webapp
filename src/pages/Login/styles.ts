@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -75,5 +76,13 @@ export const Footer = styled.div`
     color: #c2c2c2;
   }
 `;
+
+export const StyledLinkContainer = styled.div`
+
+  padding-top: 20px;
+  padding-left: 20px;
+`;
+
+
 
 

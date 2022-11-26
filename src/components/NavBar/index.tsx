@@ -35,7 +35,7 @@ export const Navbar = () => {
             <div>
                 <S.Container>
                     {NavObj.map((nav) => (
-                        <S.StyledLink key={nav.id} to={nav.path}>
+                        <S.StyledLink key={nav.id} to={`/produtos/${nav.name}`}>
                             <li>
                                 {nav.name}
                             </li>

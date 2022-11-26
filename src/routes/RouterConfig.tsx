@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate, useNavigation } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import { Header } from "../components/Header";
 import { Navbar } from "../components/NavBar";
@@ -8,13 +8,16 @@ import { PaginaInicial } from "../pages/PaginaInicial";
 import PrivateRoutes from "./PrivateRoutes";
 import { Produtos } from "../pages/Produtos";
 import { DetalhaProdutos } from "../pages/DetalhaProdutos";
-import { ProdutosFiltrados } from "../pages/ProdutosFiltrados";
+import { useParams } from "react-router-dom";
 
 const RouterConfig = () => {
+
+  const location = useLocation();
+
   return (
     <div className="App">
       {
-        window.location.pathname == '/login' || window.location.pathname == '/usuario' ?
+        location.pathname == '/login' || location.pathname == '/usuario' ?
           <>
             <Header type="generic" />
           </> :
@@ -30,12 +33,12 @@ const RouterConfig = () => {
         {/* Private Routes */}
 
         <Route path="/" element={<PaginaInicial />} />
-        <Route path="/produtos" element={<Produtos />} />
+        <Route path="/produtos/:categoria" element={<Produtos />} />
         <Route path="/produto/:id" element={<DetalhaProdutos />} />
       </Routes>
 
       {
-        window.location.pathname != '/' &&
+        location.pathname != '/' &&
         <>
           <Footer />
         </>
