@@ -111,6 +111,7 @@ export function DetalhaProdutos() {
                   image={produto.imagem}
                   price={produto.price}
                   key={produto.id}
+                  id={produto.id}
                 />
               )
           )}

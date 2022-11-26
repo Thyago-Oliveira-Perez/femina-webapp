@@ -22,6 +22,7 @@ export const StyledName = styled.h3`
 export const StyledPrice = styled.p`
     color: rgba(0, 0, 0, 0.6);
     font-size: 1rem;
+    margin-top: 5px;
 `
 
 export const StyledInfo = styled.div`
@@ -38,18 +39,33 @@ export const StyledInfo = styled.div`
     }
   `}`;
 
-export const StyledButton = styled(Button)`
+export const StyledButtonArea = styled.div`
   position: absolute;
-  width: 85px;
-  height: 30px;
-  background: #d4a9a7;
-  color: #000000;
-  font-family: "Roboto";
-  font-height: 400;
-  font-size: 10px;
-  line-height: 15px;
-  transition: all 0.8s;
+  width: 16rem;
+  height: 15rem;
+  opacity: 0;
+  transition: all 0.5s;
+
+  button {
+    background: transparent;
+    color: transparent;
+    border: none;
+  }
+  
   &:hover {
-    background: #a77371;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(217, 217, 217, 0.09);
+  
+    button {
+      cursor: pointer;
+      background: #9B4A46;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius:2px;
+    }
   }
 `;

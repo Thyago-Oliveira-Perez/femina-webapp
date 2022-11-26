@@ -54,13 +54,14 @@ export const Produtos = () => {
                 <S.ContainerGrid>
                     <S.GridPorduct>
                         {produtosList?.content?.map((produto) => (
-                            produto.destaque == false && (
+                            produto.destaque == true && (
                                 <ProductCard
                                     name={produto.nome as string}
                                     destaque={produto.destaque}
                                     image={produto.imagemUrl as string}
                                     price={produto.valor}
                                     key={produto.id}
+                                    id={produto.id as number}
                                 />
                             )
 

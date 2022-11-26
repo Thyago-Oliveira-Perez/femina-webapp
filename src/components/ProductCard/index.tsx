@@ -1,19 +1,20 @@
 import * as S from './styles';
 import { ProductCardProps } from './ProductCard.types';
-import { useState, MouseEventHandler } from 'react';
+import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
-export const ProductCard = ({ image, price, name, destaque, onClickButton }: ProductCardProps) => {
+export const ProductCard = ({ image, price, name, destaque, id }: ProductCardProps) => {
+    const navigate = useNavigate()
+
     const [show, setShow] = useState(false);
-    const handleMouseOver = () => {
-        setShow(true);
-    };
-    const handleMouseOut = () => {
-        setShow(false);
-    };
+   
     return (
-        <S.ContainerItem onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+        <S.ContainerItem>
             
-            <button onClick={onClickButton}>Detalhar</button>
+            <S.StyledButtonArea>
+                <button onClick={() => navigate(`/produto/${id}`)}>Detalhar</button>
+            </S.StyledButtonArea>
+            
             <S.StyledImg src={image} alt="" />
             <S.StyledInfo destaque={destaque}>
                 <S.StyledName>{name}</S.StyledName>

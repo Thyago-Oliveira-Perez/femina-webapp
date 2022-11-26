@@ -74,7 +74,8 @@ export function PaginaInicial() {
                             image={produto.imagemUrl as string}
                             price={produto.valor}
                             key={produto.id}
-                            onClickButton={() => navigate(`/produto/${produto.id}`)}
+                            id={produto.id as number}
+                           
                         />
                     )
                 ))}
@@ -93,7 +94,7 @@ export function PaginaInicial() {
                                 image={produto.imagemUrl as string}
                                 price={produto.valor}
                                 key={produto.id}
-                                onClickButton={() => navigate(`/produto/${produto.id}`)}
+                                id={produto.id as number}
                             />
                         )
                     ))}
