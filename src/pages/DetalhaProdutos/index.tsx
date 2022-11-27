@@ -75,10 +75,11 @@ export function DetalhaProdutos() {
       console.log(error)
     })
   }
+  console.log(id)
 
   useEffect(() => {
     getProdutoById();
-  }, [])
+  }, [id])
 
   return (
     <div>

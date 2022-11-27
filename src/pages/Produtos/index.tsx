@@ -8,6 +8,8 @@ import { IProduto } from '../../types/product.types';
 import {CiFilter} from 'react-icons/ci';
 
 import * as S from './styles';
+import { IconButton } from '@mui/material';
+import { SideBarFilter } from '../../components/SideBarFilter';
 
 export const Produtos = () => {
 
@@ -15,6 +17,7 @@ export const Produtos = () => {
 
     const [produtosList, setProdutosList] = useState<IProduto>();
     const [page, setPage] = useState(0)
+    const [openFilter, setOpenFilter] = useState(false)
 
     const getProdutos = () => {
         const produtctToApi = {
@@ -46,9 +49,15 @@ export const Produtos = () => {
             <S.Teste>
                 <S.ContainerSubTitle>
                     <p>{`${produtosList?.content?.length} produtos`} </p>
-                    <CiFilter color='#7A0000' cursor={'pointer'} size={30} />
+
+                    <IconButton onClick={() => setOpenFilter(true)}>
+                        <CiFilter color='#7A0000' cursor={'pointer'} size={30} />
+                    </IconButton>
+                    
                 </S.ContainerSubTitle>
             </S.Teste>
+
+            <SideBarFilter open={openFilter} setOpen={setOpenFilter}/>
 
             <div>
                 <S.ContainerGrid>

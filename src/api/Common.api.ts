@@ -80,5 +80,25 @@ export default class CommonApi extends Api {
   }
   //#endregion
  
+  //#region Categorias
+  protected async _getCategorias<T>(url: string): Promise<T> {
+    try {
+      return await this.axiosClient.get(`${this.url}/${url}`);
+    } catch (error: any) {
+      return this.handleError(error);
+    }
+  }
+  //#endregion
+
+   //#region Categorias
+   protected async _getMarcas<T>(url: string): Promise<T> {
+    try {
+      return await this.axiosClient.get(`${this.url}/${url}`);
+    } catch (error: any) {
+      return this.handleError(error);
+    }
+  }
+  //#endregion
+
 
 }
