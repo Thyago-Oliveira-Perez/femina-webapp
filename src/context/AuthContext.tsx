@@ -5,8 +5,7 @@ import axios from "axios";
 
 interface AuthContextData {
     userInfo: IUser | undefined;
-    signed: boolean;
-   
+    signed: boolean;   
 }
 
 export const AuthContext = createContext<AuthContextData>(
@@ -44,7 +43,7 @@ export const AuthContextProvider = ({
         console.log(error);
       })
     }
-    
+
     return (
         <AuthContext.Provider value={{ userInfo, signed: !!userToken }}>
           {children}

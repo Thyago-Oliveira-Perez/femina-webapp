@@ -19,6 +19,7 @@
     "@react-icons/all-files": "^4.1.0",
     "@trendyol-js/react-carousel": "^3.0.0",
     "axios": "^0.27.2",
+    "jwt-decode": "^3.1.2",
     "rc-slider": "^10.1.0",
     "react": "^18.2.0",
     "react-alice-carousel": "^2.6.4",

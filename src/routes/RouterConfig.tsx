@@ -28,15 +28,17 @@ const RouterConfig = () => {
           </>
       }
       <Routes>
+        <Route path="/" element={<PaginaInicial />} />
         <Route path="/login" element={<FormLogin />}></Route>
         <Route path="/usuario" element={<Usuario />} />
-
-        {/* Private Routes */}
-
-        <Route path="/" element={<PaginaInicial />} />
         <Route path="/produtos/:categoria" element={<Produtos />} />
         <Route path="/produto/:id" element={<DetalhaProdutos />} />
-        <Route path="/favoritos" element={<Favoritos />} />
+
+        {/* Private Routes */}
+        <Route element={<PrivateRoutes />}>
+          <Route path="/favoritos" element={<Favoritos />} />
+        </Route>        
+       
       </Routes>
 
       {

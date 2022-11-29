@@ -6,8 +6,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import { Link } from "@mui/material";
 import { Link as LinkRouter } from 'react-router-dom'
 
-
-
 export const HeaderContainer = styled.div`
   background-color: #9b4a46;
   width: 100%;
@@ -134,6 +132,7 @@ export const MenuArea = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 
 
 

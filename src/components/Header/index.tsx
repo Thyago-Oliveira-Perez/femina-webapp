@@ -1,11 +1,13 @@
 import { useState, useContext } from 'react';
 import * as S from './styles';
 import { AiOutlineUser, AiOutlineUserAdd, AiOutlineLeft } from "react-icons/ai";
+import {BsHeart} from 'react-icons/bs';
 import { FiLogOut } from 'react-icons/fi'
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import { AuthContext } from "../../context/AuthContext";
 import Logo from '../../../public/logo.svg';
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
+import isAuthenticated from '../../utils/isAuthenticated';
 
 interface HeaderProps {
   type: "generic" | "global";
@@ -53,6 +55,8 @@ export const Header = ({ type }: HeaderProps) => {
     window.location.reload();
   }
 
+  const isAuthenticatedToken = isAuthenticated();
+
   return (
     <header>
       <S.HeaderContainer>
@@ -76,7 +80,7 @@ export const Header = ({ type }: HeaderProps) => {
       }}
     />
   </div> */}
-              {signed ? <>
+              {isAuthenticatedToken ? <>
                 <S.MenuArea>
                   <Menu
                     id="basic-menu"
@@ -99,10 +103,17 @@ export const Header = ({ type }: HeaderProps) => {
                       <FiLogOut color={'#7a0000'} />
                     </S.StyledMenu>
                   </Menu>
-                  <S.ButtonIcon>
-                    <AiOutlineUser size="16px" />
-                    <S.StyledLink onClick={() => setOpenMenu(true)}>Olá, {userInfo?.nome}</S.StyledLink>
-                  </S.ButtonIcon>
+                  <S.ButtonArea>
+                    <S.ButtonIcon>
+                      <BsHeart size="16px" />
+                      <S.StyledLink onClick={() => navigate('/favoritos')}>Favoritos</S.StyledLink>
+                    </S.ButtonIcon>
+                    <S.ButtonIcon>
+                      <AiOutlineUser size="16px" />
+                      <S.StyledLink onClick={() => setOpenMenu(true)}>Olá, {userInfo?.nome}</S.StyledLink>
+                    </S.ButtonIcon>
+                  </S.ButtonArea>
+                  
                 </S.MenuArea>
 
 
