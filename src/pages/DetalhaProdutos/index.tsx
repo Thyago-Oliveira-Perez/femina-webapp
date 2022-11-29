@@ -8,54 +8,65 @@ import { AuthContext } from "../../context/AuthContext";
 import { ProdutoEntity } from "../../types/product.types";
 import { useParams } from "react-router-dom";
 
+interface ICarouselProps {
+  produtos: {
+    id: number,
+    nome: string;
+    destaque: boolean;
+    imagemUrl: string;
+    valor: number;
+  }[];
+}
+
+
 export function DetalhaProdutos() {
   const produtos = [
     {
       id: 0o1,
       nome: "aaaaa",
-      imagem:
+      imagemUrl:
         "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-      price: 100,
+      valor: 100,
       destaque: false,
     },
     {
       id: 0o5,
       nome: "aaaaa",
-      imagem:
+      imagemUrl:
         "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-      price: 100,
+      valor: 100,
       destaque: false,
     },
     {
       id: 0o5,
       nome: "aaaaa",
-      imagem:
+      imagemUrl:
         "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-      price: 100,
+      valor: 100,
       destaque: false,
     },
     {
       id: 0o1,
       nome: "aaaaa",
-      imagem:
+      imagemUrl:
         "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-      price: 100,
+      valor: 100,
       destaque: false,
     },
     {
       id: 0o5,
       nome: "aaaaa",
-      imagem:
+      imagemUrl:
         "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-      price: 100,
+      valor: 100,
       destaque: false,
     },
     {
       id: 0o5,
       nome: "aaaaa",
-      imagem:
+      imagemUrl:
         "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-      price: 100,
+      valor: 100,
       destaque: false,
     },
   ];
@@ -123,7 +134,7 @@ export function DetalhaProdutos() {
       <S.ContainerGrid>
         <S.StyledH3>Produtos Semelhantes</S.StyledH3>
         
-        {/* <DetailedCarousel/> */}
+        <DetailedCarousel produtos={produtos}/>
 
         <S.StyledH3>Aproveite e veja tambem</S.StyledH3>
 
@@ -134,8 +145,8 @@ export function DetalhaProdutos() {
                 <ProductCard
                   name={produto.nome}
                   destaque={produto.destaque}
-                  image={produto.imagem}
-                  price={produto.price}
+                  image={produto.imagemUrl}
+                  price={produto.valor}
                   key={produto.id}
                   id={produto.id}
                 />

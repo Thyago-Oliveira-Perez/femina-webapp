@@ -22,13 +22,16 @@ const responsive = {
   },
 };
 
-interface ICarouselProps {
-  produtos: {
+interface ArrayType {
+  id: number,
     nome: string;
     destaque: boolean;
     imagemUrl: string;
     valor: number;
-  }[];
+}
+
+interface ICarouselProps {
+  produtos: ArrayType[];
 }
 
 export function DetailedCarousel({produtos}: ICarouselProps) {
@@ -37,6 +40,7 @@ export function DetailedCarousel({produtos}: ICarouselProps) {
       <Carousel responsive={responsive}>
         {produtos?.map((item) => (
           <ProductCard
+            id={item.id}
             name={item.nome}
             destaque={item.destaque}
             image={item.imagemUrl}

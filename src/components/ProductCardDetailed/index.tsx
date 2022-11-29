@@ -1,7 +1,7 @@
 import * as S from './styles';
 import { ProductCardProps } from './ProductCard.types';
 import { useState, MouseEventHandler, useContext } from 'react';
-import { CarouselSmaller } from "../CarouselSmaller";
+import { CarouselSmaller } from "./CarouselSmaller";
 import { ProdutoEntity } from '../../types/product.types';
 import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai';
 import IconButton from '@mui/material/IconButton';

@@ -17,7 +17,6 @@ const imageCarosel = function ( id: string, urlText: string | undefined) {
 export function CarouselSmaller({images}: ImageProps) {
   return (
     <div>
-      
        <S.SyledCarrosel >
         {images.map((produto) =>
           imageCarosel(produto.id, produto.imagem,)
