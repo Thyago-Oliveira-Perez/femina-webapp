@@ -8,8 +8,16 @@ import IconButton from '@mui/material/IconButton';
 import FavoritosApi from '../../api/Favoritos.api';
 import {AuthContext} from '../../context/AuthContext';
 
+interface ImageProps {
+    imagesArray: any[];
+    valor: number;
+    nome: string;
+    descricao: string;
+    id: number;
+}
 
-export const ProductCardDetailed = ({ imagemUrl, valor, nome, destaque, descricao, id }: ProdutoEntity) => {
+export const ProductCardDetailed = ({  valor, nome, descricao, id, imagesArray }: ImageProps) => {
+
     const [show, setShow] = useState(false);
     const handleMouseOver = () => {
         setShow(true);
@@ -42,7 +50,7 @@ export const ProductCardDetailed = ({ imagemUrl, valor, nome, destaque, descrica
     return (
         <S.ContainerItem>
             <div style = {{width : '40%'}}>
-            <CarouselSmaller  />
+            <CarouselSmaller images={imagesArray}  />
             </div>
             <S.StyledInfo>
                 <S.StyledName>

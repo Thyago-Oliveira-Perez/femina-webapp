@@ -60,6 +60,32 @@ export function DetalhaProdutos() {
     },
   ];
 
+  const produtosImagens = [
+    {
+      id: "01",
+      imagem:
+      "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg", 
+  
+    },
+    {
+      id: "02",
+      imagem:
+      "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
+    },
+    {
+      id: "03",
+      imagem:
+      "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
+  
+    },
+    {
+      id: "04",
+      imagem:
+      "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
+   
+    }
+  ];
+
   const produtoApi = new ProdutoApi();
   let { id } = useParams();
   
@@ -86,13 +112,12 @@ export function DetalhaProdutos() {
 
       <S.ProductContainer>
         <ProductCardDetailed
-          nome={selectedProduct?.nome}
-          destaque={selectedProduct?.destaque as boolean}
-          imagemUrl={selectedProduct?.imagemUrl}
+          nome={selectedProduct?.nome as string}
           valor={selectedProduct?.valor as number}
           key={selectedProduct?.id}
-          descricao= {selectedProduct?.descricao}
-          id={selectedProduct?.id}
+          descricao= {selectedProduct?.descricao as string}
+          imagesArray={produtosImagens}
+          id={selectedProduct?.id as number}
         />
       </S.ProductContainer>
       <S.ContainerGrid>
