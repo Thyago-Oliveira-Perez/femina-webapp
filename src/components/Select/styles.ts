@@ -10,7 +10,7 @@ export const SelectWrapper = styled(Select)`
   &&& {
     background: white;
     color: #9b4a46;
-    font-size: 1.4rem;
+    font-size: 1rem;
     &::after {
       border-color: #9b4a46;
       font-size: 1rem;
@@ -22,11 +22,9 @@ export const SelectWrapper = styled(Select)`
 export const SelectLabel = styled(InputLabel)<InputLabelProps>`
   &&& {
     ${({ requiredType }) => css`
-    
+      
       margin-top: 0.3rem;
-      &.MuiInputLabel-filled {
-        color: #7a0000;
-      }
+     
       &.MuiInputLabel-filled.Mui-focused {
         color: #9b4a46;
       }
