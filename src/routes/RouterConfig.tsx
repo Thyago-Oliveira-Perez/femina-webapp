@@ -9,6 +9,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import { Produtos } from "../pages/Produtos";
 import { DetalhaProdutos } from "../pages/DetalhaProdutos";
 import { useParams } from "react-router-dom";
+import { Favoritos } from "../pages/Favoritos";
 
 const RouterConfig = () => {
 
@@ -35,6 +36,7 @@ const RouterConfig = () => {
         <Route path="/" element={<PaginaInicial />} />
         <Route path="/produtos/:categoria" element={<Produtos />} />
         <Route path="/produto/:id" element={<DetalhaProdutos />} />
+        <Route path="/favoritos" element={<Favoritos />} />
       </Routes>
 
       {
