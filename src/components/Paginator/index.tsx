@@ -2,7 +2,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { IPageable } from "../../types/pageable.types";
 import * as S from "./styles";
-import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IconButton } from "@mui/material";
 
 interface PaginationProps {
@@ -17,12 +17,14 @@ export const PaginationComponent = ({
   page,
 }: PaginationProps) => {
   const handlePageChange = (value: any) => {
-    setPage({
-      ...page,
-      ...{
-        currentPage: value,
-      },
-    });
+    if (value < totalOfPages && value > -1) {
+      setPage({
+        ...page,
+        ...{
+          currentPage: value,
+        },
+      });
+    }
   };
 
   return (
@@ -32,7 +34,7 @@ export const PaginationComponent = ({
           handlePageChange(page.currentPage - 1);
         }}
       >
-        <IoIosArrowBack/>
+        <IoIosArrowBack />
       </IconButton>
       <p>{page.currentPage + 1}</p>
       {" de "}
@@ -42,7 +44,7 @@ export const PaginationComponent = ({
           handlePageChange(page.currentPage + 1);
         }}
       >
-        <IoIosArrowForward/>
+        <IoIosArrowForward />
       </IconButton>
     </S.StyledPagination>
   );
