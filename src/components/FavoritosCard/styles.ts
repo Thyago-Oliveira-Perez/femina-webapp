@@ -1,28 +1,40 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+`;
 
- 
-`;
 export const ModalContent = styled.div`
-  margin: 40px 40px 40px 40px;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 `;
+
 export const ContainerItem = styled.div`
   background: #d4a9a7;
   display: flex;
   width: 100%;
-  height: 40%;
- ` 
-;
+
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  
+  border-radius: 8px;
+`;
+
+export const InfoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const ImgContainer = styled.div`
+  width: 30%;
+  height: 100%;
+`;
 
 export const StyledImg = styled.img`
-width: 55%;
-height: 15rem;
+  width: 100%;
+  height: 100%
 `;
 
 export const StyledName = styled.p`
@@ -50,13 +62,18 @@ export const StyledInfo = styled.div`
   align-items: start;
   padding: 1.5rem 0.6rem;
   gap: 2rem;
-  
-  `;
+  width: 65%;
+`;
 
 export const StyledHr = styled.hr`
   background:white;
   width: 100%;
   border: none;
   padding: 1px;
+`;
 
-  `;
+export const ButtonArea = styled.div`
+  display: flex;
+  align-items: flex-start;
+  height: 90%;
+`;

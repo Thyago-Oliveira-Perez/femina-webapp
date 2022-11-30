@@ -13,6 +13,15 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
 `;
+
+export const SubContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+`;
+
 export const ModalContent = styled.div`
     position: absolute; 
 	inset: 195px;
