@@ -10,4 +10,8 @@ export default class FavoritosApi extends CommonApi {
         return await this._postFavoritos('api/favoritos', model);
     }
 
+    public async getFavoritos() {
+        return await this._getFavoritos('api/favoritos?page=0')
+    }
+
 } 

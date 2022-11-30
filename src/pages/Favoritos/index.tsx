@@ -1,68 +1,29 @@
 import * as S from './styles';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FavoritosCard } from '../../components/FavoritosCard';
 import { CarouselComponent } from '../../components/Carousel';
 import Carousel from 'react-material-ui-carousel';
+import FavoritosApi from '../../api/Favoritos.api';
+import { IFavoritosGet } from '../../types/favoritos.types';
 
 
 export function Favoritos() {
 
-    const produtos = [
-        {
-            id: 0o1,
-            nome: "oitra caois",
-            imagem:
-                "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-            price: 100,
-            destaque: false,
-            descricao: "Lorem ipsum scelerisque inceptos donec ",
-        },
-        {
-            id: 0o5,
-            nome: "aaaaa",
-            imagem:
-                "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-            price: 100,
-            destaque: false,
-            descricao: "Lorem ipsum scelerisque inceptos donec ",
-        },
-        {
-            id: 0o5,
-            nome: "aaaaa",
-            imagem:
-                "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-            price: 100,
-            destaque: false,
-            descricao: "Lorem ipsum scelerisque inceptos donec ",
-        },
-        {
-            id: 0o1,
-            nome: "aaaaa",
-            imagem:
-                "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-            price: 100,
-            destaque: false,
-            descricao: "Lorem ipsum scelerisque inceptos donec ",
-        },
-        {
-            id: 0o5,
-            nome: "aaaaa",
-            imagem:
-                "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-            price: 100,
-            destaque: false,
-            descricao: "Lorem ipsum scelerisque inceptos donec ",
-        },
-        {
-            id: 0o5,
-            nome: "aaaaa",
-            imagem:
-                "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-            price: 100,
-            destaque: false,
-            descricao: "Lorem ipsum scelerisque inceptos donec ",
-        },
-    ];
+    const favoritosApi = new FavoritosApi();
+
+    const [favoritos, setFavoritos] = useState<IFavoritosGet>();
+
+    const getFavoritos = () => {
+        favoritosApi.getFavoritos().then((response: any) => {
+            setFavoritos(response.data)
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
+    useEffect(() => {
+        getFavoritos();
+    }, [])
 
 
     return (
@@ -73,14 +34,14 @@ export function Favoritos() {
                     <h2>Sua Lista de Desejos</h2>
                 </S.Title>
                 
-                {produtos.map(
-                    (produto) => (
+                {favoritos?.content?.map(
+                    (favorito) => (
                         <FavoritosCard
-                            id={produto.id}
-                            nome={produto.nome}
-                            valor={produto.price}
-                            descricao={produto.descricao}
-                            image={produto.imagem}
+                            id={favorito.id}
+                            nome={favorito.produto.nome}
+                            valor={favorito.produto.valor}
+                            descricao={favorito.produto.descricao}
+                            image={favorito.produto.imagem}
                         />
                     )
                 )}

@@ -52,26 +52,26 @@ export const SideBarFilter = ({ open, setOpen }: SideBarFilterProps) => {
         })
     }
 
-    useEffect(() => {
-        getCategorias();
-        getMarcas();
-    }, [])
+    // useEffect(() => {
+    //     getCategorias();
+    //     getMarcas();
+    // }, [])
 
-    const getProdutos = () => {
-        const produtctToApi = {
-            ...produtosList,
-            categoriaIds: categoriasToFilter,
-            marcaIds: marcasToFilter,
-            cor: cor,
-            tamanho: tamanho
-        }
+    // const getProdutos = () => {
+    //     const produtctToApi = {
+    //         ...produtosList,
+    //         categoriaIds: categoriasToFilter,
+    //         marcaIds: marcasToFilter,
+    //         cor: cor,
+    //         tamanho: tamanho
+    //     }
 
-        produtoApi.getProdutos(produtctToApi as IProduto, page.toString()).then((response: any) => {
-            setProdutosList(response.data)
-        }).catch((error) => {
-            console.log(error);
-        })
-    }
+    //     produtoApi.getProdutos(produtctToApi as IProduto, page.toString()).then((response: any) => {
+    //         setProdutosList(response.data)
+    //     }).catch((error) => {
+    //         console.log(error);
+    //     })
+    // }
 
     const handleCategoriasToFilter = (id: any) => {
         if(!categoriasToFilter.includes(id)) {
@@ -144,7 +144,7 @@ export const SideBarFilter = ({ open, setOpen }: SideBarFilterProps) => {
                     </S.FilterContainer>
 
                     <S.ButtonArea>
-                        <ButtonComponent onClick={() => getProdutos()} width='100%' themeColor='#9B4A46' title={'Filtrar'} />
+                        <ButtonComponent width='100%' themeColor='#9B4A46' title={'Filtrar'} />
                     </S.ButtonArea>
                 </S.Container>
             </SwipeableDrawer>

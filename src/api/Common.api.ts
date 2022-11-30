@@ -84,6 +84,20 @@ export default class CommonApi extends Api {
       return this.handleError(error);
     }
   }
+
+  protected async _getFavoritos<T>(url: string): Promise<T> {
+    try {
+      return await this.axiosClient.get(`${this.url}/${url}`, {
+        headers: {
+          Authorization: this.authorization,
+        },
+      });
+    } catch (error: any) {
+      return this.handleError(error);
+    }
+  }
+
+
   //#endregion
  
   //#region Categorias
@@ -105,6 +119,7 @@ export default class CommonApi extends Api {
     }
   }
   //#endregion
+
 
 
 }
