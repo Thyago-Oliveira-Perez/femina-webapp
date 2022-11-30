@@ -1,15 +1,13 @@
-import styled from 'styled-components';
-import Pagination from '@mui/material/Pagination';
+import styled from "styled-components";
+import Pagination from "@mui/material/Pagination";
 
-export const StyledPagination = styled(Pagination)`
-    &&& {
-        .MuiPaginationItem-root {
-            border: 1px solid #A77371;
-        }
-
-        .MuiPaginationItem-root.Mui-selected {
-            background-color: #7A0000;
-            color: white;
-        }
-    }
+export const StyledPagination = styled.div`
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  button {
+    border: none;
+    border-radius: 5px;
+  }
 `;

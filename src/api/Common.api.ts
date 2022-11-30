@@ -1,5 +1,6 @@
 import AuthService from "../services/auth.service";
 import { IFavoritos } from "../types/favoritos.types";
+import { IPageable } from "../types/pageable.types";
 import { IProduto } from "../types/product.types";
 import { Api } from "./Api";
 
@@ -52,9 +53,14 @@ export default class CommonApi extends Api {
   //#endregion
  
   //#region Produtos
-  protected async _getProducts<T>(model: IProduto, url: string): Promise<T> {
+  protected async _getProducts<T>(url: string, pageable: IPageable): Promise<T> {
     try {
-      return await this.axiosClient.post(`${this.url}` + url, model);
+      return await this.axiosClient.post(`${this.url}` + url, pageable.filters, {
+        params: {
+          page: pageable.currentPage, 
+          size: pageable.pageSize
+        }
+      });
     } catch (error: any) {
       return this.handleError(error);
     }
