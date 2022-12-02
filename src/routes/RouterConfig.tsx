@@ -10,6 +10,7 @@ import { Produtos } from "../pages/Produtos";
 import { DetalhaProdutos } from "../pages/DetalhaProdutos";
 import { useParams } from "react-router-dom";
 import { Favoritos } from "../pages/Favoritos";
+import { Sobre } from "../pages/Sobre";
 
 const RouterConfig = () => {
 
