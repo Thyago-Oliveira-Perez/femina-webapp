@@ -31,7 +31,7 @@ const RouterConfig = () => {
         <Route path="/" element={<PaginaInicial />} />
         <Route path="/login" element={<FormLogin />}></Route>
         <Route path="/usuario" element={<Usuario />} />
-        <Route path="/produtos/:categoria" element={<Produtos />} />
+        <Route path="/produtos/:categoria/:id" element={<Produtos />} />
         <Route path="/produto/:id" element={<DetalhaProdutos />} />
 
         {/* Private Routes */}

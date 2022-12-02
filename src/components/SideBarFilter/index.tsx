@@ -12,28 +12,26 @@ import { ICategoria } from '../../types/categorias.types';
 import { IMarca } from '../../types/marcas.types';
 import { IProduto } from '../../types/product.types';
 import ProdutoApi from '../../api/Produto.api';
+import { IFilters } from '../../types/filters.types';
+import { IPageable } from '../../types/pageable.types';
 
 
 interface SideBarFilterProps {
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    filterObj: IPageable;
+    setFilterObj: React.Dispatch<React.SetStateAction<IPageable>>;
+    filterProdutos: () => void
 }
 
-export const SideBarFilter = ({ open, setOpen }: SideBarFilterProps) => {
+export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterProdutos }: SideBarFilterProps) => {
     const categoriaApi = new CategoriasApi();
     const marcaApi = new MarcasApi();
 
     const categoriasToFilter: any[] = [];
     const marcasToFilter: number[] = [];
 
-    const produtoApi = new ProdutoApi();
-
-    const [produtosList, setProdutosList] = useState<IProduto>();
-    const [page, setPage] = useState(0)
-
     const [categorias, setCategorias] = useState<ICategoria>();
-    const [cor, setCor] = useState('');
-    const [tamanho, setTamanho] = useState('');
     const [marcas, setMarcas] = useState<IMarca>()
 
     const getCategorias = () => {
@@ -52,43 +50,41 @@ export const SideBarFilter = ({ open, setOpen }: SideBarFilterProps) => {
         })
     }
 
-    // useEffect(() => {
-    //     getCategorias();
-    //     getMarcas();
-    // }, [])
-
-    // const getProdutos = () => {
-    //     const produtctToApi = {
-    //         ...produtosList,
-    //         categoriaIds: categoriasToFilter,
-    //         marcaIds: marcasToFilter,
-    //         cor: cor,
-    //         tamanho: tamanho
-    //     }
-
-    //     produtoApi.getProdutos(produtctToApi as IProduto, page.toString()).then((response: any) => {
-    //         setProdutosList(response.data)
-    //     }).catch((error) => {
-    //         console.log(error);
-    //     })
-    // }
+    useEffect(() => {
+        getCategorias();
+        getMarcas();
+    }, [])
 
     const handleCategoriasToFilter = (id: any) => {
-        if(!categoriasToFilter.includes(id)) {
+        if (!categoriasToFilter.includes(id)) {
             categoriasToFilter.push(id);
         } else {
             categoriasToFilter.splice(categoriasToFilter.indexOf(id), 1);
         }
 
-        console.log(categoriasToFilter)
+        setFilterObj({ ...filterObj, 
+                filters: {
+                    ...filterObj.filters,
+                    categoriaIds: categoriasToFilter
+                } 
+            })
+        
     }
 
     const handleMarcasToFilter = (id: number) => {
-        if(!marcasToFilter.includes(id)) {
+        if (!marcasToFilter.includes(id)) {
             marcasToFilter.push(id);
+            console.log()
         } else {
             marcasToFilter.splice(marcasToFilter.indexOf(id), 1);
         }
+
+        setFilterObj({ ...filterObj, 
+                filters: {
+                    ...filterObj.filters, 
+                    marcaIds: marcasToFilter
+                } 
+            })
     }
 
     return (
@@ -108,10 +104,11 @@ export const SideBarFilter = ({ open, setOpen }: SideBarFilterProps) => {
                     <S.FilterContainer>
                         <Select
                             style={{ width: '100%' }}
-                            label="Categoria"
-                            >
+                            label="Categoria">
                             {categorias?.content?.map((categoria) =>
-                                <Option onClick={() => handleCategoriasToFilter(categoria.id)} value={categoria.nome}>{categoria.nome}</Option>
+                                <Option
+                                    onClick={() => handleCategoriasToFilter(categoria.id)}
+                                    value={categoria.nome}>{categoria.nome}</Option>
                             )}
 
 
@@ -119,22 +116,36 @@ export const SideBarFilter = ({ open, setOpen }: SideBarFilterProps) => {
                         <Select
                             style={{ width: '100%' }}
                             label="Marca"
-                            onChange={(e: any)=> handleMarcasToFilter(e.target.value)}
-                            >
+
+                        >
                             {marcas?.content?.map((marca) =>
-                                <Option value={marca.id}>{marca.nome}</Option>
+                                <Option
+                                    onClick={() => handleMarcasToFilter(marca.id)}
+                                    value={marca.id}>{marca.nome}</Option>
                             )}
 
                         </Select>
 
-                        <TextFieldComponent label='Cor' onChange={(e) => setCor(e.target.value)}/>
+                        <TextFieldComponent 
+                            label='Cor' 
+                            onChange={(e) =>  
+                                setFilterObj({ ...filterObj, 
+                                    filters: {
+                                        ...filterObj.filters,
+                                        cor: e.target.value
+                                        } 
+                                    })} />
 
-                        <Select
-                            style={{ width: '100%' }}
-
+                        <Select style={{ width: '100%' }}
                             label="Tamanho"
-                            onChange={(e: any) => setTamanho(e.target.value)}
-                            >
+                            onChange={(e: any) =>  
+                                setFilterObj({ ...filterObj, 
+                                    filters: {
+                                        ...filterObj.filters,
+                                        tamanho: e.target.value
+                                    } 
+                                })}
+                        >
                             <Option value={'P'}>P</Option>
                             <Option value={'M'}>M</Option>
                             <Option value={'G'}>G</Option>
@@ -144,7 +155,7 @@ export const SideBarFilter = ({ open, setOpen }: SideBarFilterProps) => {
                     </S.FilterContainer>
 
                     <S.ButtonArea>
-                        <ButtonComponent width='100%' themeColor='#9B4A46' title={'Filtrar'} />
+                        <ButtonComponent onClick={filterProdutos} width='100%' themeColor='#9B4A46' title={'Filtrar'} />
                     </S.ButtonArea>
                 </S.Container>
             </SwipeableDrawer>

@@ -58,8 +58,8 @@ export const ProductCardDetailed = ({  valor, nome, descricao, id, imagesArray }
                     <IconButton onClick={() => postFavoritos(id as number)}>
                         {
                             favorite ?
-                            <AiOutlineHeart size={30} color={'white'}/>
-                            : <AiFillHeart size={30} color={'white'}/>
+                            <AiFillHeart size={30} color={'white'}/>
+                            : <AiOutlineHeart size={30} color={'white'}/>
                         }
                     </IconButton>
                 </S.StyledName>

@@ -15,9 +15,10 @@ interface FavoritosCard {
     valor: number;
     descricao: string;
     image: string;
+    clickButton: MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
-export const FavoritosCard = ({ id, nome, valor, descricao, image }: FavoritosCard) => {
+export const FavoritosCard = ({ id, nome, valor, descricao, image, clickButton }: FavoritosCard) => {
 
     const [show, setShow] = useState(false);
     const handleMouseOver = () => {
@@ -63,7 +64,7 @@ export const FavoritosCard = ({ id, nome, valor, descricao, image }: FavoritosCa
                         </S.InfoContainer>
 
                         <S.ButtonArea>
-                            <IconButton>
+                            <IconButton onClick={clickButton}>
                                 <AiFillHeart color='white'/>
                             </IconButton>
                         </S.ButtonArea>

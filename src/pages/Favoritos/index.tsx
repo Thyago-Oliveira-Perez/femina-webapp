@@ -21,6 +21,14 @@ export function Favoritos() {
         })
     }
 
+    const handleFavoritos = (idUser: any, idProduto: any) => {
+        favoritosApi.postFavoritos({idUser, idProduto}).then((response) => {
+            console.log('aaaa')
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
     useEffect(() => {
         getFavoritos();
     }, [])
@@ -42,6 +50,7 @@ export function Favoritos() {
                             valor={favorito.produto.valor}
                             descricao={favorito.produto.descricao}
                             image={favorito.produto.imagem}
+                            clickButton={() => handleFavoritos(favorito.usuario.id, favorito.produto.id)}
                         />
                     )
                 )}

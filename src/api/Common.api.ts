@@ -79,7 +79,11 @@ export default class CommonApi extends Api {
   //#region Favoritos
   protected async _postFavoritos<T>(url: string, model: IFavoritos): Promise<T> {
     try {
-      return await this.axiosClient.post(`${this.url}/${url}`, model);
+      return await this.axiosClient.post(`${this.url}/${url}`, model, {
+        headers: {
+          Authorization: this.authorization,
+        },
+      });
     } catch (error: any) {
       return this.handleError(error);
     }

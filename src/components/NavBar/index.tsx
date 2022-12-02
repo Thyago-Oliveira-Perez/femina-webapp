@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import * as S from './styles';
+import CategoriasApi from '../../api/Categorias.api';
+import { useEffect, useState } from 'react';
+import { ICategoria } from '../../types/categorias.types';
 
 export const NavObj = [
     {
@@ -30,14 +33,30 @@ export const NavObj = [
 ]
 
 export const Navbar = () => {
+
+    const [categorias, setCategorias] = useState<ICategoria>()
+    const categoriasApi = new CategoriasApi();
+
+    const getCategorias = () => {
+        categoriasApi.getCategorias().then((response: any) => {
+            setCategorias(response.data)
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
+    useEffect(() => {
+        getCategorias();
+    }, [])
+
     return (
         <S.NavContainer>
             <div>
                 <S.Container>
-                    {NavObj.map((nav) => (
-                        <S.StyledLink key={nav.id} to={`/produtos/${nav.name}`}>
+                    {categorias?.content?.map((nav) => (
+                        <S.StyledLink key={nav.id} to={`/produtos/${nav.nome}/${nav.id}`}>
                             <li>
-                                {nav.name}
+                                {nav.nome}
                             </li>
                         </S.StyledLink>
                     ))}

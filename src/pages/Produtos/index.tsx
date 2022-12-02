@@ -16,22 +16,22 @@ import { IFilters } from "../../types/filters.types";
 export const Produtos = () => {
   const produtoApi = new ProdutoApi();
 
+  const { categoria, id } = useParams();
+
   const [produtosList, setProdutosList] = useState<IProduto>();
   const [openFilter, setOpenFilter] = useState(false);
 
   const allTamanhos: string = "ALL";
 
-  const [filters, setFilters] = useState<IFilters>({
-    categoriaIds: [],
-    marcaIds: [],
-    cor: "",
-    tamanho: allTamanhos,
-  });
-
   const [pageable, setPageable] = useState<IPageable>({
     currentPage: 0,
     pageSize: 1,
-    filters: filters,
+    filters: {
+      categoriaIds: [],
+      marcaIds: [],
+      cor: "",
+      tamanho: allTamanhos,
+    },
   });
 
   const getProdutos = () => {
@@ -47,7 +47,6 @@ export const Produtos = () => {
   };
 
   useEffect(() => {
-    console.log("aaaa");
     getProdutos()
   }, [pageable.currentPage]);
 
@@ -67,7 +66,13 @@ export const Produtos = () => {
         </S.ContainerSubTitle>
       </S.Teste>
 
-      <SideBarFilter open={openFilter} setOpen={setOpenFilter} />
+      <SideBarFilter 
+          open={openFilter} 
+          setOpen={setOpenFilter} 
+          filterObj={pageable} 
+          setFilterObj={setPageable}
+          filterProdutos={() => getProdutos()}
+        />
 
       <div>
         <S.ContainerGrid>
