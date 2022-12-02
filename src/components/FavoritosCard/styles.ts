@@ -13,7 +13,7 @@ export const ModalContent = styled.div`
 export const ContainerItem = styled.div`
   background: #d4a9a7;
   display: flex;
-  width: 100%;
+  width: 80%;
 
   align-items: center;
   justify-content: space-between;
@@ -45,7 +45,7 @@ export const StyledName = styled.p`
   `;
 
 export const StyledDescription = styled.p`
-  font-size: 16px;
+  font-size: 12px;
   line-height: 25px;
   width: 100%;
   `;
