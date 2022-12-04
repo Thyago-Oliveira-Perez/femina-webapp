@@ -25,7 +25,7 @@ export const Produtos = () => {
 
   const [pageable, setPageable] = useState<IPageable>({
     currentPage: 0,
-    pageSize: 1,
+    pageSize: 10,
     filters: {
       categoriaIds: [],
       marcaIds: [],
@@ -33,6 +33,8 @@ export const Produtos = () => {
       tamanho: allTamanhos,
     },
   });
+
+  console.log(pageable.filters)
 
   const getProdutos = () => {
     produtoApi
@@ -86,7 +88,7 @@ export const Produtos = () => {
                     image={produto.imagemUrl as string}
                     price={produto.valor}
                     key={produto.id}
-                    id={produto.id as number}
+                    id={produto.id?.toString() as string}
                   />
                 )
             )}

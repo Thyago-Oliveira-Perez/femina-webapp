@@ -1,7 +1,7 @@
 import { MouseEventHandler } from 'react';
 
 export interface ProductCardProps {
-    id: number
+    id: string;
     image: string;
     price: number;
     name: string;

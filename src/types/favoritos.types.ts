@@ -1,7 +1,7 @@
 // POST
 export interface IFavoritos {
-    idUser: number;
-    idProduto: number;
+    idUser: string;
+    idProduto: string;
 }
 
 // GET

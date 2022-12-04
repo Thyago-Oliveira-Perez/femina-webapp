@@ -105,14 +105,12 @@ export function DetalhaProdutos() {
   const [selectedProduct, setSelectedProduct] = useState<ProdutoEntity>();
 
   const getProdutoById = () => {
-    produtoApi.getProdutoById(parseInt(id as string)).then((response: any) => {
+    produtoApi.getProdutoById(id as string).then((response: any) => {
       setSelectedProduct(response.data)
-     
     }).catch((error) => {
       console.log(error)
     })
   }
-  console.log(id)
 
   useEffect(() => {
     getProdutoById();
@@ -148,7 +146,7 @@ export function DetalhaProdutos() {
                   image={produto.imagemUrl}
                   price={produto.valor}
                   key={produto.id}
-                  id={produto.id}
+                  id={produto.id.toString()}
                 />
               )
           )}

@@ -11,7 +11,7 @@ export default class ProdutoApi extends CommonApi {
         return await this._getProducts(`/api/produtos/list`,pageable);
     }
 
-    public async getProdutoById(id: number) {
+    public async getProdutoById(id: string) {
         return await this._getProductById(id, 'api/produtos')
     }
 }

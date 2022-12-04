@@ -66,7 +66,7 @@ export default class CommonApi extends Api {
     }
   }
 
-  protected async _getProductById<T>(id: number, url: string): Promise<T> {
+  protected async _getProductById<T>(id: string, url: string): Promise<T> {
     try {
       
       return await this.axiosClient.get(`${this.url}/${url}/${id}`);
@@ -101,7 +101,17 @@ export default class CommonApi extends Api {
     }
   }
 
-
+  protected async _deleteFavorito<T>(url: string, model: IFavoritos): Promise<T> {
+    try {
+      return await this.axiosClient.post(`${this.url}/${url}`, model, {
+        headers: {
+          Authorization: this.authorization,
+        },
+      });
+    } catch (error: any) {
+      return this.handleError(error);
+    }
+  }
   //#endregion
  
   //#region Categorias

@@ -107,6 +107,7 @@ export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterPr
                             label="Categoria">
                             {categorias?.content?.map((categoria) =>
                                 <Option
+                                    key={categoria.id}
                                     onClick={() => handleCategoriasToFilter(categoria.id)}
                                     value={categoria.nome}>{categoria.nome}</Option>
                             )}
@@ -120,6 +121,7 @@ export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterPr
                         >
                             {marcas?.content?.map((marca) =>
                                 <Option
+                                    key={marca.id}
                                     onClick={() => handleMarcasToFilter(marca.id)}
                                     value={marca.id}>{marca.nome}</Option>
                             )}

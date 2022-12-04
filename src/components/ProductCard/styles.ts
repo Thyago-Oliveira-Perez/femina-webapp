@@ -45,6 +45,9 @@ export const StyledButtonArea = styled.div`
   height: 15rem;
   opacity: 0;
   transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
   button {
     background: transparent;
@@ -59,9 +62,18 @@ export const StyledButtonArea = styled.div`
     align-items: center;
     background-color: rgba(217, 217, 217, 0.09);
   
-    button {
+    button:first-child {
       cursor: pointer;
       background: #9B4A46;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius:2px;
+    }
+
+    button:last-child {
+      cursor: pointer;
+      background: #D4A9A7;
       color: white;
       border: none;
       padding: 10px 15px;

@@ -34,14 +34,13 @@ export const ProductCardDetailed = ({  valor, nome, descricao, id, imagesArray }
     const postFavoritos = (id: number) => {
 
         const modelFavoritos = {
-            idUser: userInfo?.id as number,
-            idProduto: id
+            idUser: userInfo?.id.toString() as string,
+            idProduto: id.toString()
         }
 
         favoritosApi.postFavoritos(modelFavoritos).then((response: any) => {
             console.log(response.data)
             setFavorite(true)
-            console.log('favoritado!!')
         }).catch((error) => {
             console.log(error)
         })
