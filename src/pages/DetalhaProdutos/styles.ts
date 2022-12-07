@@ -23,3 +23,10 @@ export const GridPorduct = styled.div`
     align-items: center;
     gap: 1rem;
 `;
+export const ProgressContainer = styled.div`
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;

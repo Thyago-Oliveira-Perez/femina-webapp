@@ -12,6 +12,7 @@ import AuthService from "../../services/auth.service";
 import { useEditable } from "@chakra-ui/react";
 
 export default function FormLogin() {
+  const [showLoad, setShowLoad] = useState(true);
   const actualYear = new Date().getFullYear();
   const loginApi = new UserApi();
   const authService = new AuthService();

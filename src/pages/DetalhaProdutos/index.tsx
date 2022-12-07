@@ -7,6 +7,8 @@ import ProdutoApi from '../../api/Produto.api';
 import { AuthContext } from "../../context/AuthContext";
 import { ProdutoEntity } from "../../types/product.types";
 import { useParams } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 interface ICarouselProps {
   produtos: {
@@ -20,6 +22,7 @@ interface ICarouselProps {
 
 
 export function DetalhaProdutos() {
+
   const produtos = [
     {
       id: 0o1,
@@ -103,10 +106,13 @@ export function DetalhaProdutos() {
 
   const [openAlert, setOpenAlert] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState<ProdutoEntity>();
+  const [showLoad, setShowLoad] = useState(true);
 
   const getProdutoById = () => {
-    produtoApi.getProdutoById(id as string).then((response: any) => {
+    produtoApi.getProdutoById(id as string)
+    .then((response: any) => {
       setSelectedProduct(response.data)
+      setShowLoad(false)
     }).catch((error) => {
       console.log(error)
     })
@@ -120,6 +126,11 @@ export function DetalhaProdutos() {
     <div>
 
       <S.ProductContainer>
+      {showLoad ?
+      <S.ProgressContainer>
+          <CircularProgress style={{ color: '#7A0000' }}/>
+        </S.ProgressContainer>
+        : 
         <ProductCardDetailed
           nome={selectedProduct?.nome as string}
           valor={selectedProduct?.valor as number}
@@ -128,30 +139,33 @@ export function DetalhaProdutos() {
           imagesArray={produtosImagens}
           id={selectedProduct?.id as number}
         />
+      }
       </S.ProductContainer>
       <S.ContainerGrid>
         <S.StyledH3>Produtos Semelhantes</S.StyledH3>
-        
         <DetailedCarousel produtos={produtos}/>
 
         <S.StyledH3>Aproveite e veja tambem</S.StyledH3>
 
-        <S.GridPorduct>
-          {produtos.map(
-            (produto) =>
-              produto.destaque == false && (
-                <ProductCard
-                  name={produto.nome}
-                  destaque={produto.destaque}
-                  image={produto.imagemUrl}
-                  price={produto.valor}
-                  key={produto.id}
-                  id={produto.id.toString()}
-                />
-              )
-          )}
-        </S.GridPorduct>
-      </S.ContainerGrid>
-    </div>
+      
+
+          <S.GridPorduct>
+            {produtos.map(
+              (produto) =>
+                produto.destaque == false && (
+                  <ProductCard
+                    name={produto.nome}
+                    destaque={produto.destaque}
+                    image={produto.imagemUrl}
+                    price={produto.valor}
+                    key={produto.id}
+                    id={produto.id.toString()}
+                  />
+                )
+            )}
+          </S.GridPorduct>
+       
+    </S.ContainerGrid>
+  </div>
   );
 }

@@ -35,6 +35,7 @@ const RouterConfig = () => {
         <Route path="/produtos/:categoria/:id" element={<Produtos />} />
         <Route path="/produto/:id" element={<DetalhaProdutos />} />
 
+
         {/* Private Routes */}
         <Route element={<PrivateRoutes />}>
           <Route path="/favoritos" element={<Favoritos />} />

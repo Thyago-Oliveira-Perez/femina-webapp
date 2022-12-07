@@ -58,3 +58,11 @@ export const PaginationArea = styled.div`
     justify-content: center;
     margin: 2em 0;
 `;
+
+export const ProgressContainer = styled.div`
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;

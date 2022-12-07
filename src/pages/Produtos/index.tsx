@@ -12,11 +12,14 @@ import { IconButton } from "@mui/material";
 import { SideBarFilter } from "../../components/SideBarFilter";
 import { IPageable } from "../../types/pageable.types";
 import { IFilters } from "../../types/filters.types";
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 export const Produtos = () => {
   const produtoApi = new ProdutoApi();
 
   const { categoria, id } = useParams();
+  const [showLoad, setShowLoad] = useState(true);
 
   const [produtosList, setProdutosList] = useState<IProduto>();
   const [openFilter, setOpenFilter] = useState(false);
@@ -41,6 +44,7 @@ export const Produtos = () => {
       .getProdutos(pageable)
       .then((response: any) => {
         setProdutosList(response.data);
+        setShowLoad(false)
         console.log(response.data)
       })
       .catch((error) => {
@@ -68,31 +72,41 @@ export const Produtos = () => {
         </S.ContainerSubTitle>
       </S.Teste>
 
-      <SideBarFilter 
-          open={openFilter} 
-          setOpen={setOpenFilter} 
-          filterObj={pageable} 
-          setFilterObj={setPageable}
-          filterProdutos={() => getProdutos()}
-        />
+      <SideBarFilter
+        open={openFilter}
+        setOpen={setOpenFilter}
+        filterObj={pageable}
+        setFilterObj={setPageable}
+        filterProdutos={() => getProdutos()}
+      />
 
       <div>
         <S.ContainerGrid>
-          <S.GridPorduct>
-            {produtosList?.content?.map(
-              (produto) =>
-                produto.destaque == true && (
-                  <ProductCard
-                    name={produto.nome as string}
-                    destaque={produto.destaque}
-                    image={produto.imagemUrl as string}
-                    price={produto.valor}
-                    key={produto.id}
-                    id={produto.id?.toString() as string}
-                  />
-                )
-            )}
-          </S.GridPorduct>
+
+          {showLoad ?
+            <S.ProgressContainer>
+              <CircularProgress style={{ color: '#7A0000' }}/>
+            </S.ProgressContainer>
+            :
+            <S.GridPorduct>
+
+              {produtosList?.content?.map(
+                (produto) =>
+                  produto.destaque == true && (
+                    <ProductCard
+                      name={produto.nome as string}
+                      destaque={produto.destaque}
+                      image={produto.imagemUrl as string}
+                      price={produto.valor}
+                      key={produto.id}
+                      id={produto.id?.toString() as string}
+                    />
+                  )
+              )}
+            </S.GridPorduct>
+          }
+
+
         </S.ContainerGrid>
       </div>
 

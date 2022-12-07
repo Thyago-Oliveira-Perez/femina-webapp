@@ -1,8 +1,11 @@
 import * as S from './styles';
 import * as React from 'react';
-import { Accordions } from '../../components/Accordion/Index';
+import { useState } from 'react';
+import { Accordions } from '../../components/Accordion';
 
 export function Sobre (){
+      const [showLoad, setShowLoad] = useState(true);
+
       return(
             <S.Container>
                 <S.Title>

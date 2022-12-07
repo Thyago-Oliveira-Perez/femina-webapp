@@ -9,6 +9,7 @@ import { Alert } from '../../components/Alert';
 import CircularProgress from '@mui/material/CircularProgress';
 import { EmptyView } from '../../components/EmptyView';
 
+
 export function Favoritos() {
 
     const favoritosApi = new FavoritosApi();
@@ -26,6 +27,7 @@ export function Favoritos() {
             console.log(error);
         })
     }
+   
 
     const deleteFavoritos = (idUser: any, idProduto: any) => {
         favoritosApi.deleteFavorito({ idUser, idProduto }).then((response) => {
@@ -100,6 +102,12 @@ export function Favoritos() {
                 message={"Sucesso ao deletar favorito"}
                 type="success"
             />
+              {/* <Alert
+                alertStatus={openAlertSucess}
+                setAlertStatus={setOpenAlertSucess}
+                message={"Sucesso ao favoritar"}
+                type="success"
+            /> */}
         </S.Container>
 
 

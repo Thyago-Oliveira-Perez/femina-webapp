@@ -12,11 +12,12 @@ import UserApi from "../../api/Users.api";
 import { Alert } from "../../components/Alert";
 import { IUserRequest } from '../../types/user.types';
 import { Link } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export function Usuario() {
 
     const userApi = new UserApi();
-
+    const [showLoad, setShowLoad] = useState(true);
     const clienteObjInitialState = {
         nome: "",
         password: "",
