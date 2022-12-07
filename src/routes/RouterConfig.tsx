@@ -39,6 +39,7 @@ const RouterConfig = () => {
         {/* Private Routes */}
         <Route element={<PrivateRoutes />}>
           <Route path="/favoritos" element={<Favoritos />} />
+          <Route path="/usuario/:id" element={<Usuario />} />
         </Route>        
        
       </Routes>

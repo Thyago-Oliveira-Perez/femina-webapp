@@ -35,6 +35,7 @@ export interface LoginResponse {
 
 // TODO: fazer enum de sexo
 export interface IUserReponse {
+    id: string;
     nome: string;
     login: string;
     sexo: string;

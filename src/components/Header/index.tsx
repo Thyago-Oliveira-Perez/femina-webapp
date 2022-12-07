@@ -8,6 +8,7 @@ import { AuthContext } from "../../context/AuthContext";
 import Logo from '../../../public/logo.svg';
 import {useLocation, useNavigate} from 'react-router-dom';
 import isAuthenticated from '../../utils/isAuthenticated';
+import { FaRegUserCircle } from 'react-icons/fa';
 
 interface HeaderProps {
   type: "generic" | "global";
@@ -64,7 +65,7 @@ export const Header = ({ type }: HeaderProps) => {
           type == "global" && (
 
             <S.ItemsContainer>
-              <S.LogoArea>
+              <S.LogoArea href='/'>
 
                 <img src={Logo} alt="logo" />
               </S.LogoArea>
@@ -101,6 +102,10 @@ export const Header = ({ type }: HeaderProps) => {
                     <S.StyledMenu onClick={() => logout()}>
                       Sair
                       <FiLogOut color={'#7a0000'} />
+                    </S.StyledMenu>
+                    <S.StyledMenu onClick={() => navigate(`/usuario/${userInfo?.id}`)}>
+                      Meus dados
+                      <FaRegUserCircle color={'#7a0000'} />
                     </S.StyledMenu>
                   </Menu>
                   <S.ButtonArea>

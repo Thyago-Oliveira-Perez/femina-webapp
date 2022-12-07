@@ -15,7 +15,7 @@ export const Container = styled.ul`
     
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled.div`
     text-decoration: none;
     color: white;
     padding: 1rem;

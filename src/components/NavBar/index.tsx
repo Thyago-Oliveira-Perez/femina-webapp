@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as S from './styles';
 import CategoriasApi from '../../api/Categorias.api';
 import { useEffect, useState } from 'react';
@@ -34,6 +34,8 @@ export const NavObj = [
 
 export const Navbar = () => {
 
+    const navigate = useNavigate()
+
     const [categorias, setCategorias] = useState<ICategoria>()
     const categoriasApi = new CategoriasApi();
 
@@ -54,7 +56,7 @@ export const Navbar = () => {
             <div>
                 <S.Container>
                     {categorias?.content?.map((nav) => (
-                        <S.StyledLink key={nav.id} to={`/produtos/${nav.nome}/${nav.id}`}>
+                        <S.StyledLink key={nav.id} onClick={() => navigate(`/produtos/${nav.nome}/${nav.id}`)}>
                             <li>
                                 {nav.nome}
                             </li>

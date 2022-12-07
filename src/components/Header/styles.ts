@@ -23,7 +23,7 @@ export const ItemsContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const LogoArea = styled.div`
+export const LogoArea = styled.a`
   display: flex;
   flex-direction: row;
   gap: 1rem;

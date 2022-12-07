@@ -45,7 +45,6 @@ export function Favoritos() {
         getFavoritos();
     }, [])
 
-
     return (
         <S.Container>
             <S.SubContainer>
@@ -53,6 +52,8 @@ export function Favoritos() {
                 <S.Title>
                     <h2>Sua Lista de Desejos</h2>
                 </S.Title>
+
+               
 
                 {showLoad ? <S.ProgressContainer>
                     <CircularProgress style={{ color: '#7A0000' }} />

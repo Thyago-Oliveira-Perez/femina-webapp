@@ -12,14 +12,12 @@ import { IconButton } from "@mui/material";
 import { SideBarFilter } from "../../components/SideBarFilter";
 import { IPageable } from "../../types/pageable.types";
 import { IFilters } from "../../types/filters.types";
-import CircularProgress from '@mui/material/CircularProgress';
-
+import { EmptyView } from "../../components/EmptyView";
 
 export const Produtos = () => {
   const produtoApi = new ProdutoApi();
 
   const { categoria, id } = useParams();
-  const [showLoad, setShowLoad] = useState(true);
 
   const [produtosList, setProdutosList] = useState<IProduto>();
   const [openFilter, setOpenFilter] = useState(false);
@@ -36,25 +34,28 @@ export const Produtos = () => {
       tamanho: allTamanhos,
     },
   });
-
-  console.log(pageable.filters)
-
+  
   const getProdutos = () => {
     produtoApi
-      .getProdutos(pageable)
-      .then((response: any) => {
+    .getProdutos(pageable)
+    .then((response: any) => {
         setProdutosList(response.data);
-        setShowLoad(false)
-        console.log(response.data)
+        setOpenFilter(false)
       })
       .catch((error) => {
         console.log(error);
       });
-  };
+    };
 
-  useEffect(() => {
-    getProdutos()
-  }, [pageable.currentPage]);
+    useEffect(() => {
+      if(id != pageable.filters.categoriaIds[0]) {
+        console.log('aq')
+        setPageable({...pageable, filters: {...pageable.filters, categoriaIds: [id as string]}})
+       
+      }
+      getProdutos();
+      
+    }, [pageable, id]);
 
   return (
     <S.Container>
@@ -82,12 +83,7 @@ export const Produtos = () => {
 
       <div>
         <S.ContainerGrid>
-
-          {showLoad ?
-            <S.ProgressContainer>
-              <CircularProgress style={{ color: '#7A0000' }}/>
-            </S.ProgressContainer>
-            :
+          {produtosList?.content?.length == 0 ? <EmptyView message={`Nenhum produto encontrado na categoria ${categoria}`} /> :
             <S.GridPorduct>
 
               {produtosList?.content?.map(
@@ -96,7 +92,7 @@ export const Produtos = () => {
                     <ProductCard
                       name={produto.nome as string}
                       destaque={produto.destaque}
-                      image={produto.imagemUrl as string}
+                      image={produto.imagemUrl as string} // quando vir a imagem do backend vai ser imageNames[0]
                       price={produto.valor}
                       key={produto.id}
                       id={produto.id?.toString() as string}
@@ -105,7 +101,6 @@ export const Produtos = () => {
               )}
             </S.GridPorduct>
           }
-
 
         </S.ContainerGrid>
       </div>

@@ -29,7 +29,7 @@ export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterPr
     const marcaApi = new MarcasApi();
 
     const categoriasToFilter: any[] = [];
-    const marcasToFilter: number[] = [];
+    const marcasToFilter: any[] = [];
 
     const [categorias, setCategorias] = useState<ICategoria>();
     const [marcas, setMarcas] = useState<IMarca>()
@@ -104,7 +104,9 @@ export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterPr
                     <S.FilterContainer>
                         <Select
                             style={{ width: '100%' }}
-                            label="Categoria">
+                            label="Categoria"
+                            
+                            >
                             {categorias?.content?.map((categoria) =>
                                 <Option
                                     key={categoria.id}
@@ -117,7 +119,7 @@ export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterPr
                         <Select
                             style={{ width: '100%' }}
                             label="Marca"
-
+                           
                         >
                             {marcas?.content?.map((marca) =>
                                 <Option
@@ -130,6 +132,7 @@ export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterPr
 
                         <TextFieldComponent 
                             label='Cor' 
+                            value={filterObj.filters.cor}
                             onChange={(e) =>  
                                 setFilterObj({ ...filterObj, 
                                     filters: {
@@ -140,6 +143,7 @@ export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterPr
 
                         <Select style={{ width: '100%' }}
                             label="Tamanho"
+                            value={filterObj.filters.tamanho}
                             onChange={(e: any) =>  
                                 setFilterObj({ ...filterObj, 
                                     filters: {

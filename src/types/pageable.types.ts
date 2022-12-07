@@ -4,8 +4,8 @@ export interface IPageable {
   currentPage: number;
   pageSize: number;
   filters:{
-    categoriaIds: number[],
-    marcaIds: number[],
+    categoriaIds: string[],
+    marcaIds: string[],
     cor: string,
     tamanho: string,
   };
