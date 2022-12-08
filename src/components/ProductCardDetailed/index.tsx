@@ -13,7 +13,7 @@ interface ImageProps {
     valor: number;
     nome: string;
     descricao: string;
-    id: number;
+    id: string;
 }
 
 export const ProductCardDetailed = ({  valor, nome, descricao, id, imagesArray }: ImageProps) => {
@@ -31,11 +31,11 @@ export const ProductCardDetailed = ({  valor, nome, descricao, id, imagesArray }
 
     const [favorite, setFavorite] = useState(false)
 
-    const postFavoritos = (id: number) => {
+    const postFavoritos = (id: string) => {
 
         const modelFavoritos = {
-            idUser: userInfo?.id.toString() as string,
-            idProduto: id.toString()
+            idUser: userInfo?.id as string,
+            idProduto: id
         }
 
         favoritosApi.postFavoritos(modelFavoritos).then((response: any) => {
@@ -54,7 +54,7 @@ export const ProductCardDetailed = ({  valor, nome, descricao, id, imagesArray }
             <S.StyledInfo>
                 <S.StyledName>
                     {nome}
-                    <IconButton onClick={() => postFavoritos(id as number)}>
+                    <IconButton onClick={() => postFavoritos(id as string)}>
                         {
                             favorite ?
                             <AiFillHeart size={30} color={'white'}/>

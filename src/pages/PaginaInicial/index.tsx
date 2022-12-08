@@ -9,11 +9,12 @@ import { Pagination } from '@mui/material';
 import { DetailedCarousel } from '../../components/DetailedCarousel';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { IPageable } from '../../types/pageable.types';
 
 export function PaginaInicial() {
 
     const produtoApi = new ProdutoApi();
-    
+
     const navigate = useNavigate();
     const [produtosList, setProdutosList] = useState<IProduto | null>();
 
@@ -24,7 +25,7 @@ export function PaginaInicial() {
             url: "",
         },
         {
-            name: "",
+            name: "aaa",
             img_src: "https://mdbootstrap.com/img/Photos/Slides/img%20(35).webp",
             url: "",
         },
@@ -34,17 +35,21 @@ export function PaginaInicial() {
             url: "",
         },
     ];
+    const allTamanhos: string = "ALL";
 
-    const getProdutos = () => {
-        const produtctToApi = {
-            ...produtosList,
+    const [pageable, setPageable] = useState<IPageable>({
+        currentPage: 0,
+        pageSize: 10,
+        filters: {
             categoriaIds: [],
             marcaIds: [],
             cor: "",
-            tamanho: "ALL"
-        }
+            tamanho: allTamanhos,
+        },
+    });
 
-        produtoApi.getProdutos(produtctToApi as IProduto, '0').then((response: any) => {
+    const getProdutos = () => {
+        produtoApi.getProdutos(pageable).then((response: any) => {
             setProdutosList(response.data)
         }).catch((error) => {
             console.log(error);
@@ -54,32 +59,18 @@ export function PaginaInicial() {
     useEffect(() => (
         getProdutos()
     ), [])
-    
+
     return (
         <div>
 
             <CarouselComponent buttonEnabled={true} listItems={items} />
 
-            {/* <S.ContainerCarousel>
-                <DetailedCarousel produtos={produtosList?.content}/>
-            </S.ContainerCarousel> */}
+            
+                <S.ContainerCarousel>
+                    <DetailedCarousel produtos={produtosList?.content as any[]} />
+                </S.ContainerCarousel>
             
 
-            <S.ProductContainer>
-                {produtosList?.content?.map((produto) => (
-                    produto.destaque == true && (
-                        <ProductCard
-                            name={produto.nome as string}
-                            destaque={produto.destaque}
-                            image={produto.imagemUrl as string}
-                            price={produto.valor}
-                            key={produto.id}
-                            id={produto.id as number}
-                           
-                        />
-                    )
-                ))}
-            </S.ProductContainer>
 
             <CarouselComponent buttonEnabled={true} listItems={items} />
 
@@ -94,7 +85,7 @@ export function PaginaInicial() {
                                 image={produto.imagemUrl as string}
                                 price={produto.valor}
                                 key={produto.id}
-                                id={produto.id as number}
+                                id={produto.id as string}
                             />
                         )
                     ))}

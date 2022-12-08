@@ -16,7 +16,8 @@ export const StyledImg = styled.img`
 `;
 
 export const StyledName = styled.h3`
-    font-size: 1.5rem;
+    font-size: 1rem;
+    height: 1rem;
 `;
 
 export const StyledPrice = styled.p`
@@ -29,11 +30,13 @@ export const StyledInfo = styled.div`
   ${({ destaque }:InfoProps) => destaque && `
     display: flex;
     background: #9B4A46;
+    flex-direction: column;
     color: white;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 0.6rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2rem 0.6rem;
     margin-top: -0.5rem;
+    gap: 3rem;
     p {
         color: white;
     }

@@ -13,7 +13,7 @@ export interface IProduto {
     empty: boolean;
 }
 export interface ProdutoEntity {
-    id?: number;
+    id?: string;
     nome?: string;
     codigo?: string;
     valor: number;

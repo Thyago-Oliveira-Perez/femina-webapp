@@ -25,22 +25,11 @@ interface SideBarFilterProps {
 }
 
 export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterProdutos }: SideBarFilterProps) => {
-    const categoriaApi = new CategoriasApi();
     const marcaApi = new MarcasApi();
 
-    const categoriasToFilter: any[] = [];
     const marcasToFilter: any[] = [];
 
-    const [categorias, setCategorias] = useState<ICategoria>();
     const [marcas, setMarcas] = useState<IMarca>()
-
-    const getCategorias = () => {
-        categoriaApi.getCategorias().then((response: any) => {
-            setCategorias(response.data);
-        }).catch((error) => {
-            console.log(error)
-        })
-    }
 
     const getMarcas = () => {
         marcaApi.getMarcas().then((response: any) => {
@@ -51,25 +40,10 @@ export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterPr
     }
 
     useEffect(() => {
-        getCategorias();
+       
         getMarcas();
     }, [])
 
-    const handleCategoriasToFilter = (id: any) => {
-        if (!categoriasToFilter.includes(id)) {
-            categoriasToFilter.push(id);
-        } else {
-            categoriasToFilter.splice(categoriasToFilter.indexOf(id), 1);
-        }
-
-        setFilterObj({ ...filterObj, 
-                filters: {
-                    ...filterObj.filters,
-                    categoriaIds: categoriasToFilter
-                } 
-            })
-        
-    }
 
     const handleMarcasToFilter = (id: number) => {
         if (!marcasToFilter.includes(id)) {
@@ -102,20 +76,7 @@ export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterPr
                     </S.TitleFilter>
 
                     <S.FilterContainer>
-                        <Select
-                            style={{ width: '100%' }}
-                            label="Categoria"
-                            
-                            >
-                            {categorias?.content?.map((categoria) =>
-                                <Option
-                                    key={categoria.id}
-                                    onClick={() => handleCategoriasToFilter(categoria.id)}
-                                    value={categoria.nome}>{categoria.nome}</Option>
-                            )}
-
-
-                        </Select>
+                        
                         <Select
                             style={{ width: '100%' }}
                             label="Marca"

@@ -23,31 +23,34 @@ const responsive = {
 };
 
 interface ArrayType {
-  id: number,
-    nome: string;
-    destaque: boolean;
-    imagemUrl: string;
-    valor: number;
+  id: string,
+  nome: string;
+  destaque: boolean;
+  imagemUrl: string;
+  valor: number;
 }
 
 interface ICarouselProps {
   produtos: ArrayType[];
 }
 
-export function DetailedCarousel({produtos}: ICarouselProps) {
+export function DetailedCarousel({ produtos }: ICarouselProps) {
   return (
     <div>
-      <Carousel responsive={responsive}>
-        {produtos?.map((item) => (
-          <ProductCard
-            id={item.id}
-            name={item.nome}
-            destaque={item.destaque}
-            image={item.imagemUrl}
-            price={item.valor}
-          />
-        ))}
-      </Carousel>
+      {produtos &&
+        <Carousel responsive={responsive}>
+          {produtos?.map((item) => (
+            <ProductCard
+              id={item.id}
+              name={item.nome}
+              destaque={item.destaque}
+              image={item.imagemUrl}
+              price={item.valor}
+            />
+          ))}
+        </Carousel>
+      }
+
     </div>
   );
 }

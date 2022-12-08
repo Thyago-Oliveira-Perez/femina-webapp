@@ -25,7 +25,7 @@ export function DetalhaProdutos() {
 
   const produtos = [
     {
-      id: 0o1,
+      id: '0o1',
       nome: "aaaaa",
       imagemUrl:
         "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
@@ -33,7 +33,7 @@ export function DetalhaProdutos() {
       destaque: false,
     },
     {
-      id: 0o5,
+      id: '0o5',
       nome: "aaaaa",
       imagemUrl:
         "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
@@ -41,7 +41,7 @@ export function DetalhaProdutos() {
       destaque: false,
     },
     {
-      id: 0o5,
+      id: '0o5',
       nome: "aaaaa",
       imagemUrl:
         "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
@@ -49,7 +49,7 @@ export function DetalhaProdutos() {
       destaque: false,
     },
     {
-      id: 0o1,
+      id: '0o1',
       nome: "aaaaa",
       imagemUrl:
         "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
@@ -57,7 +57,7 @@ export function DetalhaProdutos() {
       destaque: false,
     },
     {
-      id: 0o5,
+      id: '0o5',
       nome: "aaaaa",
       imagemUrl:
         "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
@@ -65,7 +65,7 @@ export function DetalhaProdutos() {
       destaque: false,
     },
     {
-      id: 0o5,
+      id: '0o5',
       nome: "aaaaa",
       imagemUrl:
         "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
@@ -137,7 +137,7 @@ export function DetalhaProdutos() {
           key={selectedProduct?.id}
           descricao= {selectedProduct?.descricao as string}
           imagesArray={produtosImagens}
-          id={selectedProduct?.id as number}
+          id={selectedProduct?.id as string}
         />
       }
       </S.ProductContainer>
