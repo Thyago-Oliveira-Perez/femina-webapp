@@ -1,5 +1,5 @@
 import { UserLogin } from "../pages/Login/FormLogin.types";
-import { ICliente } from "../pages/Usuario/Usuario.types";
+import { ICliente } from "../pages/UsuarioNew/Usuario.types";
 import { IUserReponse, LoginResponse, IUserRequest } from "../types/user.types";
 import CommonApi from "./Common.api";
 

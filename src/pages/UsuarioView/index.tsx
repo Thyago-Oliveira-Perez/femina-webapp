@@ -1,0 +1,118 @@
+import * as S from './styles';
+
+import { TextFieldComponent } from '../../components/TextFieldComponent';
+import { RadioButton } from '../../components/RadioButton';
+import { FormControl, FormControlLabel, FormLabel, RadioGroup, Radio } from '@mui/material';
+import { ButtonComponent } from '../../components/ButtonComponent';
+import { Checkbox } from '../../components/Checkbox';
+import { ICliente } from './Usuario.types';
+import { useContext, useState } from 'react';
+import { FormatPhone } from '../../utils/formatPhone';
+import UserApi from "../../api/Users.api";
+import { Alert } from "../../components/Alert";
+import { IUserRequest } from '../../types/user.types';
+import { Link, useNavigate } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
+import { AuthContext } from '../../context/AuthContext';
+
+export function UsuarioView() {
+    const navigate = useNavigate();
+
+    const userApi = new UserApi();
+    const { userInfo } = useContext(AuthContext);
+    const clienteObjInitialState = {
+        nome: "",
+        password: "",
+        login: "",
+        sexo: "",
+        telefone: "",
+        email: "",
+    }
+
+    const [clientForm, setClientForm] = useState<IUserRequest>(clienteObjInitialState);
+    const [openAlert, setOpenAlert] = useState(false);
+    const [openAlertError, setOpenAlertError] = useState(false);
+    const [isEdit, setIsEdit] = useState(false);
+
+    return (
+        <>
+            <S.StyledLinkContainer>
+                <Link style={{ textDecoration: 'none', color: '#7A0000' }} to="/">Voltar</Link>
+            </S.StyledLinkContainer>
+            <S.Container>
+
+                <S.FormContainer>
+
+                    <TextFieldComponent
+                        label='Nome Completo'
+                        value={userInfo?.nome}
+                        style={{ width: "100%" }}
+                        disabled={!isEdit}
+                        onChange={(e) => setClientForm({ ...clientForm, nome: e.target.value })} />
+
+                    <TextFieldComponent
+                        label='Nome de login'
+                        value={userInfo?.login}
+                        style={{ width: "100%" }}
+                        disabled={!isEdit}
+                        onChange={(e) => setClientForm({ ...clientForm, login: e.target.value })} />
+
+                    <FormControl>
+                        <S.StyledFormLabel>Gênero</S.StyledFormLabel>
+                        <RadioGroup
+                            value={userInfo?.sexo}
+                            onChange={(e) => setClientForm({ ...clientForm, sexo: e.target.value })}>
+                            <S.StyledLabel disabled={!isEdit} value="FEMININO" control={<S.StyledRadio />} label="Feminino" />
+                            <S.StyledLabel disabled={!isEdit} value="MASCULINO" control={<S.StyledRadio />} label="Maculino" />
+                            <S.StyledLabel disabled={!isEdit} value="OUTRO" control={<S.StyledRadio />} label="Prefiro não informar" />
+                        </RadioGroup>
+                    </FormControl>
+
+                    <TextFieldComponent
+                        label='Telefone'
+                        style={{ width: "100%" }}
+                        value={userInfo?.telefone}
+                        disabled={!isEdit}
+                        onChange={(e) => setClientForm({ ...clientForm, telefone: FormatPhone(e.target.value) })} />
+
+                    <TextFieldComponent
+                        label='Email'
+                        style={{ width: "100%" }}
+                        value={userInfo?.email}
+                        disabled={!isEdit}
+                        onChange={(e) => setClientForm({ ...clientForm, email: e.target.value })} />
+                </S.FormContainer>
+
+                <S.ButtonArea>
+                    {!isEdit ? <ButtonComponent
+                        themeColor='#740000'
+                        title={'Editar'}
+                        onClick={() => setIsEdit(true)}
+                    /> : <ButtonComponent
+                        themeColor='#9B4A46'
+                        title={'Salvar'}
+                    />}
+
+
+
+
+
+
+                </S.ButtonArea>
+
+                <Alert
+                    alertStatus={openAlert}
+                    setAlertStatus={setOpenAlert}
+                    message="Sucesso ao cadastrar usuario"
+                    type='success' />
+
+                <Alert
+                    alertStatus={openAlertError}
+                    setAlertStatus={setOpenAlertError}
+                    message="Erro ao cadastrar usuario"
+                    type='error' />
+
+            </S.Container>
+        </>
+    );
+}

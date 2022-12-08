@@ -1,23 +1,20 @@
 import * as S from './styles';
 
 import { TextFieldComponent } from '../../components/TextFieldComponent';
-import { RadioButton } from '../../components/RadioButton';
-import { FormControl, FormControlLabel, FormLabel, RadioGroup, Radio } from '@mui/material';
+import { FormControl, RadioGroup } from '@mui/material';
 import { ButtonComponent } from '../../components/ButtonComponent';
 import { Checkbox } from '../../components/Checkbox';
-import { ICliente } from './Usuario.types';
 import { useState } from 'react';
 import { FormatPhone } from '../../utils/formatPhone';
 import UserApi from "../../api/Users.api";
 import { Alert } from "../../components/Alert";
 import { IUserRequest } from '../../types/user.types';
-import { Link } from 'react-router-dom';
-import CircularProgress from '@mui/material/CircularProgress';
+import { Link, useNavigate } from 'react-router-dom';
 
-export function Usuario() {
+export function UsuarioNew() {
+    const navigate = useNavigate();
 
     const userApi = new UserApi();
-    const [showLoad, setShowLoad] = useState(true);
     const clienteObjInitialState = {
         nome: "",
         password: "",
@@ -25,7 +22,6 @@ export function Usuario() {
         sexo: "",
         telefone: "",
         email: "",
-        
     }
 
     const [clientForm, setClientForm] = useState<IUserRequest>(clienteObjInitialState);
@@ -35,15 +31,12 @@ export function Usuario() {
     const [openAlertError, setOpenAlertError] = useState(false);
 
     const postUser = () => {
-        
         userApi.registerUserBySelf(clientForm)
             .then((response) => {
-            
             setOpenAlert(true);
-
+            navigate('/login')
         }).catch((error) => {
             console.log(error);
-            
             setOpenAlertError(true);
         })
     }

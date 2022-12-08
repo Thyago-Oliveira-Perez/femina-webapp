@@ -2,7 +2,7 @@ import { Route, Routes, useLocation, useNavigate, useNavigation } from "react-ro
 import Footer from "../components/Footer/Footer";
 import { Header } from "../components/Header";
 import { Navbar } from "../components/NavBar";
-import { Usuario } from "../pages/Usuario";
+import { UsuarioNew } from "../pages/UsuarioNew";
 import FormLogin from "../pages/Login";
 import { PaginaInicial } from "../pages/PaginaInicial";
 import PrivateRoutes from "./PrivateRoutes";
@@ -11,6 +11,7 @@ import { DetalhaProdutos } from "../pages/DetalhaProdutos";
 import { useParams } from "react-router-dom";
 import { Favoritos } from "../pages/Favoritos";
 import { Sobre } from "../pages/Sobre";
+import { UsuarioView } from "../pages/UsuarioView";
 
 const RouterConfig = () => {
 
@@ -31,7 +32,7 @@ const RouterConfig = () => {
       <Routes>
         <Route path="/" element={<PaginaInicial />} />
         <Route path="/login" element={<FormLogin />}></Route>
-        <Route path="/usuario" element={<Usuario />} />
+        <Route path="/usuario" element={<UsuarioNew />} />
         <Route path="/produtos/:categoria/:id" element={<Produtos />} />
         <Route path="/produto/:id" element={<DetalhaProdutos />} />
 
@@ -39,7 +40,7 @@ const RouterConfig = () => {
         {/* Private Routes */}
         <Route element={<PrivateRoutes />}>
           <Route path="/favoritos" element={<Favoritos />} />
-          <Route path="/usuario/:id" element={<Usuario />} />
+          <Route path="/usuario/:id" element={<UsuarioView />} />
         </Route>        
        
       </Routes>
