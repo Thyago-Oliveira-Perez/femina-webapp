@@ -34,7 +34,7 @@ export const Produtos = () => {
       tamanho: allTamanhos,
     },
   });
-  
+
   const getProdutos = () => {
     produtoApi
     .getProdutos(pageable)
@@ -49,13 +49,13 @@ export const Produtos = () => {
 
     useEffect(() => {
       if(id != pageable.filters.categoriaIds[0]) {
-        console.log('aq')
-        setPageable({...pageable, filters: {...pageable.filters, categoriaIds: [id as string]}})
-       
-      }
+        setPageable({...pageable, filters: {...pageable.filters, categoriaIds: [id as string]}}) 
+      }  
+    }, [id]);
+
+    useEffect(() => {
       getProdutos();
-      
-    }, [pageable, id]);
+    }, [pageable]);
 
   return (
     <S.Container>
