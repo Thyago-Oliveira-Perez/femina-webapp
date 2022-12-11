@@ -34,3 +34,9 @@ export const ProgressContainer = styled.div`
     justify-content: center;
     align-items: center;
 `;
+
+export const PaginationArea = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 2em 0;
+`;

@@ -8,6 +8,8 @@ import { IFavoritosGet } from '../../types/favoritos.types';
 import { Alert } from '../../components/Alert';
 import CircularProgress from '@mui/material/CircularProgress';
 import { EmptyView } from '../../components/EmptyView';
+import { IPageable } from '../../types/pageable.types';
+import { PaginationComponent } from '../../components/Paginator';
 
 
 export function Favoritos() {
@@ -19,15 +21,21 @@ export function Favoritos() {
     const [openAlertSucess, setOpenAlertSucess] = useState(false);
     const [showLoad, setShowLoad] = useState(true);
 
+    const [pageable, setPageable] = useState<IPageable>({
+        currentPage: 0,
+        pageSize: 10,
+
+    });
+
     const getFavoritos = () => {
-        favoritosApi.getFavoritos().then((response: any) => {
+        favoritosApi.getFavoritos(pageable).then((response: any) => {
             setFavoritos(response.data)
             setShowLoad(false)
         }).catch((error) => {
             console.log(error);
         })
     }
-   
+
 
     const deleteFavoritos = (idUser: any, idProduto: any) => {
         favoritosApi.deleteFavorito({ idUser, idProduto }).then((response) => {
@@ -48,13 +56,9 @@ export function Favoritos() {
     return (
         <S.Container>
             <S.SubContainer>
-
                 <S.Title>
                     <h2>Sua Lista de Desejos</h2>
                 </S.Title>
-
-               
-
                 {showLoad ? <S.ProgressContainer>
                     <CircularProgress style={{ color: '#7A0000' }} />
                 </S.ProgressContainer> : <div>
@@ -82,9 +86,13 @@ export function Favoritos() {
 
                 </div>}
 
-
-
-
+                <S.PaginationArea>
+                    <PaginationComponent
+                        page={pageable}
+                        setPage={setPageable}
+                        totalOfPages={favoritos?.totalPages as number}
+                    />
+                </S.PaginationArea>
 
                 <Carousel />
 
@@ -103,7 +111,7 @@ export function Favoritos() {
                 message={"Sucesso ao deletar favorito"}
                 type="success"
             />
-              {/* <Alert
+            {/* <Alert
                 alertStatus={openAlertSucess}
                 setAlertStatus={setOpenAlertSucess}
                 message={"Sucesso ao favoritar"}

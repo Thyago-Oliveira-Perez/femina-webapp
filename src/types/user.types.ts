@@ -52,3 +52,14 @@ export interface IUserRequest {
     email: string;
     password: string;
 }
+
+export interface IUserUpdate {
+    id: string;
+    nome: string;
+    login: string;
+    sexo: string;
+    telefone: string;
+    email: string;
+    isActive: boolean;
+  }
+  

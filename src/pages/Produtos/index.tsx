@@ -48,7 +48,7 @@ export const Produtos = () => {
     };
 
     useEffect(() => {
-      if(id != pageable.filters.categoriaIds[0]) {
+      if(id != pageable.filters.categoriaIds[0] as unknown) {
         setPageable({...pageable, filters: {...pageable.filters, categoriaIds: [id as string]}}) 
       }  
     }, [id]);

@@ -5,6 +5,7 @@ import axios from "axios";
 
 interface AuthContextData {
     userInfo: IUser | undefined;
+    setUserInfo: React.Dispatch<React.SetStateAction<IUser | undefined>>;
     signed: boolean;   
 }
 
@@ -22,7 +23,7 @@ export const AuthContextProvider = ({
     const [userToken, setUserToken] = useState<string | null>(localStorage.getItem("user"));
     const [userInfo, setUserInfo] = useState<IUser | undefined>();
 
-    const userApi = new UserApi();
+    const userApi = new UserApi()
 
     useEffect(() => {
       const loadingStoreData = () => {
@@ -35,17 +36,20 @@ export const AuthContextProvider = ({
       loadingStoreData();
     }, []);
 
+
     const getUserInfo = () => {
       userApi.getUserInfo().then((response: any) => {
-        
         setUserInfo(response.data);
       }).catch((error) => {
         console.log(error);
       })
     }
 
+    console.log('aq', userInfo)
+
+   
     return (
-        <AuthContext.Provider value={{ userInfo, signed: !!userToken }}>
+        <AuthContext.Provider value={{ userInfo, setUserInfo, signed: !!userToken }}>
           {children}
         </AuthContext.Provider>
     );

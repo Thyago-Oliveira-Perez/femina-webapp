@@ -8,10 +8,10 @@ export default class ProdutoApi extends CommonApi {
     }
 
     public async getProdutos(pageable: IPageable) {
-        return await this._getProducts(`/api/produtos/list`,pageable);
+        return await this._getProducts(`/api/produtos/catalogo/list`,pageable);
     }
 
     public async getProdutoById(id: string) {
-        return await this._getProductById(id, 'api/produtos')
+        return await this._getProductById(id, 'api/produtos/catalogo')
     }
 }

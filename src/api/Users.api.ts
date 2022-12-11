@@ -1,6 +1,6 @@
 import { UserLogin } from "../pages/Login/FormLogin.types";
 import { ICliente } from "../pages/UsuarioNew/Usuario.types";
-import { IUserReponse, LoginResponse, IUserRequest } from "../types/user.types";
+import { IUserReponse, LoginResponse, IUserRequest, IUserUpdate } from "../types/user.types";
 import CommonApi from "./Common.api";
 
 export default class UserApi extends CommonApi {
@@ -21,5 +21,9 @@ export default class UserApi extends CommonApi {
 
   public async registerUserBySelf(user: IUserRequest) {
     return await this._regiterUserBySelf<IUserRequest>(user, "/api/usuarios/register")
+  }
+
+  public async updateUser(userUpdate:IUserUpdate) {
+    return await this._updateUser<IUserUpdate>(`api/usuarios/update/${userUpdate.id}`, userUpdate);
   }
 }

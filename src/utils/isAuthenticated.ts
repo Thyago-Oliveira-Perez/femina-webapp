@@ -7,7 +7,7 @@ export default function isAuthenticated() {
       return false;
     }
     
-    const { exp }: any = jwt_decode(token.token);
+    const { exp }: any = jwt_decode(token.accessToken);
     
     if (Date.now() >= exp * 1000) {
       return false;

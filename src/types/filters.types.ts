@@ -1,6 +1,6 @@
 export interface IFilters{
-  categoriaIds: number[],
-  marcaIds: number[],
+  categoriaIds: string[],
+  marcaIds: string[],
   cor: string,
   tamanho: string,
 }

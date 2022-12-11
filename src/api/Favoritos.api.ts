@@ -1,4 +1,5 @@
-import { IFavoritos } from "../types/favoritos.types";
+import { IFavoritos, IFavoritosGet } from "../types/favoritos.types";
+import { IPageable } from "../types/pageable.types";
 import CommonApi from "./Common.api";
 
 export default class FavoritosApi extends CommonApi {
@@ -10,8 +11,8 @@ export default class FavoritosApi extends CommonApi {
         return await this._postFavoritos('api/favoritos/insert', model);
     }
 
-    public async getFavoritos() {
-        return await this._getFavoritos('api/favoritos/my-favoritos')
+    public async getFavoritos(pageable: IPageable) {
+        return await this._getFavoritos('api/favoritos/my-favoritos', pageable)
     }
 
     public async deleteFavorito(model: IFavoritos) {

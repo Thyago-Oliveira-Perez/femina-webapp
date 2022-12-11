@@ -4,9 +4,18 @@ import { useContext, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import FavoritosApi from '../../api/Favoritos.api';
 import {AuthContext} from '../../context/AuthContext';
+import { Alert } from '../Alert';
 
 export const ProductCard = ({ image, price, name, destaque, id }: ProductCardProps) => {
     const navigate = useNavigate();
+
+    const [alertObj, setAlertObj] = useState({
+        type: "success",
+        message: ""
+    })
+
+    const [showAlertSucess, setShowAlertSucess] = useState(false)
+    const [showAlertWarn, setShowAlertWarn] = useState(false)
 
     const favoritosApi = new FavoritosApi();
     const {userInfo} = useContext(AuthContext)
@@ -16,8 +25,13 @@ export const ProductCard = ({ image, price, name, destaque, id }: ProductCardPro
     const postFavoritos = (idUser: string, idProduto: string) => {
         favoritosApi.postFavoritos({idUser, idProduto}).then((response) => {
             console.log(response)
-        }).catch((error) => console.log(error)
-        )
+            setShowAlertSucess(true),
+            setAlertObj({message: "Favoritado com sucesso", type: "success"})
+        }).catch((error) => {
+            console.log(error)
+            setShowAlertWarn(true),
+            setAlertObj({message: "Produto ja foi favoritado", type: "warning"})
+        })
     }
    
     return (
@@ -34,6 +48,20 @@ export const ProductCard = ({ image, price, name, destaque, id }: ProductCardPro
                 <S.StyledName>{name}</S.StyledName>
                 <S.StyledPrice>{price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</S.StyledPrice>
             </S.StyledInfo>
+
+            <Alert
+                alertStatus={showAlertSucess}
+                setAlertStatus={setShowAlertSucess}
+                message={alertObj.message}
+                type={alertObj.type}
+            />
+
+            <Alert
+                alertStatus={showAlertWarn}
+                setAlertStatus={setShowAlertWarn}
+                message={alertObj.message}
+                type={alertObj.type}
+            />
         </S.ContainerItem>
     );
 }
