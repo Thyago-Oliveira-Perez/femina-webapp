@@ -30,3 +30,7 @@ export const ProgressContainer = styled.div`
     justify-content: center;
     align-items: center;
 `;
+
+export const ContainerCarousel = styled.div`
+    margin: 2rem 2rem ;
+`;
