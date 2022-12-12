@@ -45,9 +45,6 @@ export const AuthContextProvider = ({
       })
     }
 
-    console.log('aq', userInfo)
-
-   
     return (
         <AuthContext.Provider value={{ userInfo, setUserInfo, signed: !!userToken }}>
           {children}

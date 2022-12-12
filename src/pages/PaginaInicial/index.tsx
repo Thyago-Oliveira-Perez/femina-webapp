@@ -10,13 +10,17 @@ import { DetailedCarousel } from '../../components/DetailedCarousel';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { IPageable } from '../../types/pageable.types';
+import { IBannersGet } from '../../types/banners.types';
+import BannerApi from "../../api/Banner.api";
 
 export function PaginaInicial() {
 
     const produtoApi = new ProdutoApi();
+    const bannerApi = new BannerApi();
 
     const navigate = useNavigate();
     const [produtosList, setProdutosList] = useState<IProduto | null>();
+    const [banner, setBanner] = useState<IBannersGet | null>()
 
     var items = [
         {
@@ -56,21 +60,32 @@ export function PaginaInicial() {
         })
     }
 
-    useEffect(() => (
-        getProdutos()
-    ), [])
+
+    const getBanners = () => {
+        bannerApi.getBanners(pageable).then((response: any) => {
+            setBanner(response.data)
+
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
+    console.log('banner', banner)
+
+    useEffect(() => {
+        getProdutos();
+        getBanners();
+    }, [])
 
     return (
         <div>
 
-            <CarouselComponent buttonEnabled={true} listItems={items} />
+            <CarouselComponent buttonEnabled={true} listItems={banner?.content[0]?.imageNames as any[]} />
 
-            
-                <S.ContainerCarousel>
-                    <DetailedCarousel produtos={produtosList?.content as any[]} />
-                </S.ContainerCarousel>
-            
 
+            <S.ContainerCarousel>
+                <DetailedCarousel produtos={produtosList?.content as any[]} />
+            </S.ContainerCarousel>
 
             <CarouselComponent buttonEnabled={true} listItems={items} />
 
