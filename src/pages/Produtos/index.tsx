@@ -87,8 +87,7 @@ export const Produtos = () => {
             <S.GridPorduct>
 
               {produtosList?.content?.map(
-                (produto) =>
-                  produto.destaque == true && (
+                (produto) => (
                     <ProductCard
                       name={produto.nome as string}
                       destaque={produto.destaque}

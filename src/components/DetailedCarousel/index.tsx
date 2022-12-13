@@ -40,8 +40,9 @@ export function DetailedCarousel({ produtos }: ICarouselProps) {
     <div>
       {produtos &&
         <Carousel responsive={responsive}>
-          {produtos?.map((item) => (
+          {produtos?.map((item, index) => (
             <ProductCard
+              key={index}
               id={item.id}
               name={item.nome}
               destaque={item.destaque}

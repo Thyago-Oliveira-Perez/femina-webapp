@@ -106,7 +106,7 @@ export function DetalhaProdutos() {
                 <ProductCard
                   name={produto.nome as string}
                   destaque={produto.destaque}
-                  image={`${produto.imagem}/${produto.imageNames[0]}`}
+                  image={produto.imageNames != null ? `${produto?.imagem}/${produto?.imageNames[0]}` : ''}
                   price={produto.valor}
                   key={produto.id}
                   id={produto.id?.toString() as string}
