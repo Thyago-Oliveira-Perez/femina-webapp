@@ -4,25 +4,24 @@ import * as S from './styles';
 
 interface CarouselProps {
   buttonEnabled?: boolean;
-  listItems: { 
-    name: string; 
-    img_src: string; 
-    url: string; 
-  }[];
+  listItems: string[];
   indicators?: boolean;
+  itemUrl: string;
 }
 
-export function CarouselComponent({buttonEnabled, listItems, indicators}: CarouselProps) {
-  
+export function CarouselComponent({buttonEnabled, listItems, itemUrl, indicators}: CarouselProps) {
+
+  console.log(listItems)
     return (
         <Carousel
         indicators={indicators}
           next={() => { }}
           prev={() => { }}
         >
-          {listItems?.map((item, i) => (
-            <Item key={i} item={item} button={buttonEnabled} />
-          ))}
+          {listItems 
+          ? listItems?.map((item, i) => (
+            <Item key={i} item={item} itemUrl={itemUrl} button={buttonEnabled} />
+          )) : []}
         </Carousel>
     );
 };
@@ -40,7 +39,7 @@ function Item(props: any) {
                     </S.ButtonArea> 
                   : <></> }
             </S.BoxArea>
-            <S.StyledImagem src={props.item.img_src} />
+            <S.StyledImagem src={`${props.itemUrl}/${props.item}`} />
         </S.StyledPaper>
     );
 };

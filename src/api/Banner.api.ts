@@ -7,7 +7,7 @@ export default class FavoritosApi extends CommonApi {
         super();
     }
 
-    public async getBanners(pageable: IPageable) {
-        return await this._getBanners('api/banners/list', pageable)
+    public async getBanners(type: string) {
+        return await this._getBanners(`api/banners`, type)
     }
 } 

@@ -13,6 +13,11 @@ import { IPageable } from '../../types/pageable.types';
 import { IBannersGet } from '../../types/banners.types';
 import BannerApi from "../../api/Banner.api";
 
+interface BannerLocalProps {
+    name: string;
+    img_src: string;
+}
+
 export function PaginaInicial() {
 
     const produtoApi = new ProdutoApi();
@@ -20,25 +25,8 @@ export function PaginaInicial() {
 
     const navigate = useNavigate();
     const [produtosList, setProdutosList] = useState<IProduto | null>();
-    const [banner, setBanner] = useState<IBannersGet | null>()
-
-    var items = [
-        {
-            name: "Femina",
-            img_src: "https://wowslider.com/sliders/demo-93/data1/images/lake.jpg",
-            url: "",
-        },
-        {
-            name: "aaa",
-            img_src: "https://mdbootstrap.com/img/Photos/Slides/img%20(35).webp",
-            url: "",
-        },
-        {
-            name: "teste",
-            img_src: "https://picsum.photos/1024/480/?image=54",
-            url: "",
-        },
-    ];
+    const [bannersColecao, setBannerColecao] = useState<IBannersGet>()
+    const [bannersDestaque, setBannersDestaque] = useState<IBannersGet>()
     const allTamanhos: string = "ALL";
 
     const [pageable, setPageable] = useState<IPageable>({
@@ -61,33 +49,46 @@ export function PaginaInicial() {
     }
 
 
-    const getBanners = () => {
-        bannerApi.getBanners(pageable).then((response: any) => {
-            setBanner(response.data)
-
+    const getBannersByDestaque = () => {
+        bannerApi.getBanners('DESTAQUE').then((response: any) => {
+            setBannersDestaque(response.data)
         }).catch((error) => {
             console.log(error);
         })
     }
 
-    console.log('banner', banner)
+    const getBannersByColecao = () => {
+        bannerApi.getBanners('COLECAO').then((response: any) => {
+            setBannerColecao(response.data)
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
 
     useEffect(() => {
         getProdutos();
-        getBanners();
+        getBannersByDestaque();
+        getBannersByColecao();
+        
     }, [])
 
     return (
         <div>
 
-            <CarouselComponent buttonEnabled={true} listItems={banner?.content[0]?.imageNames as any[]} />
+            <CarouselComponent 
+                buttonEnabled={true} 
+                listItems={bannersDestaque?.imageNames as string[]} 
+                itemUrl={bannersDestaque?.imagens as string} />
 
 
             <S.ContainerCarousel>
                 <DetailedCarousel produtos={produtosList?.content as any[]} />
             </S.ContainerCarousel>
 
-            <CarouselComponent buttonEnabled={true} listItems={items} />
+            <CarouselComponent 
+                buttonEnabled={true} 
+                listItems={bannersColecao?.imageNames as string[]} 
+                itemUrl={bannersColecao?.imagens as string} />
 
             <S.ContainerGrid>
                 <S.StyledH3>Nossos produtos</S.StyledH3>

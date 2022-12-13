@@ -152,14 +152,9 @@ export default class CommonApi extends Api {
   //#endregion
 
   //#region Banners
-  protected async _getBanners<T>(url: string, pageable: IPageable): Promise<T> {
+  protected async _getBanners<T>(url: string, type:string): Promise<T> {
     try {
-      return await this.axiosClient.get(`${this.url}/${url}`, {
-        params: {
-          page: pageable.currentPage,
-          size: pageable.pageSize
-        },
-      });
+      return await this.axiosClient.get(`${this.url}/${url}/${type}`);
     } catch (error: any) {
       return this.handleError(error);
     }
