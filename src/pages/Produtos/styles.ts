@@ -25,11 +25,13 @@ export const StyledH3 = styled.h3`
 `;
 
 export const GridPorduct = styled.div`
+    width: 100%;
     display: grid;
-    grid-template-columns: 20rem 20rem 20rem;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, 280px);
+    grid-auto-flow: row;
+    justify-content: space-between;
+    align-items: start;
+    gap: 20px;
 `;
 
 export const ContainerTitle = styled.div`
