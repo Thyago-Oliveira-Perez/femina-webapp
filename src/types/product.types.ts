@@ -24,9 +24,9 @@ export interface ProdutoEntity {
     tamanho?: string;
     cor?: string;
     descricao?: string;
-    imagemUrl?: string;
+    imagem: string;
     destaque: boolean;
-    imageNames?: null;
+    imageNames: string[];
 }
 export interface ModeloEntityOrMarcaOrCategoria {
     id: number;

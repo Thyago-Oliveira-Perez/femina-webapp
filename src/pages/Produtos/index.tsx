@@ -92,7 +92,7 @@ export const Produtos = () => {
                     <ProductCard
                       name={produto.nome as string}
                       destaque={produto.destaque}
-                      image={produto.imagemUrl as string} // quando vir a imagem do backend vai ser imageNames[0]
+                      image={`${produto.imagem}/${produto.imageNames[0]}`} // quando vir a imagem do backend vai ser imageNames[0]
                       price={produto.valor}
                       key={produto.id}
                       id={produto.id?.toString() as string}

@@ -19,7 +19,7 @@ export function CarouselSmaller({images}: ImageProps) {
     <div>
        <S.SyledCarrosel >
         {images.map((produto) =>
-          imageCarosel(produto.id, produto.imagem,)
+          imageCarosel(produto.id, produto.imagem)
         )}
       </S.SyledCarrosel>
     </div>

@@ -26,8 +26,9 @@ interface ArrayType {
   id: string,
   nome: string;
   destaque: boolean;
-  imagemUrl: string;
+  imagem: string;
   valor: number;
+  imageNames: string[];
 }
 
 interface ICarouselProps {
@@ -44,7 +45,7 @@ export function DetailedCarousel({ produtos }: ICarouselProps) {
               id={item.id}
               name={item.nome}
               destaque={item.destaque}
-              image={item.imagemUrl}
+              image={item.imageNames != null ? `${item?.imagem}/${item?.imageNames[0]}` : ''}
               price={item.valor}
             />
           ))}

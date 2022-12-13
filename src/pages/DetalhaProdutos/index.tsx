@@ -165,7 +165,7 @@ export function DetalhaProdutos() {
             valor={selectedProduct?.valor as number}
             key={selectedProduct?.id}
             descricao={selectedProduct?.descricao as string}
-            imagesArray={produtosImagens}
+            imagesArray={`${selectedProduct.imagem}/${selectedProduct.imageNames}` as string[]}
             id={selectedProduct?.id as string}
           />
         }
@@ -186,7 +186,7 @@ export function DetalhaProdutos() {
                 <ProductCard
                   name={produto.nome as string}
                   destaque={produto.destaque}
-                  image={produto.imagemUrl as string}
+                  image={`${produto.imagem}/${produto.imageNames[0]}`}
                   price={produto.valor}
                   key={produto.id}
                   id={produto.id?.toString() as string}

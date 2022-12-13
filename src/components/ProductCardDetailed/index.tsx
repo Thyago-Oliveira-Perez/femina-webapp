@@ -10,7 +10,7 @@ import {AuthContext} from '../../context/AuthContext';
 import {Alert} from '../Alert';
 
 interface ImageProps {
-    imagesArray: any[];
+    imagesArray: string[];
     valor: number;
     nome: string;
     descricao: string;

@@ -97,7 +97,7 @@ export function PaginaInicial() {
                             <ProductCard
                                 name={produto.nome as string}
                                 destaque={produto.destaque}
-                                image={produto.imagemUrl as string}
+                                image={`${produto.imagem}/${produto.imageNames[0]}`}
                                 price={produto.valor}
                                 key={produto.id}
                                 id={produto.id as string}
