@@ -1,0 +1,77 @@
+ const produtos = [
+    {
+      id: '0o1',
+      nome: "aaaaa",
+      imagemUrl:
+        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
+      valor: 100,
+      destaque: false,
+    },
+    {
+      id: '0o5',
+      nome: "aaaaa",
+      imagemUrl:
+        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
+      valor: 100,
+      destaque: false,
+    },
+    {
+      id: '0o5',
+      nome: "aaaaa",
+      imagemUrl:
+        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
+      valor: 100,
+      destaque: false,
+    },
+    {
+      id: '0o1',
+      nome: "aaaaa",
+      imagemUrl:
+        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
+      valor: 100,
+      destaque: false,
+    },
+    {
+      id: '0o5',
+      nome: "aaaaa",
+      imagemUrl:
+        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
+      valor: 100,
+      destaque: false,
+    },
+    {
+      id: '0o5',
+      nome: "aaaaa",
+      imagemUrl:
+        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
+      valor: 100,
+      destaque: false,
+    },
+  ];
+
+  
+  const produtosImagens = [
+    {
+      id: "01",
+      imagem:
+        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
+
+    },
+    {
+      id: "02",
+      imagem:
+        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
+    },
+    {
+      id: "03",
+      imagem:
+        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
+
+    },
+    {
+      id: "04",
+      imagem:
+        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
+
+    }
+  ];

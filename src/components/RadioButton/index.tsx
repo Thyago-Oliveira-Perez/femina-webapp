@@ -1,4 +1,4 @@
-import { MouseEvent, MouseEventHandler } from 'react';
+import { MouseEventHandler } from 'react';
 import * as S from './styles';
 
 interface RadioButtonProps {
@@ -27,25 +27,24 @@ export function RadioButton({
   fontWeight
 }: RadioButtonProps) {
   return (
-    
-      <div style={{ width: '100%' }}>
-        <S.Container
-          value={value}
-          label={label}
-          fontWeight={fontWeight}
-          control={
-            <S.StyledRadio
-              name={name}
-              onClick={onClick}
-              onChange={onChange}
-              checked={checked}
-              defaultChecked={defaultChecked}
-              disabled={disabled}
-              required={required}
-            />
-          }
-        />
-      </div>
-   
+
+    <div style={{ width: '100%' }}>
+      <S.Container
+        value={value}
+        label={label}
+        fontWeight={fontWeight}
+        control={
+          <S.StyledRadio
+            name={name}
+            onClick={onClick}
+            onChange={onChange}
+            checked={checked}
+            defaultChecked={defaultChecked}
+            disabled={disabled}
+            required={required}
+          />
+        }
+      />
+    </div>
   );
 }

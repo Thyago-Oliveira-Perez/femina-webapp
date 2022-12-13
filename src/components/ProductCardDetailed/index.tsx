@@ -1,23 +1,22 @@
 import * as S from './styles';
-import { ProductCardProps } from './ProductCard.types';
-import { useState, MouseEventHandler, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { CarouselSmaller } from "./CarouselSmaller";
-import { ProdutoEntity } from '../../types/product.types';
-import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import IconButton from '@mui/material/IconButton';
 import FavoritosApi from '../../api/Favoritos.api';
-import {AuthContext} from '../../context/AuthContext';
-import {Alert} from '../Alert';
+import { AuthContext } from '../../context/AuthContext';
+import { Alert } from '../Alert';
 
 interface ImageProps {
-    imagesArray: string[];
+    imagesArray: any[];
     valor: number;
     nome: string;
     descricao: string;
     id: string;
+    imagem: string;
 }
 
-export const ProductCardDetailed = ({  valor, nome, descricao, id, imagesArray }: ImageProps) => {
+export const ProductCardDetailed = ({ valor, nome, descricao, id, imagesArray, imagem }: ImageProps) => {
 
     const [show, setShow] = useState(false);
     const [alertObj, setAlertObj] = useState({
@@ -27,13 +26,7 @@ export const ProductCardDetailed = ({  valor, nome, descricao, id, imagesArray }
 
     const [showAlertSucess, setShowAlertSucess] = useState(false)
     const [showAlertWarn, setShowAlertWarn] = useState(false)
-    const handleMouseOver = () => {
-        setShow(true);
-    };
-    const handleMouseOut = () => {
-        setShow(false);
-    };
-    
+
     const { userInfo } = useContext(AuthContext);
     const favoritosApi = new FavoritosApi();
 
@@ -50,18 +43,18 @@ export const ProductCardDetailed = ({  valor, nome, descricao, id, imagesArray }
             console.log(response.data)
             setFavorite(true);
             setShowAlertSucess(true),
-            setAlertObj({message: "Favoritado com sucesso", type: "success"})
+                setAlertObj({ message: "Favoritado com sucesso", type: "success" })
         }).catch((error) => {
             console.log(error)
             setShowAlertWarn(true),
-            setAlertObj({message: "Produto ja foi favoritado", type: "warning"})
+                setAlertObj({ message: "Produto ja foi favoritado", type: "warning" })
         })
     }
 
     return (
         <S.ContainerItem>
-            <div style = {{width : '40%'}}>
-            <CarouselSmaller images={imagesArray}  />
+            <div style={{ width: '40%' }}>
+                <CarouselSmaller images={imagesArray} imagemUrl={imagem} />
             </div>
             <S.StyledInfo>
                 <S.StyledName>
@@ -69,8 +62,8 @@ export const ProductCardDetailed = ({  valor, nome, descricao, id, imagesArray }
                     <IconButton onClick={() => postFavoritos(id as string)}>
                         {
                             favorite ?
-                            <AiFillHeart size={30} color={'white'}/>
-                            : <AiOutlineHeart size={30} color={'white'}/>
+                                <AiFillHeart size={30} color={'white'} />
+                                : <AiOutlineHeart size={30} color={'white'} />
                         }
                     </IconButton>
                 </S.StyledName>

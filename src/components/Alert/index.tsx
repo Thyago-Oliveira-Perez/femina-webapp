@@ -56,7 +56,7 @@ export const Alert = ({
             <IconButton onClick={handleClose}>
               <S.CloseIcon variant={variant} type={type} />
             </IconButton>
-          ) 
+          )
         }
       >
         <S.AlertMessage>{message}</S.AlertMessage>

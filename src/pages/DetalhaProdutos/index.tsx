@@ -24,94 +24,13 @@ interface ICarouselProps {
 
 export function DetalhaProdutos() {
 
-  const produtos = [
-    {
-      id: '0o1',
-      nome: "aaaaa",
-      imagemUrl:
-        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-      valor: 100,
-      destaque: false,
-    },
-    {
-      id: '0o5',
-      nome: "aaaaa",
-      imagemUrl:
-        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-      valor: 100,
-      destaque: false,
-    },
-    {
-      id: '0o5',
-      nome: "aaaaa",
-      imagemUrl:
-        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-      valor: 100,
-      destaque: false,
-    },
-    {
-      id: '0o1',
-      nome: "aaaaa",
-      imagemUrl:
-        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-      valor: 100,
-      destaque: false,
-    },
-    {
-      id: '0o5',
-      nome: "aaaaa",
-      imagemUrl:
-        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-      valor: 100,
-      destaque: false,
-    },
-    {
-      id: '0o5',
-      nome: "aaaaa",
-      imagemUrl:
-        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-      valor: 100,
-      destaque: false,
-    },
-  ];
-
-  const produtosImagens = [
-    {
-      id: "01",
-      imagem:
-        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-
-    },
-    {
-      id: "02",
-      imagem:
-        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-    },
-    {
-      id: "03",
-      imagem:
-        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-
-    },
-    {
-      id: "04",
-      imagem:
-        "https://i.pinimg.com/564x/ed/25/15/ed2515babd9b38b97509a7c2b7db1366.jpg",
-
-    }
-  ];
-
   const produtoApi = new ProdutoApi();
   let { id } = useParams();
-
-
   const [openAlert, setOpenAlert] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState<ProdutoEntity>();
   const [showLoad, setShowLoad] = useState(true);
   const [produtosList, setProdutosList] = useState<IProduto>();
   const allTamanhos: string = "ALL";
-
-
   const [pageable, setPageable] = useState<IPageable>({
     currentPage: 0,
     pageSize: 10,
@@ -165,7 +84,8 @@ export function DetalhaProdutos() {
             valor={selectedProduct?.valor as number}
             key={selectedProduct?.id}
             descricao={selectedProduct?.descricao as string}
-            imagesArray={`${selectedProduct.imagem}/${selectedProduct.imageNames}` as string[]}
+            imagem={selectedProduct?.imagem as string}
+            imagesArray={selectedProduct?.imageNames as string[]}
             id={selectedProduct?.id as string}
           />
         }

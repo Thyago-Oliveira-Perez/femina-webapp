@@ -1,4 +1,4 @@
-import { Chip, MenuItem, SwipeableDrawer } from '@mui/material';
+import { SwipeableDrawer } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { TextFieldComponent } from '../TextFieldComponent';
 import * as S from './styles';
@@ -6,13 +6,8 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { Select } from '../Select';
 import { Option } from '../Select/styles';
 import { ButtonComponent } from '../ButtonComponent';
-import CategoriasApi from '../../api/Categorias.api';
 import MarcasApi from '../../api/Marcas.api';
-import { ICategoria } from '../../types/categorias.types';
 import { IMarca } from '../../types/marcas.types';
-import { IProduto } from '../../types/product.types';
-import ProdutoApi from '../../api/Produto.api';
-import { IFilters } from '../../types/filters.types';
 import { IPageable } from '../../types/pageable.types';
 
 
@@ -40,7 +35,7 @@ export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterPr
     }
 
     useEffect(() => {
-       
+
         getMarcas();
     }, [])
 
@@ -53,12 +48,13 @@ export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterPr
             marcasToFilter.splice(marcasToFilter.indexOf(id), 1);
         }
 
-        setFilterObj({ ...filterObj, 
-                filters: {
-                    ...filterObj.filters, 
-                    marcaIds: marcasToFilter
-                } 
-            })
+        setFilterObj({
+            ...filterObj,
+            filters: {
+                ...filterObj.filters,
+                marcaIds: marcasToFilter
+            }
+        })
     }
 
     return (
@@ -76,11 +72,11 @@ export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterPr
                     </S.TitleFilter>
 
                     <S.FilterContainer>
-                        
+
                         <Select
                             style={{ width: '100%' }}
                             label="Marca"
-                           
+
                         >
                             {marcas?.content?.map((marca) =>
                                 <Option
@@ -91,26 +87,28 @@ export const SideBarFilter = ({ open, setOpen, filterObj, setFilterObj, filterPr
 
                         </Select>
 
-                        <TextFieldComponent 
-                            label='Cor' 
+                        <TextFieldComponent
+                            label='Cor'
                             value={filterObj.filters.cor}
-                            onChange={(e) =>  
-                                setFilterObj({ ...filterObj, 
+                            onChange={(e) =>
+                                setFilterObj({
+                                    ...filterObj,
                                     filters: {
                                         ...filterObj.filters,
                                         cor: e.target.value
-                                        } 
-                                    })} />
+                                    }
+                                })} />
 
                         <Select style={{ width: '100%' }}
                             label="Tamanho"
                             value={filterObj.filters.tamanho}
-                            onChange={(e: any) =>  
-                                setFilterObj({ ...filterObj, 
+                            onChange={(e: any) =>
+                                setFilterObj({
+                                    ...filterObj,
                                     filters: {
                                         ...filterObj.filters,
                                         tamanho: e.target.value
-                                    } 
+                                    }
                                 })}
                         >
                             <Option value={'P'}>P</Option>
